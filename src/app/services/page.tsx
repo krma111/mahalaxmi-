@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Beauty Services",
+  description: "Explore hair care, facial, makeup, waxing, threading and beauty services at Mahalaxmi Beauty Parlour in Prayagraj.",
+  alternates: { canonical: "/services" },
+};
+
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
 
 const HAIR = ["Hair Cut", "Hair Styling", "Hair Smoothing", "Hair Color"];

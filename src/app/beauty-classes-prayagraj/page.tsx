@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Beauty Classes in Prayagraj",
+  description: "Learn beauty parlour skills, makeup, hair styling and self-grooming at Mahalaxmi Beauty Parlour classes in Prayagraj.",
+  alternates: { canonical: "/beauty-classes-prayagraj" },
+};
+
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20know%20about%20beauty%20classes.";
 
 export default function BeautyClassesPage() {

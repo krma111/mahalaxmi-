@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn about Mahalaxmi Beauty Parlour, a ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup and beauty classes.",
+  alternates: { canonical: "/about" },
+};
+
 export default function AboutPage() {
   return (
     <>

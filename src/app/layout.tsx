@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Header from "@/components/Header";
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Mahalaxmi Beauty Parlour Prayagraj | Ladies Salon & Bridal Makeup",
-  description: "Mahalaxmi Beauty Parlour in Prayagraj offers ladies beauty services including hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. Book on WhatsApp.",
-};
 
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
 const NAV_LINKS = [
@@ -19,32 +15,23 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-function Header() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link href="/" className="text-lg font-semibold text-foreground">
-          Mahalaxmi <span className="text-deep-red">Beauty Parlour</span>
-        </Link>
-        <nav className="hidden items-center gap-6 md:flex">
-          {NAV_LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className="text-sm font-medium text-muted transition hover:text-deep-red">
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-        <a
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-10 items-center gap-2 rounded-[8px] bg-deep-red px-4 text-sm font-semibold text-white transition hover:bg-[#741722]"
-        >
-          Book on WhatsApp
-        </a>
-      </div>
-    </header>
-  );
-}
+export const metadata: Metadata = {
+  title: {
+    default: "Mahalaxmi Beauty Parlour Prayagraj | Ladies Salon & Bridal Makeup",
+    template: "%s | Mahalaxmi Beauty Parlour",
+  },
+  description: "Mahalaxmi Beauty Parlour in Prayagraj offers ladies beauty services including hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. Book on WhatsApp.",
+  metadataBase: new URL("https://mahalaxmi-beauty-parlour.vercel.app"),
+  openGraph: {
+    title: "Mahalaxmi Beauty Parlour Prayagraj",
+    description: "Ladies beauty salon offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes in Prayagraj.",
+    type: "website",
+    locale: "en_IN",
+    siteName: "Mahalaxmi Beauty Parlour",
+  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: "/" },
+};
 
 function Footer() {
   return (
@@ -105,8 +92,44 @@ function Footer() {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    name: "Mahalaxmi Beauty Parlour",
+    description: "Ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes.",
+    url: "https://mahalaxmi-beauty-parlour.vercel.app",
+    telephone: "+919889594584",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonel Ganj",
+      addressLocality: "Prayagraj",
+      addressRegion: "Uttar Pradesh",
+      postalCode: "211002",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "25.4358",
+      longitude: "81.8463",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "10:00",
+      closes: "20:00",
+    },
+    priceRange: "$$",
+    image: "https://mahalaxmi-beauty-parlour.vercel.app/og-image.png",
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>

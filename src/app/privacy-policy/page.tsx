@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Privacy policy for Mahalaxmi Beauty Parlour in Prayagraj. How we handle your personal information and appointment data.",
+  robots: { index: false, follow: true },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <section className="py-16 sm:py-20">

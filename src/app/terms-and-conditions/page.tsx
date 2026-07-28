@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description: "Terms and conditions for services at Mahalaxmi Beauty Parlour in Prayagraj including appointment, cancellation and service policies.",
+  robots: { index: false, follow: true },
+};
+
 export default function TermsPage() {
   return (
     <section className="py-16 sm:py-20">

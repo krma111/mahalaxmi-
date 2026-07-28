@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Customer Reviews",
+  description: "Read customer reviews and experiences at Mahalaxmi Beauty Parlour in Prayagraj. View ratings and leave your feedback on Google.",
+  alternates: { canonical: "/reviews" },
+};
+
 const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
 
 const REVIEWS = [

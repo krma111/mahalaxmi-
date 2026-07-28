@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Bridal Makeup in Prayagraj",
+  description: "Book bridal makeup, engagement makeup, pre-bridal packages and hair styling consultation at Mahalaxmi Beauty Parlour in Prayagraj.",
+  alternates: { canonical: "/bridal-makeup-prayagraj" },
+};
+
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20a%20bridal%20consultation.%0AName%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
 
 export default function BridalPage() {
