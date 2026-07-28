@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20know%20about%20beauty%20classes.";
 
 export default function BeautyClassesPage() {

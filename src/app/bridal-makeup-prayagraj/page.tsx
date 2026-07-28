@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20a%20bridal%20consultation.%0AName%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
 
 export default function BridalPage() {
