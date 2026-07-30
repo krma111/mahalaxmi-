@@ -167,7 +167,7 @@ function ProductRig({
     const pointerY = reducedMotion ? 0 : pointerRef.current.y;
 
     const isMobile = quality === "mobile";
-    const openCapX = isMobile ? 0.65 : 1.45;
+    const openCapX = isMobile ? 0.90 : 1.45;
     const openCapY = isMobile ? 0.80 : 1.30;
     const openCapZ = isMobile ? -0.20 : -0.40;
     const bulletRise = isMobile ? 0.40 : 0.45;
