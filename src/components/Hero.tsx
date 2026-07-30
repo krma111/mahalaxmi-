@@ -155,12 +155,12 @@ export default function Hero() {
 
       ScrollTrigger.create({
         trigger: section,
-        start: isMobile ? "top bottom-=120" : "top top+=64",
-        end: isMobile ? "+=220%" : "+=160%",
-        pin: isMobile ? false : stage,
-        pinSpacing: !isMobile,
-        scrub: isMobile ? 1.0 : 1.1,
-        anticipatePin: isMobile ? 0 : 1,
+        start: "top top+=64",
+        end: "+=160%",
+        pin: stage,
+        pinSpacing: true,
+        scrub: 1.1,
+        anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: ({ progress }) => {
           progressRef.current = progress;
