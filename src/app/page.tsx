@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Hero from "@/components/Hero";
 
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
 const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
@@ -51,26 +52,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-deep-red/5 to-transparent py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Ladies Beauty Salon</p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Professional Beauty Care<br />for Women in Prayagraj
-          </h1>
-          <p className="mt-5 max-w-xl text-base leading-7 text-muted sm:text-lg">
-            Hair, skin, makeup, bridal, and beauty services designed to make you feel confident and cared for.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] bg-deep-red px-6 text-sm font-semibold text-white transition hover:bg-[#741722]">
-              Book on WhatsApp
-            </a>
-            <Link href="/services" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] border border-deep-red/25 bg-white px-6 text-sm font-semibold text-deep-red transition hover:bg-cream">
-              View Services
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Popular Services */}
       <section className="py-16 sm:py-20">
