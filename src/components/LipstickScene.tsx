@@ -91,8 +91,8 @@ function ProductRig({
     smoothedProgress.current = progress;
 
     const rotationStage = stageProgress(progress, 0.04, 0.28);
-    const capStage = stageProgress(progress, 0.24, 0.48);
-    const bulletStage = stageProgress(progress, 0.20, 0.50);
+    const capStage = stageProgress(progress, 0.14, 0.42);
+    const bulletStage = stageProgress(progress, 0.34, 0.58);
     const reflectionStage = stageProgress(progress, 0.62, 0.9);
     const floating = reducedMotion ? 0 : Math.sin(clock.elapsedTime * 0.72) * 0.024;
     const pointerX = reducedMotion ? 0 : pointerRef.current.x;
@@ -118,11 +118,12 @@ function ProductRig({
       delta,
     );
 
-    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 0.5, 5.5, delta);
-    cap.position.y = THREE.MathUtils.damp(cap.position.y, 1.12 + capStage * 0.78, 5.5, delta);
-    cap.position.z = THREE.MathUtils.damp(cap.position.z, capStage * 0.08, 5.5, delta);
-    cap.rotation.x = THREE.MathUtils.damp(cap.rotation.x, capStage * -0.09, 5, delta);
-    cap.rotation.z = THREE.MathUtils.damp(cap.rotation.z, capStage * -0.08, 5, delta);
+    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 2.0, 6.5, delta);
+    cap.position.y = THREE.MathUtils.damp(cap.position.y, 1.12 + capStage * 0.95, 6.5, delta);
+    cap.position.z = THREE.MathUtils.damp(cap.position.z, capStage * 0.25, 6.5, delta);
+    cap.rotation.x = THREE.MathUtils.damp(cap.rotation.x, capStage * -0.12, 5.5, delta);
+    cap.rotation.y = THREE.MathUtils.damp(cap.rotation.y, capStage * 0.35, 5.5, delta);
+    cap.rotation.z = THREE.MathUtils.damp(cap.rotation.z, capStage * -0.14, 5.5, delta);
 
     bullet.position.y = THREE.MathUtils.damp(
       bullet.position.y,
