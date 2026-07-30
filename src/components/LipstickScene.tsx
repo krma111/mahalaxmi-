@@ -617,9 +617,9 @@ function Experience({ progressRef, quality, reducedMotion }: ExperienceProps) {
         pointerRef={pointerRef}
       />
       <LightRig progressRef={progressRef} reducedMotion={reducedMotion} pointerRef={pointerRef} />
-      <Environment preset="studio" background={false} />
-      {reducedMotion ? null : <GlassForms progressRef={progressRef} />}
-      {reducedMotion ? null : <LuxuryParticles progressRef={progressRef} quality={quality} />}
+      <Environment preset="studio" background={false} resolution={quality === "mobile" ? 64 : 256} />
+      {reducedMotion || quality === "mobile" ? null : <GlassForms progressRef={progressRef} />}
+      {reducedMotion || quality === "mobile" ? null : <LuxuryParticles progressRef={progressRef} quality={quality} />}
       <ProductRig
         progressRef={progressRef}
         quality={quality}
@@ -655,22 +655,24 @@ export default function LipstickScene({
   const renderedDpr = Math.min(dpr, preferredDpr);
 
   return (
-    <Canvas
+      <Canvas
       aria-hidden="true"
       dpr={renderedDpr}
       frameloop={active ? "always" : "demand"}
       fallback={<CanvasFallback />}
-      shadows
+      shadows={quality === "desktop"}
       gl={{
         alpha: true,
         antialias: quality === "desktop",
         powerPreference: "high-performance",
         toneMapping: THREE.ACESFilmicToneMapping,
-        toneMappingExposure: 1.12,
+        toneMappingExposure: quality === "mobile" ? 0.9 : 1.12,
       }}
       onCreated={({ gl }) => {
         gl.outputColorSpace = THREE.SRGBColorSpace;
-        gl.shadowMap.type = THREE.PCFSoftShadowMap;
+        if (quality === "desktop") {
+          gl.shadowMap.type = THREE.PCFSoftShadowMap;
+        }
       }}
       style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
     >
