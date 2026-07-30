@@ -23,11 +23,11 @@ export default function ContactPage() {
                 <p className="font-semibold text-foreground">Mahalaxmi Beauty Parlour</p>
                 <p>109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonel Ganj, Prayagraj, 211002, Uttar Pradesh</p>
                 <p>Phone / WhatsApp: +91 98895 94584</p>
-                <p>Instagram: <a href="https://instagram.com/mahalaxmi.beauty" target="_blank" rel="noopener noreferrer" className="text-deep-red transition hover:underline">@mahalaxmi.beauty</a></p>
               </div>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a href="tel:+919889594584" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Call Now</a>
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Book on WhatsApp</a>
+                <a href="https://instagram.com/mahalaxmi.beauty" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Instagram</a>
                 <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-line bg-white px-5 text-sm font-semibold text-foreground transition hover:bg-cream">Get Directions</a>
               </div>
             </div>
