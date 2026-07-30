@@ -37,20 +37,20 @@ function stageProgress(value: number, start: number, end: number) {
 
 function createBulletGeometry(quality: SceneQuality) {
   const profile = [
-    new THREE.Vector2(0.005, 0),
-    new THREE.Vector2(0.22, 0.002),
-    new THREE.Vector2(0.225, 0.008),
-    new THREE.Vector2(0.22, 0.02),
-    new THREE.Vector2(0.215, 0.05),
-    new THREE.Vector2(0.20, 0.10),
-    new THREE.Vector2(0.18, 0.16),
-    new THREE.Vector2(0.15, 0.22),
-    new THREE.Vector2(0.12, 0.27),
-    new THREE.Vector2(0.08, 0.31),
-    new THREE.Vector2(0.05, 0.34),
-    new THREE.Vector2(0.025, 0.355),
-    new THREE.Vector2(0.01, 0.362),
-    new THREE.Vector2(0, 0.365),
+    new THREE.Vector2(0.01, 0),
+    new THREE.Vector2(0.16, 0.001),
+    new THREE.Vector2(0.21, 0.005),
+    new THREE.Vector2(0.21, 0.015),
+    new THREE.Vector2(0.205, 0.04),
+    new THREE.Vector2(0.19, 0.08),
+    new THREE.Vector2(0.17, 0.13),
+    new THREE.Vector2(0.14, 0.18),
+    new THREE.Vector2(0.10, 0.22),
+    new THREE.Vector2(0.07, 0.255),
+    new THREE.Vector2(0.04, 0.28),
+    new THREE.Vector2(0.02, 0.295),
+    new THREE.Vector2(0.005, 0.30),
+    new THREE.Vector2(0, 0.30),
   ];
   const geometry = new THREE.LatheGeometry(profile, quality === "mobile" ? 20 : 32);
   geometry.computeVertexNormals();
