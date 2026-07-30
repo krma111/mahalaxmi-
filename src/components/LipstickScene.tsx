@@ -92,7 +92,7 @@ function ProductRig({
 
     const rotationStage = stageProgress(progress, 0.04, 0.28);
     const capStage = stageProgress(progress, 0.24, 0.48);
-    const bulletStage = stageProgress(progress, 0.38, 0.67);
+    const bulletStage = stageProgress(progress, 0.20, 0.50);
     const reflectionStage = stageProgress(progress, 0.62, 0.9);
     const floating = reducedMotion ? 0 : Math.sin(clock.elapsedTime * 0.72) * 0.024;
     const pointerX = reducedMotion ? 0 : pointerRef.current.x;
@@ -126,7 +126,7 @@ function ProductRig({
 
     bullet.position.y = THREE.MathUtils.damp(
       bullet.position.y,
-      0.25 + bulletStage * 0.85,
+      0.25 + bulletStage * 1.30,
       8.0,
       delta,
     );
