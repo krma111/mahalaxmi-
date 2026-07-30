@@ -81,7 +81,7 @@ export default function Hero() {
 
     const observer = new IntersectionObserver(
       ([entry]) => setSceneActive(entry.isIntersecting),
-      { rootMargin: "480px 0px" },
+      { rootMargin: "800px 0px" },
     );
     observer.observe(section);
     return () => observer.disconnect();
