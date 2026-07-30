@@ -81,6 +81,10 @@ function Footer() {
       <div className="border-t border-line bg-cream/45">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-xs text-muted sm:px-6 md:flex-row md:items-center md:justify-between">
           <p>&copy; 2026 Mahalaxmi Beauty Parlour. All Rights Reserved.</p>
+          <div className="flex flex-col items-end gap-1">
+            <p className="text-xs text-muted">Managed by <span className="font-semibold text-foreground">Badal Dubey</span></p>
+            <a href="https://instagram.com/__karma111__" target="_blank" rel="noopener noreferrer" className="text-xs text-muted transition hover:text-deep-red">Instagram: @__karma111__</a>
+          </div>
           <div className="flex gap-2">
             <Link href="/privacy-policy" className="rounded-[8px] border border-line bg-white px-3 py-2 font-semibold text-foreground transition hover:text-deep-red">Privacy Policy</Link>
             <Link href="/terms-and-conditions" className="rounded-[8px] border border-line bg-white px-3 py-2 font-semibold text-foreground transition hover:text-deep-red">Terms &amp; Conditions</Link>
