@@ -1,225 +1,311 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LipstickScene from "./LipstickScene";
+import type { SceneProgressRef, SceneQuality } from "./LipstickScene";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
+const WHATSAPP_LINK =
+  "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
+const GOOGLE_REVIEWS_LINK =
+  "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
+
+const LipstickScene = dynamic(() => import("./LipstickScene"), {
+  ssr: false,
+  loading: () => <LipstickFallback />,
+});
+
+function CheckIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9.25" stroke="currentColor" strokeWidth="1.5" />
+      <path d="m8.2 12.1 2.35 2.35 5.15-5.3" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+      <path d="m12 2.7 2.75 5.58 6.15.9-4.45 4.33 1.05 6.12L12 16.74l-5.5 2.89 1.05-6.12L3.1 9.18l6.15-.9L12 2.7Z" />
+    </svg>
+  );
+}
+
+function PinIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.5a7 7 0 0 0-7 7c0 5.1 7 12 7 12s7-6.9 7-12a7 7 0 0 0-7-7Zm0 9.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z" />
+    </svg>
+  );
+}
+
+function LipstickFallback() {
+  return (
+    <div className="hero-product-fallback" aria-hidden="true">
+      <div className="hero-product-fallback-cap" />
+      <div className="hero-product-fallback-ring" />
+      <div className="hero-product-fallback-body">
+        <span>MAHALAXMI</span>
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
-  const trustRef = useRef<HTMLDivElement>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef(0) as SceneProgressRef;
+  const [quality, setQuality] = useState<SceneQuality>("desktop");
+  const [sceneActive, setSceneActive] = useState(true);
+  const prefersReducedMotion = useReducedMotion();
+  const reducedMotion = Boolean(prefersReducedMotion);
+  const isMobile = quality === "mobile";
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const updateQuality = () => setQuality(mobileQuery.matches ? "mobile" : "desktop");
+    updateQuality();
+    mobileQuery.addEventListener("change", updateQuality);
+    return () => mobileQuery.removeEventListener("change", updateQuality);
+  }, []);
 
-    const ctx = gsap.context(() => {
-      const words = textRef.current?.querySelectorAll(".hero-word");
-      if (!words) return;
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
 
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+    const observer = new IntersectionObserver(
+      ([entry]) => setSceneActive(entry.isIntersecting),
+      { rootMargin: "240px 0px" },
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
-      words.forEach((word) => {
-        tl.from(word, {
-          y: 120,
-          opacity: 0,
-          rotateX: 20,
-          duration: 1.2,
-          filter: "blur(15px)",
-          ease: "power4.out",
-        }, "-=0.6");
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const stage = stageRef.current;
+    if (!section || !stage) return;
+
+    const revealElements = stage.querySelectorAll<HTMLElement>("[data-hero-reveal]");
+    const headlineLines = stage.querySelectorAll<HTMLElement>("[data-hero-line]");
+
+    if (reducedMotion) {
+      progressRef.current = 1;
+      section.style.setProperty("--hero-progress", "1");
+      gsap.set(revealElements, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        rotateX: 0,
+        filter: "blur(0px)",
       });
+      return;
+    }
 
-      if (subtitleRef.current) {
-        tl.from(subtitleRef.current, { y: 40, opacity: 0, duration: 1 }, "-=0.4");
-      }
+    progressRef.current = 0;
+    section.style.setProperty("--hero-progress", "0");
 
-      const btns = buttonsRef.current?.querySelectorAll("a, button");
-      if (btns) {
-        tl.from(btns, { y: 30, opacity: 0, stagger: 0.1, duration: 0.9 }, "-=0.3");
-      }
+    const context = gsap.context(() => {
+      const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-      const trustItems = trustRef.current?.querySelectorAll("span");
-      if (trustItems) {
-        tl.from(trustItems, { y: 20, opacity: 0, stagger: 0.08, duration: 0.7 }, "-=0.4");
-      }
+      intro.fromTo(
+        "[data-hero-eyebrow]",
+        { autoAlpha: 0, y: 14, filter: "blur(8px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.4 },
+        0,
+      );
+      intro.fromTo(
+        headlineLines,
+        { autoAlpha: 0, y: 76, scale: 0.985, rotateX: 8, filter: "blur(13px)" },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          rotateX: 0,
+          filter: "blur(0px)",
+          duration: 0.72,
+          stagger: 0.1,
+        },
+        0.08,
+      );
+      intro.fromTo(
+        "[data-hero-copy]",
+        { autoAlpha: 0, y: 26, filter: "blur(6px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.48 },
+        0.68,
+      );
+      intro.fromTo(
+        "[data-hero-actions] > *",
+        { autoAlpha: 0, y: 20 },
+        { autoAlpha: 1, y: 0, duration: 0.42, stagger: 0.08 },
+        0.88,
+      );
+      intro.fromTo(
+        "[data-hero-trust] > *",
+        { autoAlpha: 0, y: 14 },
+        { autoAlpha: 1, y: 0, duration: 0.34, stagger: 0.055 },
+        1.05,
+      );
 
-      if (!reducedMotion) {
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          onUpdate: (self) => {
-            setScrollProgress(Math.min(self.progress, 1));
-          },
-        });
-      }
-    }, sectionRef);
+      ScrollTrigger.create({
+        trigger: section,
+        start: isMobile ? "top bottom-=80" : "top top+=64",
+        end: isMobile ? "bottom top+=120" : "+=160%",
+        pin: isMobile ? false : stage,
+        pinSpacing: !isMobile,
+        scrub: isMobile ? 0.75 : 1.1,
+        anticipatePin: isMobile ? 0 : 1,
+        invalidateOnRefresh: true,
+        onUpdate: ({ progress }) => {
+          progressRef.current = progress;
+          section.style.setProperty("--hero-progress", progress.toFixed(4));
+        },
+      });
+    }, section);
 
-    return () => ctx.revert();
-  }, [reducedMotion]);
-
-  useEffect(() => {
-    if (isMobile || reducedMotion) return;
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!cursorRef.current) return;
-      cursorRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    return () => {
+      context.revert();
+      progressRef.current = 0;
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isMobile, reducedMotion]);
 
+  const hoverMotion = reducedMotion ? undefined : { y: -3 };
+  const tapMotion = reducedMotion ? undefined : { scale: 0.98 };
+
   return (
-    <>
-      {!isMobile && !reducedMotion && (
-        <div
-          ref={cursorRef}
-          className="pointer-events-none fixed left-[-8px] top-[-8px] z-[999] h-4 w-4 rounded-full bg-deep-red/10 blur-sm"
-          style={{ transform: "translate(-100px, -100px)", transition: "width 0.4s, height 0.4s" }}
-        />
-      )}
+    <section
+      ref={sectionRef}
+      className="cinematic-hero"
+      aria-labelledby="cinematic-hero-title"
+    >
+      <div ref={stageRef} className="cinematic-hero-stage">
+        <div className="hero-depth hero-depth-one" aria-hidden="true" />
+        <div className="hero-depth hero-depth-two" aria-hidden="true" />
+        <div className="hero-glass-orb hero-glass-orb-one" aria-hidden="true" />
+        <div className="hero-glass-orb hero-glass-orb-two" aria-hidden="true" />
+        <div className="hero-smoke" aria-hidden="true" />
+        <div className="hero-reflection" aria-hidden="true" />
+        <div className="hero-grain" aria-hidden="true" />
 
-      <section
-        ref={sectionRef}
-        className="relative w-full overflow-hidden bg-gradient-to-b from-white via-white to-cream/30"
-        style={{ height: "110vh", minHeight: "700px" }}
-      >
-        {/* Background depth layers */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-60 -right-60 h-[700px] w-[700px] rounded-full bg-deep-red/[0.03] blur-3xl" />
-          <div className="absolute -bottom-60 -left-60 h-[600px] w-[600px] rounded-full bg-deep-red/[0.02] blur-3xl" />
-          <div className="absolute left-1/3 top-1/4 h-[400px] w-[400px] rounded-full bg-soft-rose/30 blur-3xl" />
-          <div className="absolute -right-20 top-1/2 h-[300px] w-[300px] rounded-full bg-deep-red/[0.02] blur-3xl" />
-          {/* Grain overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E\")",
-              backgroundSize: "256px 256px",
-            }}
-          />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1700px] flex-col items-center px-6 md:flex-row md:px-[72px] lg:px-[120px]">
-          {/* Left: Typography */}
-          <div className="flex w-full flex-1 flex-col justify-center pt-32 md:w-[58%] md:pt-0 lg:w-[60%]">
-            <div ref={textRef}>
-              <p className="hero-word mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-deep-red md:text-sm">
-                Ladies Beauty Salon
-              </p>
-              <h1 className="space-y-0">
-                {["YOUR", "BEAUTY", "DESERVES"].map((word, i) => (
-                  <span
-                    key={word}
-                    className="hero-word block font-serif font-bold leading-[0.95] tracking-tight text-foreground"
-                    style={{
-                      fontSize: "clamp(42px, 10vw, 150px)",
-                      color: i === 2 ? "#8B1A2B" : undefined,
-                    }}
-                  >
-                    {word}
-                    {i === 2 && (
-                      <span className="text-foreground"> THE SPOTLIGHT</span>
-                    )}
-                  </span>
-                ))}
-              </h1>
-            </div>
-
+        <div className="hero-campaign-grid">
+          <div className="hero-copy-column">
             <p
-              ref={subtitleRef}
-              className="hero-word mt-5 max-w-lg text-sm leading-relaxed text-muted md:mt-6 md:text-base lg:text-lg"
+              className="hero-service-badge"
+              data-hero-reveal
+              data-hero-eyebrow
             >
-              Professional beauty care for women in Prayagraj. Hair, skin,
-              makeup, bridal, and beauty services designed to make you feel
-              confident and cared for.
+              <span aria-hidden="true" />
+              Website under service - bookings open on WhatsApp
             </p>
 
-            <div
-              ref={buttonsRef}
-              className="mt-8 flex flex-col gap-3 sm:flex-row md:mt-10"
-            >
-              <a
+            <p className="hero-kicker" data-hero-reveal data-hero-eyebrow>
+              Ladies Beauty Salon - Prayagraj
+            </p>
+
+            <h1 id="cinematic-hero-title" className="hero-campaign-title">
+              <span data-hero-reveal data-hero-line>
+                YOUR BEAUTY
+              </span>
+              <span data-hero-reveal data-hero-line className="hero-title-accent">
+                DESERVES
+              </span>
+              <span data-hero-reveal data-hero-line>
+                THE SPOTLIGHT
+              </span>
+            </h1>
+
+            <p className="hero-campaign-copy" data-hero-reveal data-hero-copy>
+              Expert care. Premium services. Timeless you.
+            </p>
+
+            <div className="hero-actions" data-hero-actions>
+              <motion.a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex min-h-12 items-center justify-center overflow-hidden rounded-[8px] bg-deep-red px-8 text-sm font-semibold text-white shadow-lg shadow-deep-red/20 transition-all duration-500 hover:shadow-xl hover:shadow-deep-red/30 hover:-translate-y-0.5"
+                className="hero-primary-action"
+                whileHover={hoverMotion}
+                whileTap={tapMotion}
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full skew-x-12 transition-transform duration-700 group-hover:translate-x-full" />
-                <span className="relative">Book Appointment</span>
-              </a>
-              <Link
-                href="/services"
-                className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-deep-red/20 bg-white/60 px-8 text-sm font-semibold text-deep-red backdrop-blur-sm transition-all duration-300 hover:bg-white hover:shadow-lg hover:-translate-y-0.5"
+                <span className="hero-action-shimmer" aria-hidden="true" />
+                <span>Book Appointment</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </motion.a>
+
+              <motion.div
+                className="hero-secondary-wrap"
+                whileHover={hoverMotion}
+                whileTap={tapMotion}
               >
-                Explore Services
-              </Link>
+                <Link href="/services" className="hero-secondary-action">
+                  Explore Services
+                </Link>
+              </motion.div>
             </div>
 
-            <div
-              ref={trustRef}
-              className="mt-8 flex flex-wrap items-center gap-5 text-xs text-muted md:mt-10"
-            >
-              <span className="flex items-center gap-1.5">
-                <svg className="h-3.5 w-3.5 text-deep-red" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            <div className="hero-trust-row" data-hero-trust aria-label="Salon trust indicators">
+              <span className="hero-trust-item">
+                <CheckIcon />
                 Expert Stylists
               </span>
-              <span className="flex items-center gap-1.5">
-                <svg className="h-3.5 w-3.5 text-deep-red" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              <span className="hero-trust-item">
+                <CheckIcon />
                 Premium Products
               </span>
-              <span className="flex items-center gap-1.5">
-                <span className="flex text-yellow-500">
-                  {[1,2,3,4,5].map((s) => (
-                    <svg key={s} className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span className="hero-trust-item hero-rating">
+                <span className="hero-stars" aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <StarIcon key={index} />
                   ))}
                 </span>
                 4.8 Rating
               </span>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20Prayagraj"
+                href={GOOGLE_REVIEWS_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-deep-red transition hover:underline"
+                className="hero-trust-item hero-reviews-link"
               >
-                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                <PinIcon />
                 Google Reviews
               </a>
             </div>
           </div>
 
-          {/* Right: 3D Lipstick */}
-          <div
-            className="relative flex w-full flex-1 items-center justify-center md:w-[42%] lg:w-[40%]"
-            style={{ minHeight: isMobile ? "40vh" : "80vh" }}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <LipstickScene scrollProgress={scrollProgress} />
+          <div className="hero-product-column" aria-hidden="true">
+            <div className="hero-product-aura" />
+            <div className="hero-scene-shell">
+              <LipstickScene
+                progressRef={progressRef}
+                quality={quality}
+                reducedMotion={reducedMotion}
+                active={sceneActive}
+              />
+            </div>
+
+            <div className="hero-scroll-story">
+              <span className="hero-scroll-label">Scroll to reveal</span>
+              <span className="hero-scroll-track">
+                <span className="hero-scroll-progress" />
+              </span>
+              <span className="hero-scroll-count">06</span>
             </div>
           </div>
         </div>
 
-        {/* Scroll fade overlay */}
-        {scrollProgress > 0.02 && (
-          <div
-            className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-b from-transparent via-transparent to-white"
-            style={{ opacity: Math.min(scrollProgress * 1.5, 1) }}
-          />
-        )}
-      </section>
-    </>
+        <div className="hero-scroll-cue" aria-hidden="true">
+          <span />
+          Discover the reveal
+        </div>
+      </div>
+    </section>
   );
 }

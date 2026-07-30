@@ -43,15 +43,6 @@ function Stars({ count }: { count: number }) {
 export default function Home() {
   return (
     <>
-      {/* Notice */}
-      <div className="bg-amber-50 border-b border-amber-200">
-        <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6">
-          <p className="text-center text-sm font-semibold text-amber-800">
-            ⚠️ This website is under service. Please contact us directly on WhatsApp for bookings &amp; inquiries.
-          </p>
-        </div>
-      </div>
-
       <Hero />
 
       {/* Popular Services */}
