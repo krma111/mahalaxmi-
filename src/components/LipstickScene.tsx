@@ -42,7 +42,7 @@ function easeInOutCubic(t: number) {
 function createBulletGeometry(quality: SceneQuality) {
   const segments = quality === "mobile" ? 24 : 48;
   const heightSteps = 10;
-  const radius = 0.20;
+  const radius = 0.24;
   const height = 0.35;
   const slant = 0.12;
 
@@ -170,7 +170,7 @@ function ProductRig({
     const openCapX = isMobile ? 0.65 : 1.45;
     const openCapY = isMobile ? 0.80 : 1.30;
     const openCapZ = isMobile ? -0.20 : -0.40;
-    const bulletRise = isMobile ? 0.14 : 0.40;
+    const bulletRise = isMobile ? 0.12 : 0.35;
 
     rig.position.y = THREE.MathUtils.damp(rig.position.y, floating - 0.01, 4, delta);
     rig.rotation.x = THREE.MathUtils.damp(
@@ -308,14 +308,14 @@ function ProductRig({
         <group ref={bulletRef} position={[0, 0.72, 0]} rotation={[0, 0, -0.01]}>
           <mesh geometry={bulletGeometry} castShadow>
             <meshPhysicalMaterial
-              color="#a80e24"
-              metalness={0.05}
-              roughness={0.18}
-              clearcoat={0.6}
-              clearcoatRoughness={0.15}
-              sheen={0.25}
-              sheenColor="#ffb0bf"
-              envMapIntensity={0.8}
+              color="#c9203e"
+              metalness={0.04}
+              roughness={0.16}
+              clearcoat={0.65}
+              clearcoatRoughness={0.12}
+              sheen={0.3}
+              sheenColor="#ffc0cc"
+              envMapIntensity={0.9}
             />
           </mesh>
           <mesh position={[-0.075, 0.04, 0.045]} rotation={[0, 0, -0.02]} renderOrder={4}>
