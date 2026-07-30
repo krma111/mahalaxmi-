@@ -118,7 +118,7 @@ function ProductRig({
       delta,
     );
 
-    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 0.25, 5.0, delta);
+    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 0.55, 5.0, delta);
     cap.position.y = THREE.MathUtils.damp(cap.position.y, 1.20 + capStage * 0.50, 5.0, delta);
     cap.position.z = THREE.MathUtils.damp(cap.position.z, capStage * 0.04, 5.0, delta);
     cap.rotation.x = THREE.MathUtils.damp(cap.rotation.x, capStage * -0.03, 4.5, delta);
