@@ -37,20 +37,20 @@ function stageProgress(value: number, start: number, end: number) {
 
 function createBulletGeometry(quality: SceneQuality) {
   const profile = [
-    new THREE.Vector2(0.01, 0),
-    new THREE.Vector2(0.16, 0.001),
-    new THREE.Vector2(0.21, 0.005),
-    new THREE.Vector2(0.21, 0.015),
-    new THREE.Vector2(0.205, 0.04),
-    new THREE.Vector2(0.19, 0.08),
-    new THREE.Vector2(0.17, 0.13),
-    new THREE.Vector2(0.14, 0.18),
-    new THREE.Vector2(0.10, 0.22),
-    new THREE.Vector2(0.07, 0.255),
-    new THREE.Vector2(0.04, 0.28),
-    new THREE.Vector2(0.02, 0.295),
-    new THREE.Vector2(0.005, 0.30),
-    new THREE.Vector2(0, 0.30),
+    new THREE.Vector2(0.08, 0),
+    new THREE.Vector2(0.21, 0.002),
+    new THREE.Vector2(0.23, 0.008),
+    new THREE.Vector2(0.23, 0.025),
+    new THREE.Vector2(0.225, 0.05),
+    new THREE.Vector2(0.205, 0.08),
+    new THREE.Vector2(0.175, 0.115),
+    new THREE.Vector2(0.135, 0.145),
+    new THREE.Vector2(0.095, 0.168),
+    new THREE.Vector2(0.06, 0.185),
+    new THREE.Vector2(0.035, 0.198),
+    new THREE.Vector2(0.015, 0.208),
+    new THREE.Vector2(0.005, 0.215),
+    new THREE.Vector2(0, 0.218),
   ];
   const geometry = new THREE.LatheGeometry(profile, quality === "mobile" ? 20 : 32);
   geometry.computeVertexNormals();
@@ -118,23 +118,23 @@ function ProductRig({
       delta,
     );
 
-    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 2.0, 6.5, delta);
-    cap.position.y = THREE.MathUtils.damp(cap.position.y, 1.12 + capStage * 0.95, 6.5, delta);
-    cap.position.z = THREE.MathUtils.damp(cap.position.z, capStage * 0.25, 6.5, delta);
-    cap.rotation.x = THREE.MathUtils.damp(cap.rotation.x, capStage * -0.12, 5.5, delta);
-    cap.rotation.y = THREE.MathUtils.damp(cap.rotation.y, capStage * 0.35, 5.5, delta);
-    cap.rotation.z = THREE.MathUtils.damp(cap.rotation.z, capStage * -0.14, 5.5, delta);
+    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 0.25, 5.0, delta);
+    cap.position.y = THREE.MathUtils.damp(cap.position.y, 1.20 + capStage * 0.50, 5.0, delta);
+    cap.position.z = THREE.MathUtils.damp(cap.position.z, capStage * 0.04, 5.0, delta);
+    cap.rotation.x = THREE.MathUtils.damp(cap.rotation.x, capStage * -0.03, 4.5, delta);
+    cap.rotation.y = THREE.MathUtils.damp(cap.rotation.y, capStage * 0.06, 4.5, delta);
+    cap.rotation.z = THREE.MathUtils.damp(cap.rotation.z, capStage * -0.02, 4.5, delta);
 
     bullet.position.y = THREE.MathUtils.damp(
       bullet.position.y,
-      0.25 + bulletStage * 1.30,
-      8.0,
+      0.66 + bulletStage * 0.30,
+      5.0,
       delta,
     );
     bullet.rotation.z = THREE.MathUtils.damp(
       bullet.rotation.z,
-      -0.015 + bulletStage * -0.02,
-      5,
+      -0.01 + bulletStage * -0.01,
+      4,
       delta,
     );
 
@@ -150,19 +150,19 @@ function ProductRig({
     <group ref={rigRef} position={[0.06, 0, 0]} rotation={[0.022, -0.08, -0.02]} scale={0.58}>
       <group>
         <mesh position={[0, -0.18, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.42, 0.44, 1.6, radialSegments, 1]} />
+          <cylinderGeometry args={[0.44, 0.46, 1.6, radialSegments, 1]} />
           <meshPhysicalMaterial
-            color="#7b0014"
-            metalness={0.88}
-            roughness={0.14}
-            clearcoat={0.95}
-            clearcoatRoughness={0.08}
-            envMapIntensity={1.8}
+            color="#7a0014"
+            metalness={0.85}
+            roughness={0.12}
+            clearcoat={0.9}
+            clearcoatRoughness={0.06}
+            envMapIntensity={2.0}
           />
         </mesh>
 
         <mesh position={[0, -1.03, 0]} castShadow>
-          <cylinderGeometry args={[0.44, 0.45, 0.10, radialSegments]} />
+          <cylinderGeometry args={[0.46, 0.47, 0.10, radialSegments]} />
           <meshPhysicalMaterial
             color="#310005"
             metalness={0.82}
@@ -173,18 +173,18 @@ function ProductRig({
         </mesh>
 
         <mesh position={[0, 0.44, 0]} castShadow>
-          <cylinderGeometry args={[0.44, 0.43, 0.14, radialSegments]} />
+          <cylinderGeometry args={[0.46, 0.45, 0.14, radialSegments]} />
           <meshPhysicalMaterial
-            color="#d8b15c"
-            metalness={0.96}
-            roughness={0.11}
+            color="#d4a94b"
+            metalness={0.95}
+            roughness={0.10}
             clearcoat={0.4}
             envMapIntensity={2.2}
           />
         </mesh>
 
         <mesh position={[0, 0.56, 0]} castShadow>
-          <cylinderGeometry args={[0.36, 0.38, 0.10, radialSegments]} />
+          <cylinderGeometry args={[0.38, 0.40, 0.10, radialSegments]} />
           <meshPhysicalMaterial
             color="#5e0612"
             metalness={0.76}
@@ -195,13 +195,13 @@ function ProductRig({
         </mesh>
 
         <mesh position={[0, 0.74, 0]} castShadow>
-          <cylinderGeometry args={[0.33, 0.345, 0.34, radialSegments]} />
+          <cylinderGeometry args={[0.35, 0.365, 0.34, radialSegments]} />
           <meshPhysicalMaterial
-            color="#ddb763"
-            metalness={0.94}
-            roughness={0.12}
+            color="#d4a94b"
+            metalness={0.95}
+            roughness={0.10}
             clearcoat={0.35}
-            envMapIntensity={2}
+            envMapIntensity={2.2}
           />
         </mesh>
 
@@ -229,21 +229,29 @@ function ProductRig({
         </mesh>
       </group>
 
-      <group ref={bulletRef} position={[0, 0.25, 0]} rotation={[0, 0, -0.035]}>
-        <mesh geometry={bulletGeometry} castShadow>
+      <group ref={bulletRef} position={[0, 0.66, 0]} rotation={[0, 0, -0.01]}>
+        <mesh position={[0, -0.06, 0]}>
+          <cylinderGeometry args={[0.06, 0.10, 0.06, radialSegments]} />
           <meshPhysicalMaterial
-            color="#b11125"
-            metalness={0.08}
-            roughness={0.22}
-            clearcoat={0.84}
-            clearcoatRoughness={0.1}
-            sheen={0.18}
-            sheenColor="#ffb4bf"
-            envMapIntensity={1.2}
+            color="#3a0008"
+            metalness={0.6}
+            roughness={0.4}
           />
         </mesh>
-        <mesh position={[-0.075, 0.06, 0.045]} rotation={[0, 0, -0.02]} renderOrder={4}>
-          <planeGeometry args={[0.04, 0.72]} />
+        <mesh geometry={bulletGeometry} castShadow>
+          <meshPhysicalMaterial
+            color="#a80e24"
+            metalness={0.05}
+            roughness={0.18}
+            clearcoat={0.6}
+            clearcoatRoughness={0.15}
+            sheen={0.25}
+            sheenColor="#ffb0bf"
+            envMapIntensity={0.8}
+          />
+        </mesh>
+        <mesh position={[-0.075, 0.04, 0.045]} rotation={[0, 0, -0.02]} renderOrder={4}>
+          <planeGeometry args={[0.04, 0.50]} />
           <meshBasicMaterial
             ref={bulletReflectionRef}
             color="#ffd9de"
@@ -255,9 +263,9 @@ function ProductRig({
         </mesh>
       </group>
 
-      <group ref={capRef} position={[0, 1.12, 0]} rotation={[0, 0, -0.01]}>
+      <group ref={capRef} position={[0, 1.20, 0]} rotation={[0, 0, -0.01]}>
         <mesh castShadow receiveShadow>
-          <cylinderGeometry args={[0.40, 0.43, 1.40, radialSegments, 1]} />
+          <cylinderGeometry args={[0.42, 0.45, 1.40, radialSegments, 1]} />
           <meshPhysicalMaterial
             color="#66000d"
             metalness={0.9}
@@ -268,7 +276,7 @@ function ProductRig({
           />
         </mesh>
         <mesh position={[0, 0.72, 0]} castShadow>
-          <cylinderGeometry args={[0.41, 0.415, 0.06, radialSegments]} />
+          <cylinderGeometry args={[0.43, 0.435, 0.06, radialSegments]} />
           <meshPhysicalMaterial
             color="#430008"
             metalness={0.88}
@@ -278,12 +286,13 @@ function ProductRig({
           />
         </mesh>
         <mesh position={[0, -0.78, 0]} castShadow>
-          <cylinderGeometry args={[0.455, 0.455, 0.06, radialSegments]} />
+          <cylinderGeometry args={[0.475, 0.475, 0.06, radialSegments]} />
           <meshPhysicalMaterial
-            color="#d9b15d"
-            metalness={0.96}
-            roughness={0.1}
-            envMapIntensity={2.1}
+            color="#d4a94b"
+            metalness={0.95}
+            roughness={0.10}
+            clearcoat={0.4}
+            envMapIntensity={2.2}
           />
         </mesh>
         <mesh position={[-0.15, 0.1, 0.432]} rotation={[0, 0, -0.02]} renderOrder={4}>
@@ -457,7 +466,7 @@ function CameraRig({
       3.6,
       delta,
     );
-    camera.lookAt(0, 0.25, 0);
+    camera.lookAt(0, 0.60, 0);
   });
 
   return (
