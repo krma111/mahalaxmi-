@@ -126,7 +126,7 @@ function ProductRig({
 
     bullet.position.y = THREE.MathUtils.damp(
       bullet.position.y,
-      0.55 + bulletStage * 0.22,
+      0.55 + bulletStage * 0.38,
       5.2,
       delta,
     );
