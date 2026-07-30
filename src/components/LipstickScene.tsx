@@ -118,16 +118,16 @@ function ProductRig({
       delta,
     );
 
-    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 0.55, 5.0, delta);
-    cap.position.y = THREE.MathUtils.damp(cap.position.y, 1.20 + capStage * 0.50, 5.0, delta);
+    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 3.0, 5.0, delta);
+    cap.position.y = THREE.MathUtils.damp(cap.position.y, 1.20 + capStage * 1.5, 5.0, delta);
     cap.position.z = THREE.MathUtils.damp(cap.position.z, capStage * 0.04, 5.0, delta);
     cap.rotation.x = THREE.MathUtils.damp(cap.rotation.x, capStage * -0.03, 4.5, delta);
-    cap.rotation.y = THREE.MathUtils.damp(cap.rotation.y, capStage * 0.06, 4.5, delta);
+    cap.rotation.y = THREE.MathUtils.damp(cap.rotation.y, capStage * 1.00, 4.5, delta);
     cap.rotation.z = THREE.MathUtils.damp(cap.rotation.z, capStage * -0.02, 4.5, delta);
 
     bullet.position.y = THREE.MathUtils.damp(
       bullet.position.y,
-      0.66 + bulletStage * 0.30,
+      0.66 + bulletStage * 2.5,
       5.0,
       delta,
     );
