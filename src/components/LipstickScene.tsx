@@ -126,7 +126,7 @@ function ProductRig({
 
     bullet.position.y = THREE.MathUtils.damp(
       bullet.position.y,
-      0.55 + bulletStage * 0.38,
+      0.10 + bulletStage * 0.75,
       5.2,
       delta,
     );
@@ -228,7 +228,7 @@ function ProductRig({
         </mesh>
       </group>
 
-      <group ref={bulletRef} position={[0, 0.55, 0]} rotation={[0, 0, -0.035]}>
+      <group ref={bulletRef} position={[0, 0.10, 0]} rotation={[0, 0, -0.035]}>
         <mesh geometry={bulletGeometry} castShadow>
           <meshPhysicalMaterial
             color="#b11125"
