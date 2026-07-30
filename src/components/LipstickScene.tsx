@@ -170,7 +170,7 @@ function ProductRig({
     const openCapX = isMobile ? 0.65 : 1.45;
     const openCapY = isMobile ? 0.80 : 1.30;
     const openCapZ = isMobile ? -0.20 : -0.40;
-    const bulletRise = isMobile ? 0.22 : 0.38;
+    const bulletRise = isMobile ? 0.22 : 2.20;
 
     rig.position.y = THREE.MathUtils.damp(rig.position.y, floating - 0.01, 4, delta);
     rig.rotation.x = THREE.MathUtils.damp(
