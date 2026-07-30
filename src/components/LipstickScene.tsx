@@ -37,15 +37,20 @@ function stageProgress(value: number, start: number, end: number) {
 
 function createBulletGeometry(quality: SceneQuality) {
   const profile = [
-    new THREE.Vector2(0.02, -0.28),
-    new THREE.Vector2(0.16, -0.26),
-    new THREE.Vector2(0.2, -0.15),
-    new THREE.Vector2(0.18, 0.05),
-    new THREE.Vector2(0.14, 0.22),
-    new THREE.Vector2(0.09, 0.34),
-    new THREE.Vector2(0.05, 0.42),
-    new THREE.Vector2(0.01, 0.48),
-    new THREE.Vector2(0, 0.5),
+    new THREE.Vector2(0.005, 0),
+    new THREE.Vector2(0.22, 0.002),
+    new THREE.Vector2(0.225, 0.008),
+    new THREE.Vector2(0.22, 0.02),
+    new THREE.Vector2(0.215, 0.05),
+    new THREE.Vector2(0.20, 0.10),
+    new THREE.Vector2(0.18, 0.16),
+    new THREE.Vector2(0.15, 0.22),
+    new THREE.Vector2(0.12, 0.27),
+    new THREE.Vector2(0.08, 0.31),
+    new THREE.Vector2(0.05, 0.34),
+    new THREE.Vector2(0.025, 0.355),
+    new THREE.Vector2(0.01, 0.362),
+    new THREE.Vector2(0, 0.365),
   ];
   const geometry = new THREE.LatheGeometry(profile, quality === "mobile" ? 20 : 32);
   geometry.computeVertexNormals();
@@ -121,13 +126,13 @@ function ProductRig({
 
     bullet.position.y = THREE.MathUtils.damp(
       bullet.position.y,
-      -0.02 + bulletStage * 0.74,
+      0.55 + bulletStage * 0.22,
       5.2,
       delta,
     );
     bullet.rotation.z = THREE.MathUtils.damp(
       bullet.rotation.z,
-      -0.015 + bulletStage * -0.025,
+      -0.015 + bulletStage * -0.02,
       5,
       delta,
     );
@@ -144,7 +149,7 @@ function ProductRig({
     <group ref={rigRef} position={[0.06, 0, 0]} rotation={[0.022, -0.08, -0.02]} scale={0.58}>
       <group>
         <mesh position={[0, -0.18, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.4, 0.425, 1.62, radialSegments, 1]} />
+          <cylinderGeometry args={[0.42, 0.44, 1.6, radialSegments, 1]} />
           <meshPhysicalMaterial
             color="#7b0014"
             metalness={0.88}
@@ -156,7 +161,7 @@ function ProductRig({
         </mesh>
 
         <mesh position={[0, -1.03, 0]} castShadow>
-          <cylinderGeometry args={[0.425, 0.435, 0.12, radialSegments]} />
+          <cylinderGeometry args={[0.44, 0.45, 0.10, radialSegments]} />
           <meshPhysicalMaterial
             color="#310005"
             metalness={0.82}
@@ -178,7 +183,7 @@ function ProductRig({
         </mesh>
 
         <mesh position={[0, 0.56, 0]} castShadow>
-          <cylinderGeometry args={[0.37, 0.39, 0.11, radialSegments]} />
+          <cylinderGeometry args={[0.36, 0.38, 0.10, radialSegments]} />
           <meshPhysicalMaterial
             color="#5e0612"
             metalness={0.76}
@@ -223,7 +228,7 @@ function ProductRig({
         </mesh>
       </group>
 
-      <group ref={bulletRef} position={[0, -0.02, 0]} rotation={[0, 0, -0.035]}>
+      <group ref={bulletRef} position={[0, 0.55, 0]} rotation={[0, 0, -0.035]}>
         <mesh geometry={bulletGeometry} castShadow>
           <meshPhysicalMaterial
             color="#b11125"
@@ -251,7 +256,7 @@ function ProductRig({
 
       <group ref={capRef} position={[0, 1.12, 0]} rotation={[0, 0, -0.01]}>
         <mesh castShadow receiveShadow>
-          <cylinderGeometry args={[0.42, 0.45, 1.46, radialSegments, 1]} />
+          <cylinderGeometry args={[0.40, 0.43, 1.40, radialSegments, 1]} />
           <meshPhysicalMaterial
             color="#66000d"
             metalness={0.9}
@@ -261,8 +266,8 @@ function ProductRig({
             envMapIntensity={1.85}
           />
         </mesh>
-        <mesh position={[0, 0.75, 0]} castShadow>
-          <cylinderGeometry args={[0.425, 0.43, 0.07, radialSegments]} />
+        <mesh position={[0, 0.72, 0]} castShadow>
+          <cylinderGeometry args={[0.41, 0.415, 0.06, radialSegments]} />
           <meshPhysicalMaterial
             color="#430008"
             metalness={0.88}
@@ -447,18 +452,18 @@ function CameraRig({
     );
     camera.position.z = THREE.MathUtils.damp(
       camera.position.z,
-      6.8 - cameraStage * 0.2 + revealStage * 0.42,
+      7.5 - cameraStage * 0.2 + revealStage * 0.35,
       3.6,
       delta,
     );
-    camera.lookAt(0, 0.22, 0);
+    camera.lookAt(0, 0.25, 0);
   });
 
   return (
     <PerspectiveCamera
       ref={cameraRef}
       makeDefault
-      position={[0.08, 0.18, 6.8]}
+      position={[0.08, 0.18, 7.5]}
       fov={quality === "mobile" ? 30 : 26}
     />
   );
