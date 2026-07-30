@@ -81,7 +81,7 @@ export default function Hero() {
 
     const observer = new IntersectionObserver(
       ([entry]) => setSceneActive(entry.isIntersecting),
-      { rootMargin: "240px 0px" },
+      { rootMargin: "480px 0px" },
     );
     observer.observe(section);
     return () => observer.disconnect();
@@ -155,11 +155,11 @@ export default function Hero() {
 
       ScrollTrigger.create({
         trigger: section,
-        start: isMobile ? "top bottom-=80" : "top top+=64",
-        end: isMobile ? "bottom top+=120" : "+=160%",
+        start: isMobile ? "top bottom-=120" : "top top+=64",
+        end: isMobile ? "+=220%" : "+=160%",
         pin: isMobile ? false : stage,
         pinSpacing: !isMobile,
-        scrub: isMobile ? 0.75 : 1.1,
+        scrub: isMobile ? 1.0 : 1.1,
         anticipatePin: isMobile ? 0 : 1,
         invalidateOnRefresh: true,
         onUpdate: ({ progress }) => {
