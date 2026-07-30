@@ -98,6 +98,7 @@ function Footer() {
           <div className="flex flex-col items-end gap-1">
             <p className="text-xs text-muted">Managed by <span className="font-semibold text-foreground">Badal Dubey</span></p>
             <a href="https://instagram.com/__karma111__" target="_blank" rel="noopener noreferrer" className="text-xs text-muted transition hover:text-deep-red">Instagram: @__karma111__</a>
+            <a href="https://instagram.com/mahalaxmi.beauty" target="_blank" rel="noopener noreferrer" className="text-xs text-muted transition hover:text-deep-red">Instagram: @mahalaxmi.beauty</a>
           </div>
           <div className="flex gap-2">
             <Link href="/privacy-policy" className="rounded-[8px] border border-line bg-white px-3 py-2 font-semibold text-foreground transition hover:text-deep-red">Privacy Policy</Link>
