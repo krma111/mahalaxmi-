@@ -35,26 +35,89 @@ function stageProgress(value: number, start: number, end: number) {
   return THREE.MathUtils.smoothstep(value, start, end);
 }
 
+function easeInOutCubic(t: number) {
+  return t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
+}
+
 function createBulletGeometry(quality: SceneQuality) {
-  const profile = [
-    new THREE.Vector2(0.08, 0),
-    new THREE.Vector2(0.21, 0.002),
-    new THREE.Vector2(0.23, 0.008),
-    new THREE.Vector2(0.23, 0.025),
-    new THREE.Vector2(0.225, 0.05),
-    new THREE.Vector2(0.205, 0.08),
-    new THREE.Vector2(0.175, 0.115),
-    new THREE.Vector2(0.135, 0.145),
-    new THREE.Vector2(0.095, 0.168),
-    new THREE.Vector2(0.06, 0.185),
-    new THREE.Vector2(0.035, 0.198),
-    new THREE.Vector2(0.015, 0.208),
-    new THREE.Vector2(0.005, 0.215),
-    new THREE.Vector2(0, 0.218),
-  ];
-  const geometry = new THREE.LatheGeometry(profile, quality === "mobile" ? 20 : 32);
-  geometry.computeVertexNormals();
-  return geometry;
+  const segments = quality === "mobile" ? 24 : 48;
+  const heightSteps = 10;
+  const radius = 0.20;
+  const height = 0.35;
+  const slant = 0.12;
+
+  const positions: number[] = [];
+  const indices: number[] = [];
+
+  const halfH = height / 2;
+  const sideCols = segments + 1;
+  const sideRows = heightSteps + 1;
+
+  for (let j = 0; j < sideRows; j++) {
+    const t = j / heightSteps;
+    const yBase = -halfH + t * height;
+    const r = radius * (1 - t * 0.08);
+    for (let i = 0; i < sideCols; i++) {
+      const theta = (i / segments) * Math.PI * 2;
+      positions.push(
+        r * Math.cos(theta),
+        yBase + t * slant * Math.cos(theta),
+        r * Math.sin(theta),
+      );
+    }
+  }
+
+  for (let j = 0; j < heightSteps; j++) {
+    for (let i = 0; i < segments; i++) {
+      const a = j * sideCols + i;
+      const b = a + 1;
+      const c = (j + 1) * sideCols + i;
+      const d = c + 1;
+      indices.push(a, c, b);
+      indices.push(b, c, d);
+    }
+  }
+
+  const sideVerts = sideRows * sideCols;
+
+  const bcCenter = positions.length / 3;
+  positions.push(0, -halfH, 0);
+  for (let i = 0; i < sideCols; i++) {
+    const theta = (i / segments) * Math.PI * 2;
+    positions.push(radius * Math.cos(theta), -halfH, radius * Math.sin(theta));
+  }
+  for (let i = 0; i < segments; i++) {
+    indices.push(bcCenter, bcCenter + 1 + i, bcCenter + 1 + ((i + 1) % segments));
+  }
+
+  const topEdgeStart = heightSteps * sideCols;
+  const tcCenter = positions.length / 3;
+
+  let cx = 0, cy = 0, cz = 0;
+  for (let i = 0; i < sideCols; i++) {
+    const idx = topEdgeStart + i;
+    cx += positions[idx * 3];
+    cy += positions[idx * 3 + 1];
+    cz += positions[idx * 3 + 2];
+  }
+  cx /= sideCols;
+  cy /= sideCols;
+  cz /= sideCols;
+
+  positions.push(cx, cy, cz);
+  for (let i = 0; i < sideCols; i++) {
+    const idx = topEdgeStart + i;
+    positions.push(positions[idx * 3], positions[idx * 3 + 1], positions[idx * 3 + 2]);
+  }
+  for (let i = 0; i < segments; i++) {
+    indices.push(tcCenter, tcCenter + 1 + i, tcCenter + 1 + ((i + 1) % segments));
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  geo.setIndex(indices);
+  geo.computeVertexNormals();
+  return geo;
 }
 
 function ProductRig({
@@ -66,6 +129,7 @@ function ProductRig({
   const rigRef = useRef<THREE.Group>(null);
   const capRef = useRef<THREE.Group>(null);
   const bulletRef = useRef<THREE.Group>(null);
+  const innerRef = useRef<THREE.Group>(null);
   const bodyReflectionRef = useRef<THREE.MeshBasicMaterial>(null);
   const bulletReflectionRef = useRef<THREE.MeshBasicMaterial>(null);
   const smoothedProgress = useRef(reducedMotion ? 1 : 0);
@@ -79,24 +143,34 @@ function ProductRig({
     const rig = rigRef.current;
     const cap = capRef.current;
     const bullet = bulletRef.current;
-    if (!rig || !cap || !bullet) return;
+    const inner = innerRef.current;
+    if (!rig || !cap || !bullet || !inner) return;
 
     const targetProgress = reducedMotion ? 1 : progressRef.current;
-    const progress = THREE.MathUtils.damp(
+    const rawProgress = THREE.MathUtils.damp(
       smoothedProgress.current,
       targetProgress,
       reducedMotion ? 20 : 5.5,
       delta,
     );
-    smoothedProgress.current = progress;
+    smoothedProgress.current = rawProgress;
 
-    const rotationStage = stageProgress(progress, 0.04, 0.28);
-    const capStage = stageProgress(progress, 0.14, 0.42);
-    const bulletStage = stageProgress(progress, 0.34, 0.58);
-    const reflectionStage = stageProgress(progress, 0.62, 0.9);
+    const progress = easeInOutCubic(rawProgress);
+
+    const rotationStage = stageProgress(progress, 0.04, 0.22);
+    const capLiftStage = stageProgress(progress, 0.15, 0.35);
+    const capMoveStage = stageProgress(progress, 0.35, 0.58);
+    const bulletStage = stageProgress(progress, 0.52, 0.80);
+    const reflectionStage = stageProgress(progress, 0.70, 0.92);
     const floating = reducedMotion ? 0 : Math.sin(clock.elapsedTime * 0.72) * 0.024;
     const pointerX = reducedMotion ? 0 : pointerRef.current.x;
     const pointerY = reducedMotion ? 0 : pointerRef.current.y;
+
+    const isMobile = quality === "mobile";
+    const openCapX = isMobile ? 0.65 : 1.45;
+    const openCapY = isMobile ? 0.80 : 1.30;
+    const openCapZ = isMobile ? -0.20 : -0.40;
+    const bulletRise = isMobile ? 0.15 : 0.23;
 
     rig.position.y = THREE.MathUtils.damp(rig.position.y, floating - 0.01, 4, delta);
     rig.rotation.x = THREE.MathUtils.damp(
@@ -107,34 +181,46 @@ function ProductRig({
     );
     rig.rotation.y = THREE.MathUtils.damp(
       rig.rotation.y,
-      -0.08 + rotationStage * 0.56 + pointerX * 0.04,
+      -0.08 + rotationStage * 0.35 + pointerX * 0.04,
       4.2,
       delta,
     );
     rig.rotation.z = THREE.MathUtils.damp(
       rig.rotation.z,
-      -0.02 + capStage * 0.02 + pointerX * 0.012,
+      -0.02 + capMoveStage * -0.01 + pointerX * 0.012,
       4,
       delta,
     );
 
-    cap.position.x = THREE.MathUtils.damp(cap.position.x, capStage * 3.0, 5.0, delta);
-    cap.position.y = THREE.MathUtils.damp(cap.position.y, 1.20 + capStage * 1.5, 5.0, delta);
-    cap.position.z = THREE.MathUtils.damp(cap.position.z, capStage * 0.04, 5.0, delta);
-    cap.rotation.x = THREE.MathUtils.damp(cap.rotation.x, capStage * -0.03, 4.5, delta);
-    cap.rotation.y = THREE.MathUtils.damp(cap.rotation.y, capStage * 1.00, 4.5, delta);
-    cap.rotation.z = THREE.MathUtils.damp(cap.rotation.z, capStage * -0.02, 4.5, delta);
+    cap.position.x = THREE.MathUtils.damp(cap.position.x, capMoveStage * openCapX, 5.5, delta);
+    cap.position.y = THREE.MathUtils.damp(
+      cap.position.y,
+      1.20 + (capLiftStage + capMoveStage * 0.4) * openCapY,
+      5.5,
+      delta,
+    );
+    cap.position.z = THREE.MathUtils.damp(cap.position.z, capMoveStage * openCapZ, 5.5, delta);
+    cap.rotation.x = THREE.MathUtils.damp(cap.rotation.x, capMoveStage * -0.07, 4.5, delta);
+    cap.rotation.y = THREE.MathUtils.damp(cap.rotation.y, capMoveStage * 0.25, 4.5, delta);
+    cap.rotation.z = THREE.MathUtils.damp(cap.rotation.z, capMoveStage * 0.12, 4.5, delta);
 
     bullet.position.y = THREE.MathUtils.damp(
       bullet.position.y,
-      0.66 + bulletStage * 2.5,
-      5.0,
+      0.72 + bulletStage * bulletRise,
+      5.5,
       delta,
     );
     bullet.rotation.z = THREE.MathUtils.damp(
       bullet.rotation.z,
       -0.01 + bulletStage * -0.01,
       4,
+      delta,
+    );
+
+    inner.rotation.y = THREE.MathUtils.damp(
+      inner.rotation.y,
+      bulletStage * 0.25,
+      4.5,
       delta,
     );
 
@@ -172,35 +258,13 @@ function ProductRig({
           />
         </mesh>
 
-        <mesh position={[0, 0.44, 0]} castShadow>
-          <cylinderGeometry args={[0.46, 0.45, 0.14, radialSegments]} />
+        <mesh position={[0, 0.50, 0]} castShadow>
+          <cylinderGeometry args={[0.46, 0.45, 0.15, radialSegments]} />
           <meshPhysicalMaterial
             color="#d4a94b"
             metalness={0.95}
             roughness={0.10}
             clearcoat={0.4}
-            envMapIntensity={2.2}
-          />
-        </mesh>
-
-        <mesh position={[0, 0.56, 0]} castShadow>
-          <cylinderGeometry args={[0.38, 0.40, 0.10, radialSegments]} />
-          <meshPhysicalMaterial
-            color="#5e0612"
-            metalness={0.76}
-            roughness={0.2}
-            clearcoat={0.78}
-            envMapIntensity={1.4}
-          />
-        </mesh>
-
-        <mesh position={[0, 0.74, 0]} castShadow>
-          <cylinderGeometry args={[0.35, 0.365, 0.34, radialSegments]} />
-          <meshPhysicalMaterial
-            color="#d4a94b"
-            metalness={0.95}
-            roughness={0.10}
-            clearcoat={0.35}
             envMapIntensity={2.2}
           />
         </mesh>
@@ -229,38 +293,43 @@ function ProductRig({
         </mesh>
       </group>
 
-      <group ref={bulletRef} position={[0, 0.66, 0]} rotation={[0, 0, -0.01]}>
-        <mesh position={[0, -0.06, 0]}>
-          <cylinderGeometry args={[0.06, 0.10, 0.06, radialSegments]} />
+      <group ref={innerRef}>
+        <mesh position={[0, 0.82, 0]} castShadow>
+          <cylinderGeometry args={[0.30, 0.32, 0.42, radialSegments]} />
           <meshPhysicalMaterial
-            color="#3a0008"
-            metalness={0.6}
-            roughness={0.4}
+            color="#d4a94b"
+            metalness={0.95}
+            roughness={0.10}
+            clearcoat={0.4}
+            envMapIntensity={2.2}
           />
         </mesh>
-        <mesh geometry={bulletGeometry} castShadow>
-          <meshPhysicalMaterial
-            color="#a80e24"
-            metalness={0.05}
-            roughness={0.18}
-            clearcoat={0.6}
-            clearcoatRoughness={0.15}
-            sheen={0.25}
-            sheenColor="#ffb0bf"
-            envMapIntensity={0.8}
-          />
-        </mesh>
-        <mesh position={[-0.075, 0.04, 0.045]} rotation={[0, 0, -0.02]} renderOrder={4}>
-          <planeGeometry args={[0.04, 0.50]} />
-          <meshBasicMaterial
-            ref={bulletReflectionRef}
-            color="#ffd9de"
-            transparent
-            opacity={0.05}
-            depthWrite={false}
-            toneMapped={false}
-          />
-        </mesh>
+
+        <group ref={bulletRef} position={[0, 0.72, 0]} rotation={[0, 0, -0.01]}>
+          <mesh geometry={bulletGeometry} castShadow>
+            <meshPhysicalMaterial
+              color="#a80e24"
+              metalness={0.05}
+              roughness={0.18}
+              clearcoat={0.6}
+              clearcoatRoughness={0.15}
+              sheen={0.25}
+              sheenColor="#ffb0bf"
+              envMapIntensity={0.8}
+            />
+          </mesh>
+          <mesh position={[-0.075, 0.04, 0.045]} rotation={[0, 0, -0.02]} renderOrder={4}>
+            <planeGeometry args={[0.04, 0.50]} />
+            <meshBasicMaterial
+              ref={bulletReflectionRef}
+              color="#ffd9de"
+              transparent
+              opacity={0.05}
+              depthWrite={false}
+              toneMapped={false}
+            />
+          </mesh>
+        </group>
       </group>
 
       <group ref={capRef} position={[0, 1.20, 0]} rotation={[0, 0, -0.01]}>
