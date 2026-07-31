@@ -2,6 +2,9 @@
 // Fields marked OWNER-APPROVED were confirmed by the business owner on 30 July 2026.
 // Fields marked TODO-OWNER require verification before publishing elsewhere.
 
+// TODO-OWNER: replace with the Google Business Profile URL once the listing is verified.
+const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
+
 export const business = {
   // OWNER-APPROVED: business name matches signage and Google Business Profile.
   name: "Mahalaxmi Beauty Parlour",
@@ -28,7 +31,12 @@ export const business = {
   instagram: "https://instagram.com/mahalaxmi.beauty",
   instagramHandle: "@mahalaxmi.beauty",
   // TODO-OWNER: replace with the Google Business Profile URL once the listing is verified.
-  mapsLink: "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj",
+  mapsLink: MAPS_LINK,
+  // WhatsApp message the salon sends to a customer asking for a Google review.
+  // Replace {name} with the customer's first name before sending.
+  reviewRequestLink: `https://wa.me/919889594584?text=${encodeURIComponent(
+    `Hello {name}, thank you for visiting Mahalaxmi Beauty Parlour in Prayagraj! We hope you enjoyed your service. If you have a moment, please share your experience on Google - it helps other women find us. Thank you!\n\n${MAPS_LINK}`
+  )}`,
   // OWNER-APPROVED: normal opening hours as displayed on site.
   // TODO-OWNER: verify special/holiday hours against Google Business Profile.
   hours: {

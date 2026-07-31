@@ -55,6 +55,38 @@ export default function ReviewsPage() {
           </div>
         </div>
       </section>
+      <section className="pb-16 sm:pb-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm">
+              <h2 className="text-xl font-semibold tracking-tight text-foreground">Ask happy customers for a review</h2>
+              <p className="mt-2 text-sm leading-6 text-muted">
+                Send a ready-made WhatsApp message asking a customer to review the salon on Google. Replace the name before sending.
+              </p>
+              <a
+                href={business.reviewRequestLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]"
+              >
+                Open Review Request Message
+              </a>
+            </div>
+            <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm">
+              <h2 className="text-xl font-semibold tracking-tight text-foreground">Print a QR review card</h2>
+              <p className="mt-2 text-sm leading-6 text-muted">
+                Print an A4 card with a QR code that leads customers straight to the salon on Google. Keep a few at the reception.
+              </p>
+              <a
+                href="/review-card"
+                className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream"
+              >
+                Open the Print Card
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
