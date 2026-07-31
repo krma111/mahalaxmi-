@@ -2,17 +2,34 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Contact Mahalaxmi Beauty Parlour in Prayagraj. Call, WhatsApp or get directions to 109/4 Colonel Ganj, Prayagraj, UP 211002.",
+  description: "Contact Mahalaxmi Beauty Parlour in Prayagraj. Call, WhatsApp or get directions to 109/4 Colonel Ganj, Prayagraj, UP 211002. Ladies beauty salon near Katra and Civil Lines.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact Mahalaxmi Beauty Parlour | Ladies Salon in Prayagraj",
+    description: "Call, WhatsApp or visit Mahalaxmi Beauty Parlour at 109/4 Colonel Ganj, Prayagraj. Book your appointment today.",
+  },
 };
 
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
 const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
 
+function ContactBreadcrumb() {
+  return (
+    <nav aria-label="Breadcrumb" className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
+      <ol className="flex items-center gap-2 text-sm text-muted">
+        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li className="text-foreground font-medium" aria-current="page">Contact</li>
+      </ol>
+    </nav>
+  );
+}
+
 export default function ContactPage() {
   return (
     <>
-      <section className="py-16 sm:py-20">
+      <ContactBreadcrumb />
+      <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Contact</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Get In Touch</h1>

@@ -2,40 +2,115 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Beauty Classes in Prayagraj",
-  description: "Learn beauty parlour skills, makeup, hair styling and self-grooming at Mahalaxmi Beauty Parlour classes in Prayagraj.",
+  description: "Learn beauty parlour skills, makeup, hair styling and self-grooming at Mahalaxmi Beauty Parlour classes in Prayagraj. Beauty parlour course, makeup training and hair styling basics.",
   alternates: { canonical: "/beauty-classes-prayagraj" },
+  openGraph: {
+    title: "Beauty Classes in Prayagraj | Mahalaxmi Beauty Parlour",
+    description: "Learn beauty parlour skills, makeup and hair styling in Prayagraj. Basic beauty parlour course and self-grooming classes available.",
+  },
 };
 
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20know%20about%20beauty%20classes.";
 
+const FAQS = [
+  { q: "Do you offer beauty classes in Prayagraj?", a: "Yes, Mahalaxmi Beauty Parlour offers basic beauty parlour courses, makeup classes and hair styling lessons in Prayagraj." },
+  { q: "What is included in the basic beauty parlour course?", a: "The course includes threading, waxing, facial treatments, basic makeup application, hair styling and self-grooming techniques." },
+  { q: "How long is the beauty course?", a: "Course duration depends on the package. Contact us on WhatsApp for detailed curriculum and duration information." },
+  { q: "Who can join the beauty classes?", a: "Anyone interested in learning beauty parlour skills, makeup artistry or self-grooming can join. No prior experience required." },
+  { q: "Do you provide a certificate after the course?", a: "Please contact us on WhatsApp for information about certification and course completion details." },
+];
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+function ClassesBreadcrumb() {
+  return (
+    <nav aria-label="Breadcrumb" className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
+      <ol className="flex items-center gap-2 text-sm text-muted">
+        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li className="text-foreground font-medium" aria-current="page">Beauty Classes</li>
+      </ol>
+    </nav>
+  );
+}
+
 export default function BeautyClassesPage() {
   return (
     <>
-      <section className="py-16 sm:py-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
+      <ClassesBreadcrumb />
+      <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Beauty Classes</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Beauty Classes in Prayagraj</h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            Learn basic beauty parlour skills and self-grooming. Classes include basic beauty parlour course guidance, makeup learning, hair styling basics and self-grooming support.
+          <p className="mt-4 max-w-3xl text-base leading-7 text-muted">
+            Learn basic beauty parlour skills and self-grooming at Mahalaxmi Beauty Parlour in Prayagraj. Classes include basic beauty parlour course guidance, makeup learning, hair styling basics and self-grooming support. Whether you want to start a career in beauty or learn personal grooming, our beauty classes are designed for beginners.
           </p>
+        </div>
+      </section>
+      <section className="pb-12 sm:pb-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
+              <h2 className="text-xl font-semibold text-foreground">Basic Beauty Parlour Course</h2>
+              <p className="mt-3 text-sm leading-6 text-muted">Learn fundamental beauty parlour skills including threading, waxing, facial treatments, and basic makeup application. Ideal for beginners who want to start a career in beauty services.</p>
+              <p className="mt-3 text-sm font-medium text-deep-red">Beginner friendly</p>
+            </article>
+            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
+              <h2 className="text-xl font-semibold text-foreground">Makeup & Hair Styling Basics</h2>
+              <p className="mt-3 text-sm leading-6 text-muted">Learn everyday makeup looks, party makeup techniques, and basic hair styling for personal grooming. Covers foundation, eye makeup, lip makeup and basic hairstyles.</p>
+              <p className="mt-3 text-sm font-medium text-deep-red">Practical training</p>
+            </article>
+            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
+              <h2 className="text-xl font-semibold text-foreground">Self-Grooming & Skin Care</h2>
+              <p className="mt-3 text-sm leading-6 text-muted">Learn daily skincare routines, basic facial treatments, and personal grooming techniques. Understand different skin types and how to care for your skin.</p>
+              <p className="mt-3 text-sm font-medium text-deep-red">Personal care focus</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section className="pb-12 sm:pb-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="rounded-[8px] border border-line bg-cream/80 p-6 sm:p-8">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">Why Learn at Mahalaxmi Beauty Parlour?</h2>
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+              {["Hands-on practical training", "Learn from experienced beauticians", "Affordable course fees in Prayagraj", "Flexible class timings", "Personal attention with small batches", "Learn at your own pace"].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm leading-6 text-muted">
+                  <svg className="mt-0.5 h-4 w-4 shrink-0 text-deep-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section className="pb-12 sm:pb-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground">Frequently Asked Questions</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {FAQS.map((f) => (
+              <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+                <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
       <section className="pb-16 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-6 sm:grid-cols-2">
-            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
-              <h3 className="text-xl font-semibold text-foreground">Basic Beauty Parlour Course</h3>
-              <p className="mt-3 text-sm leading-6 text-muted">Learn fundamental beauty parlour skills including threading, waxing, facial treatments, and basic makeup application.</p>
-            </article>
-            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
-              <h3 className="text-xl font-semibold text-foreground">Makeup & Hair Styling Basics</h3>
-              <p className="mt-3 text-sm leading-6 text-muted">Learn everyday makeup looks, party makeup techniques, and basic hair styling for personal grooming.</p>
-            </article>
-          </div>
-          <div className="mt-10 text-center">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">
-              Enquire on WhatsApp
-            </a>
+          <div className="rounded-[8px] border border-line bg-deep-red p-6 text-white sm:p-8">
+            <h2 className="text-2xl font-semibold tracking-tight">Start Your Beauty Journey</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/85">Contact us on WhatsApp to learn more about our beauty classes, course content, fees and schedule.</p>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Enquire on WhatsApp</a>
           </div>
         </div>
       </section>

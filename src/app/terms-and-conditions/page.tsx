@@ -6,9 +6,23 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
+function TermsBreadcrumb() {
+  return (
+    <nav aria-label="Breadcrumb" className="mx-auto max-w-3xl px-4 pt-8 sm:px-6">
+      <ol className="flex items-center gap-2 text-sm text-muted">
+        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li className="text-foreground font-medium" aria-current="page">Terms & Conditions</li>
+      </ol>
+    </nav>
+  );
+}
+
 export default function TermsPage() {
   return (
-    <section className="py-16 sm:py-20">
+    <>
+      <TermsBreadcrumb />
+      <section className="py-12 sm:py-16">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h1 className="text-3xl font-semibold tracking-tight text-foreground">Terms &amp; Conditions</h1>
         <div className="mt-8 space-y-5 text-base leading-7 text-muted">
@@ -24,5 +38,6 @@ export default function TermsPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }

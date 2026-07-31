@@ -4,6 +4,30 @@ import Hero from "@/components/Hero";
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
 const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
 
+const AEO_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        { "@type": "Question", name: "Where is Mahalaxmi Beauty Parlour located?", acceptedAnswer: { "@type": "Answer", text: "Mahalaxmi Beauty Parlour is located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonel Ganj, Prayagraj, Uttar Pradesh." } },
+        { "@type": "Question", name: "Does Mahalaxmi Beauty Parlour offer bridal makeup?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour offers bridal makeup, engagement makeup, party makeup and pre-bridal beauty services." } },
+        { "@type": "Question", name: "Can I book an appointment on WhatsApp?", acceptedAnswer: { "@type": "Answer", text: "Yes, customers can book appointments directly through WhatsApp using the Book on WhatsApp button." } },
+        { "@type": "Question", name: "Is Mahalaxmi Beauty Parlour only for ladies?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour is a ladies beauty salon." } },
+        { "@type": "Question", name: "Does the parlour offer beauty classes?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour offers beauty parlour classes, makeup learning and basic hair styling guidance." } },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://mahalaxmibeauty.in" },
+        { "@type": "ListItem", position: 2, name: "Bridal Makeup Prayagraj", item: "https://mahalaxmibeauty.in/bridal-makeup-prayagraj" },
+        { "@type": "ListItem", position: 3, name: "Beauty Classes Prayagraj", item: "https://mahalaxmibeauty.in/beauty-classes-prayagraj" },
+      ],
+    },
+  ],
+};
+
 const SERVICES = [
   { name: "Hair Cut", category: "Hair Services", popular: true },
   { name: "Hair Styling", category: "Hair Services", popular: true },
@@ -43,7 +67,19 @@ function Stars({ count }: { count: number }) {
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(AEO_DATA) }} />
       <Hero />
+
+      {/* AEO Answer Block */}
+      <section aria-label="Quick answer" className="bg-cream/70 py-6 sm:py-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="rounded-[8px] border border-line bg-white/90 p-5 text-center shadow-sm">
+            <p className="text-sm leading-7 text-muted">
+              <strong className="text-foreground">Mahalaxmi Beauty Parlour</strong> is a trusted ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. Located at 109/4, Colonel Ganj, Front of Jain Hostel. Book via WhatsApp at +91 98895 94584.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Popular Services */}
       <section className="py-16 sm:py-20">

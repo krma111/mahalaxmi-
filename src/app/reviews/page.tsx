@@ -4,9 +4,28 @@ export const metadata: Metadata = {
   title: "Customer Reviews",
   description: "Read customer reviews and experiences at Mahalaxmi Beauty Parlour in Prayagraj. View ratings and leave your feedback on Google.",
   alternates: { canonical: "/reviews" },
+  openGraph: {
+    title: "Customer Reviews | Mahalaxmi Beauty Parlour",
+    description: "Read customer reviews and experiences at Mahalaxmi Beauty Parlour in Prayagraj. View ratings and leave feedback on Google.",
+  },
 };
 
 const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
+
+const FAQS = [
+  { q: "Where can I leave a review for Mahalaxmi Beauty Parlour?", a: "You can leave a review on Google Maps by searching for Mahalaxmi Beauty Parlour at 109/4 Colonel Ganj, Prayagraj." },
+  { q: "What do customers say about Mahalaxmi Beauty Parlour?", a: "Customers appreciate the friendly service, clean setup, professional beauty care and comfortable experience at our ladies salon in Prayagraj." },
+];
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 const REVIEWS = [
   { name: "Customer A", tag: "Beauty care", text: "Friendly service and a comfortable experience.", stars: 5 },
@@ -24,10 +43,24 @@ function Stars({ count }: { count: number }) {
   );
 }
 
+function ReviewsBreadcrumb() {
+  return (
+    <nav aria-label="Breadcrumb" className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
+      <ol className="flex items-center gap-2 text-sm text-muted">
+        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li className="text-foreground font-medium" aria-current="page">Reviews</li>
+      </ol>
+    </nav>
+  );
+}
+
 export default function ReviewsPage() {
   return (
     <>
-      <section className="py-16 sm:py-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
+      <ReviewsBreadcrumb />
+      <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Reviews</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Customer Reviews</h1>

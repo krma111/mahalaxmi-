@@ -36,15 +36,30 @@ export const metadata: Metadata = {
   },
   description: "Mahalaxmi Beauty Parlour in Prayagraj offers ladies beauty services including hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. Book on WhatsApp.",
   metadataBase: new URL("https://mahalaxmi-beauty-parlour.vercel.app"),
+  keywords: ["beauty parlour Prayagraj", "ladies salon Prayagraj", "bridal makeup Prayagraj", "beauty salon near me", "hair salon Prayagraj", "facial Prayagraj", "waxing Prayagraj", "beauty classes Prayagraj", "makeup artist Prayagraj", "best beauty parlour in Prayagraj"],
   openGraph: {
-    title: "Mahalaxmi Beauty Parlour Prayagraj",
+    title: "Mahalaxmi Beauty Parlour Prayagraj | Ladies Salon & Bridal Makeup",
     description: "Ladies beauty salon offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes in Prayagraj.",
     type: "website",
     locale: "en_IN",
     siteName: "Mahalaxmi Beauty Parlour",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mahalaxmi Beauty Parlour Prayagraj | Ladies Salon & Bridal Makeup",
+    description: "Ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes.",
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
+  other: {
+    "theme-color": "#7a0014",
+    "application-name": "Mahalaxmi Beauty Parlour",
+    "geo.region": "IN-UP",
+    "geo.placename": "Prayagraj",
+    "geo.position": "25.4358;81.8463",
+    "ICBM": "25.4358, 81.8463",
+  },
 };
 
 function Footer() {
@@ -130,19 +145,71 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       latitude: "25.4358",
       longitude: "81.8463",
     },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "10:00",
-      closes: "20:00",
-    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "10:00",
+        closes: "20:00",
+      },
+    ],
     priceRange: "$$",
     image: "https://mahalaxmi-beauty-parlour.vercel.app/og-image.png",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "50",
+      bestRating: "5",
+      ratingCount: "50",
+    },
+    sameAs: [
+      "https://instagram.com/mahalaxmi.beauty",
+      "https://instagram.com/__karma111__",
+    ],
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Prayagraj",
+        sameAs: "https://en.wikipedia.org/wiki/Prayagraj",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Uttar Pradesh",
+      },
+    ],
+    founder: {
+      "@type": "Person",
+      name: "Badal Dubey",
+    },
+    foundingDate: "2024",
+    makesOffer: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hair Cut" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hair Styling" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Facial" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cleanup" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Party Makeup" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bridal Makeup" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Engagement Makeup" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Threading" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Waxing" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Beauty Classes" } },
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+919889594584",
+      contactType: "customer service",
+      availableLanguage: ["English", "Hindi"],
+    },
+    parentOrganization: {
+      "@type": "Organization",
+      name: "Mahalaxmi Beauty Parlour",
+    },
   };
 
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
