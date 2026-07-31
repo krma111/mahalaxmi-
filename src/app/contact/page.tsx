@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { business } from "@/content/business";
 
 export const metadata: Metadata = {
@@ -14,24 +15,11 @@ export const metadata: Metadata = {
 const WHATSAPP_LINK = `${business.whatsapp}?text=${encodeURIComponent(
   `Hello Mahalaxmi Beauty Parlour, I would like to book an appointment.\nName:\nService:\nPreferred Date:\nPreferred Time:`
 )}`;
-const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
-
-function ContactBreadcrumb() {
-  return (
-    <nav aria-label="Breadcrumb" className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
-      <ol className="flex items-center gap-2 text-sm text-muted">
-        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
-        <li aria-hidden="true">/</li>
-        <li className="text-foreground font-medium" aria-current="page">Contact</li>
-      </ol>
-    </nav>
-  );
-}
 
 export default function ContactPage() {
   return (
     <>
-      <ContactBreadcrumb />
+      <Breadcrumbs items={[{ name: "Contact", href: "/contact" }]} />
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Contact</p>
@@ -48,13 +36,13 @@ export default function ContactPage() {
                 <a href={business.telephoneHref} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Call Now</a>
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Book on WhatsApp</a>
                 <a href={business.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Instagram</a>
-                <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-line bg-white px-5 text-sm font-semibold text-foreground transition hover:bg-cream">Get Directions</a>
+                <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-line bg-white px-5 text-sm font-semibold text-foreground transition hover:bg-cream">Get Directions</a>
               </div>
             </div>
             <div className="rounded-[8px] border border-line bg-cream/80 p-6">
               <h3 className="text-xl font-semibold text-foreground">Front of Jain Hostel, Colonelganj</h3>
               <p className="mt-3 text-sm leading-6 text-muted">Use directions for the latest route to the salon location in Prayagraj.</p>
-              <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Open Google Maps</a>
+              <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Open Google Maps</a>
             </div>
           </div>
         </div>

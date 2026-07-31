@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { business } from "@/content/business";
 
 export const metadata: Metadata = {
   title: "Customer Reviews",
@@ -10,24 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
-
-function ReviewsBreadcrumb() {
-  return (
-    <nav aria-label="Breadcrumb" className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
-      <ol className="flex items-center gap-2 text-sm text-muted">
-        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
-        <li aria-hidden="true">/</li>
-        <li className="text-foreground font-medium" aria-current="page">Reviews</li>
-      </ol>
-    </nav>
-  );
-}
-
 export default function ReviewsPage() {
   return (
     <>
-      <ReviewsBreadcrumb />
+      <Breadcrumbs items={[{ name: "Reviews", href: "/reviews" }]} />
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Reviews</p>
@@ -36,8 +24,8 @@ export default function ReviewsPage() {
             Read customer experiences at Mahalaxmi Beauty Parlour in Prayagraj and leave your own review on Google.
           </p>
           <div className="mt-8 flex gap-3">
-            <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">View Reviews on Google</a>
-            <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Write a Review</a>
+            <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">View Reviews on Google</a>
+            <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Write a Review</a>
           </div>
         </div>
       </section>
@@ -60,7 +48,7 @@ export default function ReviewsPage() {
               </div>
             </div>
             <div className="mt-8">
-              <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">
+              <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">
                 Read Reviews on Google
               </a>
             </div>

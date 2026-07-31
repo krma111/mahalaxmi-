@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { servicePath } from "@/content/services";
 
 export const metadata: Metadata = {
   title: "Beauty Services in Prayagraj",
-  description: "Explore hair care, facial, makeup, waxing, threading and beauty services at Mahalaxmi Beauty Parlour in Prayagraj. Ladies beauty salon near Colonel Ganj offering professional beauty treatments.",
+  description: "Explore hair care, facial, makeup, waxing, threading and beauty services at Mahalaxmi Beauty Parlour in Prayagraj. Ladies beauty salon near Colonelganj offering professional beauty treatments.",
   alternates: { canonical: "/services" },
   openGraph: {
     title: "Beauty Services in Prayagraj | Mahalaxmi Beauty Parlour",
@@ -12,14 +15,16 @@ export const metadata: Metadata = {
 
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
 
-const SERVICES = [
+type HubItem = { name: string; desc: string; href?: string };
+
+const SERVICES: { category: string; href?: string; items: HubItem[] }[] = [
   {
     category: "Hair Services",
     items: [
-      { name: "Hair Cut", desc: "Modern and classic haircuts for ladies. Precision cutting tailored to your face shape and hair type." },
-      { name: "Hair Styling", desc: "Professional hair styling for daily wear, parties, weddings and special occasions." },
-      { name: "Hair Smoothing", desc: "Smoothing treatment to reduce frizz and add shine. Makes hair manageable and soft." },
-      { name: "Hair Color", desc: "Professional hair coloring services including global color, highlights, and root touch-up." },
+      { name: "Hair Cut", desc: "Modern and classic haircuts for ladies. Precision cutting tailored to your face shape and hair type.", href: servicePath("hair-cut-prayagraj") },
+      { name: "Hair Styling", desc: "Professional hair styling for daily wear, parties, weddings and special occasions.", href: servicePath("hair-styling-prayagraj") },
+      { name: "Hair Smoothing", desc: "Smoothing treatment to reduce frizz and add shine. Consultation before any chemical service.", href: servicePath("hair-smoothing-prayagraj") },
+      { name: "Hair Color", desc: "Professional hair coloring services including global color, highlights, and root touch-up.", href: servicePath("hair-colour-prayagraj") },
       { name: "Hair Spa", desc: "Deep conditioning hair spa treatment for nourished, healthy and shiny hair." },
       { name: "Hair Treatment", desc: "Restorative hair treatments for damaged, dry or chemically treated hair." },
     ],
@@ -27,30 +32,32 @@ const SERVICES = [
   {
     category: "Skin & Facial",
     items: [
-      { name: "Facial", desc: "Rejuvenating facial treatments for glowing skin. Customized for different skin types." },
-      { name: "Cleanup", desc: "Deep cleansing facial for daily skincare maintenance. Removes impurities and refreshes skin." },
+      { name: "Facial", desc: "Rejuvenating facial treatments for glowing skin. Customized for different skin types.", href: servicePath("facial-prayagraj") },
+      { name: "Cleanup", desc: "Deep cleansing facial for daily skincare maintenance. Removes impurities and refreshes skin.", href: servicePath("cleanup-prayagraj") },
       { name: "Skin Rejuvenation", desc: "Advanced skin care treatments to restore natural glow and reduce signs of aging." },
     ],
   },
   {
     category: "Makeup",
     items: [
-      { name: "Party Makeup", desc: "Glamorous party makeup for receptions, birthdays, and celebrations. Long-lasting and photo-ready." },
-      { name: "Engagement Makeup", desc: "Soft and elegant engagement makeup customized to complement your outfit and style." },
-      { name: "Bridal Makeup", desc: "Complete bridal makeup with HD finish. Personal consultation and trial available." },
+      { name: "Party Makeup", desc: "Glamorous party makeup for receptions, birthdays, and celebrations. Long-lasting and photo-ready.", href: servicePath("party-makeup-prayagraj") },
+      { name: "Engagement Makeup", desc: "Soft and elegant engagement makeup customized to complement your outfit and style.", href: servicePath("engagement-makeup-prayagraj") },
+      { name: "Bridal Makeup", desc: "Complete bridal makeup with HD finish. Personal consultation and trial available.", href: "/bridal-makeup-prayagraj" },
+      { name: "Pre-Bridal Package", desc: "A planned pre-wedding beauty regimen with the package sheet confirmed before scheduling.", href: servicePath("pre-bridal-package-prayagraj") },
     ],
   },
   {
     category: "Regular Beauty Services",
     items: [
-      { name: "Threading", desc: "Precise eyebrow and face threading for clean, defined shaping." },
-      { name: "Waxing", desc: "Full body and partial waxing services using gentle wax suitable for sensitive skin." },
+      { name: "Threading", desc: "Precise eyebrow and face threading for clean, defined shaping.", href: servicePath("threading-prayagraj") },
+      { name: "Waxing", desc: "Full body and partial waxing services using gentle wax suitable for sensitive skin.", href: servicePath("waxing-prayagraj") },
       { name: "Manicure", desc: "Hand and nail care treatment including shaping, cuticle care and polish." },
       { name: "Pedicure", desc: "Foot and nail care treatment for soft, clean and well-groomed feet." },
     ],
   },
   {
     category: "Beauty Classes",
+    href: "/beauty-classes-prayagraj",
     items: [
       { name: "Basic Beauty Parlour Course", desc: "Learn threading, waxing, facial, makeup and hair styling basics. Perfect for beginners." },
       { name: "Makeup Learning", desc: "Step-by-step makeup training including everyday looks, party makeup and bridal techniques." },
@@ -60,7 +67,7 @@ const SERVICES = [
 ];
 
 const FAQS = [
-  { q: "What beauty services does Mahalaxmi Beauty Parlour offer?", a: "We offer hair care, facial, makeup, bridal makeup, engagement makeup, party makeup, waxing, threading, skin care, manicure, pedicure, beauty classes and self-grooming services." },
+  { q: "What beauty services does Mahalaxmi Beauty Parlour offer?", a: "We offer hair care, facial, makeup, bridal makeup, engagement makeup, party makeup, waxing, threading, skin care, beauty classes and self-grooming services." },
   { q: "Where is Mahalaxmi Beauty Parlour located?", a: "We are located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonelganj, Prayagraj, Uttar Pradesh 211002." },
   { q: "How can I book an appointment?", a: "You can book an appointment directly through WhatsApp by clicking the Book on WhatsApp button on our website." },
   { q: "Do you offer bridal makeup packages?", a: "Yes, we offer bridal makeup, engagement makeup, pre-bridal packages and party makeup services." },
@@ -78,29 +85,31 @@ const FAQ_SCHEMA = {
   })),
 };
 
-function ServicesBreadcrumb() {
-  return (
-    <nav aria-label="Breadcrumb" className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
-      <ol className="flex items-center gap-2 text-sm text-muted">
-        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
-        <li aria-hidden="true">/</li>
-        <li className="text-foreground font-medium" aria-current="page">Services</li>
-      </ol>
-    </nav>
+function ServiceCard({ title, href, items }: { title: string; href?: string; items: HubItem[] }) {
+  const heading = (
+    <h2 className="text-lg font-semibold text-foreground transition hover:text-deep-red">{title}</h2>
   );
-}
-
-function ServiceCard({ title, items }: { title: string; items: { name: string; desc: string }[] }) {
   return (
     <article className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
-      <h2 className="text-lg font-semibold text-foreground">{title}</h2>
+      {href ? (
+        <a href={href} className="inline-block">{heading}</a>
+      ) : (
+        heading
+      )}
       <div className="mt-4 space-y-4">
         {items.map((item) => (
           <div key={item.name}>
-            <h3 className="flex items-center gap-2 text-sm font-medium text-foreground">
-              <svg className="h-4 w-4 shrink-0 text-deep-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              {item.name}
-            </h3>
+            {item.href ? (
+              <a href={item.href} className="flex items-start gap-2 text-sm font-medium text-foreground transition hover:text-deep-red">
+                <svg className="mt-1 h-4 w-4 shrink-0 text-deep-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                {item.name}
+              </a>
+            ) : (
+              <h3 className="flex items-start gap-2 text-sm font-medium text-foreground">
+                <svg className="mt-1 h-4 w-4 shrink-0 text-deep-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                {item.name}
+              </h3>
+            )}
             <p className="mt-1 pl-6 text-xs leading-5 text-muted">{item.desc}</p>
           </div>
         ))}
@@ -112,14 +121,14 @@ function ServiceCard({ title, items }: { title: string; items: { name: string; d
 export default function ServicesPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
-      <ServicesBreadcrumb />
+      <JsonLd data={FAQ_SCHEMA} />
+      <Breadcrumbs items={[{ name: "Services", href: "/services" }]} />
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Our Services</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Professional Beauty Services in Prayagraj</h1>
           <p className="mt-4 max-w-3xl text-base leading-7 text-muted">
-            Explore hair, facial, makeup, waxing, threading and beauty care services offered at Mahalaxmi Beauty Parlour in Prayagraj. Our ladies salon near Colonel Ganj provides professional beauty treatments in a clean, comfortable and women-friendly environment.
+            Explore hair, facial, makeup, waxing, threading and beauty care services offered at Mahalaxmi Beauty Parlour in Prayagraj. Our ladies salon near Colonelganj provides professional beauty treatments in a clean, comfortable and women-friendly environment.
           </p>
         </div>
       </section>
@@ -127,9 +136,12 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((group) => (
-              <ServiceCard key={group.category} title={group.category} items={group.items} />
+              <ServiceCard key={group.category} title={group.category} href={group.href} items={group.items} />
             ))}
           </div>
+          <p className="mt-6 text-xs leading-5 text-muted">
+            Services with a link open their own detailed page. For anything not listed, message us on WhatsApp and we will confirm availability.
+          </p>
         </div>
       </section>
       <section className="pb-12 sm:pb-16">

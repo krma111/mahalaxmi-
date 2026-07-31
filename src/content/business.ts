@@ -23,6 +23,8 @@ export const business = {
   // OWNER-APPROVED: official brand profile chosen by the owner.
   instagram: "https://instagram.com/mahalaxmi.beauty",
   instagramHandle: "@mahalaxmi.beauty",
+  // TODO-OWNER: replace with the Google Business Profile URL once the listing is verified.
+  mapsLink: "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj",
   // OWNER-APPROVED: normal opening hours as displayed on site.
   // TODO-OWNER: verify special/holiday hours against Google Business Profile.
   hours: {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -11,22 +12,10 @@ export const metadata: Metadata = {
   },
 };
 
-function GalleryBreadcrumb() {
-  return (
-    <nav aria-label="Breadcrumb" className="mx-auto max-w-6xl px-4 pt-8 sm:px-6">
-      <ol className="flex items-center gap-2 text-sm text-muted">
-        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
-        <li aria-hidden="true">/</li>
-        <li className="text-foreground font-medium" aria-current="page">Gallery</li>
-      </ol>
-    </nav>
-  );
-}
-
 const GALLERY_ITEMS = [
   { title: "Hair Styling", image: "/images/hair-styling.jpg", desc: "Professional hair styling for parties, weddings and everyday looks." },
   { title: "Bridal Makeup", image: "/images/bridal-makeup.jpg", desc: "Complete bridal makeup with HD finish for your special day." },
-  { title: "Makeup Service", image: "/images/makeup-service.jpg", desc: "Expert makeup application for parties, engagements and events." },
+  { title: "Makeup Service", image: "/images/makeup-service.jpg", desc: "Professional makeup application for parties, engagements and events." },
   { title: "Facial Treatment", image: "/images/facial-treatment.jpg", desc: "Rejuvenating facials for glowing and healthy skin." },
   { title: "Beauty Care", image: "/images/beauty-care.jpg", desc: "Manicure, pedicure and complete beauty care services." },
   { title: "Salon Interior", image: "/images/salon-interior.jpg", desc: "Clean and comfortable ladies salon in Colonelganj, Prayagraj." },
@@ -35,7 +24,7 @@ const GALLERY_ITEMS = [
 export default function GalleryPage() {
   return (
     <>
-      <GalleryBreadcrumb />
+      <Breadcrumbs items={[{ name: "Gallery", href: "/gallery" }]} />
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Gallery</p>

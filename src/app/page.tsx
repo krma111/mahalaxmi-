@@ -1,43 +1,33 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { business } from "@/content/business";
+import { servicePath } from "@/content/services";
 
 const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
-const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
 
 const AEO_DATA = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "FAQPage",
-      mainEntity: [
-        { "@type": "Question", name: "Where is Mahalaxmi Beauty Parlour located?", acceptedAnswer: { "@type": "Answer", text: "Mahalaxmi Beauty Parlour is located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonelganj, Prayagraj, Uttar Pradesh." } },
-        { "@type": "Question", name: "Does Mahalaxmi Beauty Parlour offer bridal makeup?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour offers bridal makeup, engagement makeup, party makeup and pre-bridal beauty services." } },
-        { "@type": "Question", name: "Can I book an appointment on WhatsApp?", acceptedAnswer: { "@type": "Answer", text: "Yes, customers can book appointments directly through WhatsApp using the Book on WhatsApp button." } },
-        { "@type": "Question", name: "Is Mahalaxmi Beauty Parlour only for ladies?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour is a ladies beauty salon." } },
-        { "@type": "Question", name: "Does the parlour offer beauty classes?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour offers beauty parlour classes, makeup learning and basic hair styling guidance." } },
-      ],
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://mahalaxmibeauty.in" },
-        { "@type": "ListItem", position: 2, name: "Bridal Makeup Prayagraj", item: "https://mahalaxmibeauty.in/bridal-makeup-prayagraj" },
-        { "@type": "ListItem", position: 3, name: "Beauty Classes Prayagraj", item: "https://mahalaxmibeauty.in/beauty-classes-prayagraj" },
-      ],
-    },
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "Where is Mahalaxmi Beauty Parlour located?", acceptedAnswer: { "@type": "Answer", text: "Mahalaxmi Beauty Parlour is located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonelganj, Prayagraj, Uttar Pradesh." } },
+    { "@type": "Question", name: "Does Mahalaxmi Beauty Parlour offer bridal makeup?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour offers bridal makeup, engagement makeup, party makeup and pre-bridal beauty services." } },
+    { "@type": "Question", name: "Can I book an appointment on WhatsApp?", acceptedAnswer: { "@type": "Answer", text: "Yes, customers can book appointments directly through WhatsApp using the Book on WhatsApp button." } },
+    { "@type": "Question", name: "Is Mahalaxmi Beauty Parlour only for ladies?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour is a ladies beauty salon." } },
+    { "@type": "Question", name: "Does the parlour offer beauty classes?", acceptedAnswer: { "@type": "Answer", text: "Yes, Mahalaxmi Beauty Parlour offers beauty parlour classes, makeup learning and basic hair styling guidance." } },
   ],
 };
 
 const SERVICES = [
-  { name: "Hair Cut", category: "Hair Services", popular: true },
-  { name: "Hair Styling", category: "Hair Services", popular: true },
-  { name: "Facial", category: "Skin & Facial", popular: true },
-  { name: "Cleanup", category: "Skin & Facial", popular: true },
-  { name: "Party Makeup", category: "Makeup", popular: true },
-  { name: "Engagement Makeup", category: "Makeup", popular: true },
-  { name: "Threading", category: "Regular Beauty Services", popular: true },
-  { name: "Waxing", category: "Regular Beauty Services", popular: true },
-  { name: "Basic Beauty Parlour Course", category: "Beauty Classes", popular: true },
+  { name: "Hair Cut", category: "Hair Services", popular: true, href: servicePath("hair-cut-prayagraj") },
+  { name: "Hair Styling", category: "Hair Services", popular: true, href: servicePath("hair-styling-prayagraj") },
+  { name: "Facial", category: "Skin & Facial", popular: true, href: servicePath("facial-prayagraj") },
+  { name: "Cleanup", category: "Skin & Facial", popular: true, href: servicePath("cleanup-prayagraj") },
+  { name: "Party Makeup", category: "Makeup", popular: true, href: servicePath("party-makeup-prayagraj") },
+  { name: "Engagement Makeup", category: "Makeup", popular: true, href: servicePath("engagement-makeup-prayagraj") },
+  { name: "Threading", category: "Regular Beauty Services", popular: true, href: servicePath("threading-prayagraj") },
+  { name: "Waxing", category: "Regular Beauty Services", popular: true, href: servicePath("waxing-prayagraj") },
+  { name: "Basic Beauty Parlour Course", category: "Beauty Classes", popular: true, href: "/beauty-classes-prayagraj" },
 ];
 
 const FAQS = [
@@ -51,7 +41,7 @@ const FAQS = [
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(AEO_DATA) }} />
+      <JsonLd data={AEO_DATA} />
       <Hero />
 
       {/* AEO Answer Block */}
@@ -74,16 +64,16 @@ export default function Home() {
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
-              <article key={s.name} className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+              <a key={s.name} href={s.href} className="group rounded-[8px] border border-line bg-white/88 p-5 shadow-sm transition hover:border-deep-red">
                 <div className="flex items-start justify-between gap-3">
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-2 font-medium text-foreground group-hover:text-deep-red">
                     <svg className="h-4 w-4 shrink-0 text-deep-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
                     {s.name}
                   </span>
                   {s.popular && <span className="rounded-full bg-soft-rose/70 px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-deep-red">Popular</span>}
                 </div>
                 <p className="mt-1 text-xs text-muted">{s.category}</p>
-              </article>
+              </a>
             ))}
           </div>
           <div className="mt-8 text-center">
@@ -117,8 +107,8 @@ export default function Home() {
               We welcome honest feedback from customers who have used our services at Mahalaxmi Beauty Parlour in Prayagraj. Read experiences and leave your own review on our Google Business Profile.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">View Reviews on Google</a>
-              <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Write a Review</a>
+              <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">View Reviews on Google</a>
+              <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Write a Review</a>
             </div>
           </div>
         </div>
@@ -129,9 +119,9 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm sm:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Local Ladies Salon</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Ladies beauty salon in Prayagraj near Colonel Ganj and Katra</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Ladies beauty salon in Prayagraj near Colonelganj and Katra</h2>
             <p className="mt-5 max-w-4xl text-base leading-7 text-muted">
-              Mahalaxmi Beauty Parlour is a ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. Located in Colonel Ganj, the parlour focuses on friendly service, clean beauty care and easy appointment booking through WhatsApp.
+              Mahalaxmi Beauty Parlour is a ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. Located in Colonelganj, the parlour focuses on friendly service, clean beauty care and easy appointment booking through WhatsApp.
             </p>
           </div>
         </div>
@@ -169,13 +159,13 @@ export default function Home() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a href="tel:+919889594584" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Call Now</a>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-deep-red/25 bg-white px-5 text-sm font-semibold text-deep-red transition hover:bg-cream">Book on WhatsApp</a>
-              <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-line bg-white px-5 text-sm font-semibold text-foreground transition hover:bg-cream">Get Directions</a>
+              <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-line bg-white px-5 text-sm font-semibold text-foreground transition hover:bg-cream">Get Directions</a>
             </div>
           </div>
           <div className="rounded-[8px] border border-line bg-cream/80 p-6">
             <h3 className="mt-4 text-xl font-semibold text-foreground">Front of Jain Hostel, Colonelganj</h3>
             <p className="mt-3 text-sm leading-6 text-muted">Use directions for the latest route to the salon location in Prayagraj.</p>
-            <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Open Google Maps</a>
+            <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Open Google Maps</a>
           </div>
         </div>
       </section>
