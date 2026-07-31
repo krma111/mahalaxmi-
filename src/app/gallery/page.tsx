@@ -29,7 +29,7 @@ const GALLERY_ITEMS = [
   { title: "Makeup Service", image: "/images/makeup-service.jpg", desc: "Expert makeup application for parties, engagements and events." },
   { title: "Facial Treatment", image: "/images/facial-treatment.jpg", desc: "Rejuvenating facials for glowing and healthy skin." },
   { title: "Beauty Care", image: "/images/beauty-care.jpg", desc: "Manicure, pedicure and complete beauty care services." },
-  { title: "Salon Interior", image: "/images/salon-interior.jpg", desc: "Clean and comfortable ladies salon in Colonel Ganj, Prayagraj." },
+  { title: "Salon Interior", image: "/images/salon-interior.jpg", desc: "Clean and comfortable ladies salon in Colonelganj, Prayagraj." },
 ];
 
 export default function GalleryPage() {

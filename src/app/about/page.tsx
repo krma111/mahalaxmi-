@@ -32,7 +32,7 @@ export default function AboutPage() {
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">About Mahalaxmi Beauty Parlour</h1>
           <div className="mt-8 max-w-3xl space-y-5 text-base leading-7 text-muted">
             <p>Mahalaxmi Beauty Parlour is a trusted ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. We are committed to providing professional beauty services in a comfortable, women-focused environment.</p>
-            <p>Located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonel Ganj, Prayagraj, the parlour focuses on friendly service, clean beauty care and easy appointment booking through WhatsApp.</p>
+            <p>Located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonelganj, Prayagraj, the parlour focuses on friendly service, clean beauty care and easy appointment booking through WhatsApp.</p>
             <p>Our services include everyday grooming, special occasion makeup, bridal packages, and beauty education classes. We use high-quality professional products and maintain strict hygiene standards.</p>
             <p>We believe every woman deserves to look and feel her best. Whether you need a quick cleanup before a family gathering, a complete bridal makeover for your wedding day, or want to learn beauty skills as a career, we are here to help.</p>
           </div>

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { ORIGIN } from "@/lib/seo/urls";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,9 +7,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/privacy-policy", "/terms-and-conditions"],
+        disallow: ["/api/", "/preview/"],
       },
+      { userAgent: "OAI-SearchBot", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
+      { userAgent: "Applebot", allow: "/" },
+      { userAgent: "Bingbot", allow: "/" },
     ],
-    sitemap: "https://mahalaxmi-beauty-parlour.vercel.app/sitemap.xml",
+    sitemap: `${ORIGIN}/sitemap.xml`,
   };
 }

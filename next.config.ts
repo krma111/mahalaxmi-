@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    const oldHost = "mahalaxmi-beauty-parlour.vercel.app";
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: oldHost }],
+        destination: "https://mahalaxmi.beauty/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

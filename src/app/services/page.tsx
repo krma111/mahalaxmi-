@@ -61,7 +61,7 @@ const SERVICES = [
 
 const FAQS = [
   { q: "What beauty services does Mahalaxmi Beauty Parlour offer?", a: "We offer hair care, facial, makeup, bridal makeup, engagement makeup, party makeup, waxing, threading, skin care, manicure, pedicure, beauty classes and self-grooming services." },
-  { q: "Where is Mahalaxmi Beauty Parlour located?", a: "We are located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonel Ganj, Prayagraj, Uttar Pradesh 211002." },
+  { q: "Where is Mahalaxmi Beauty Parlour located?", a: "We are located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonelganj, Prayagraj, Uttar Pradesh 211002." },
   { q: "How can I book an appointment?", a: "You can book an appointment directly through WhatsApp by clicking the Book on WhatsApp button on our website." },
   { q: "Do you offer bridal makeup packages?", a: "Yes, we offer bridal makeup, engagement makeup, pre-bridal packages and party makeup services." },
   { q: "Is Mahalaxmi Beauty Parlour only for ladies?", a: "Yes, Mahalaxmi Beauty Parlour is a ladies beauty salon providing services exclusively for women." },

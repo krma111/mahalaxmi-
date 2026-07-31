@@ -29,14 +29,6 @@ function CheckIcon() {
   );
 }
 
-function StarIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-      <path d="m12 2.7 2.75 5.58 6.15.9-4.45 4.33 1.05 6.12L12 16.74l-5.5 2.89 1.05-6.12L3.1 9.18l6.15-.9L12 2.7Z" />
-    </svg>
-  );
-}
-
 function PinIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
@@ -221,7 +213,7 @@ export default function Hero() {
             </h1>
 
             <p className="hero-campaign-copy" data-hero-reveal data-hero-copy>
-              Expert care. Premium services. Timeless you.
+              Ladies beauty salon in Prayagraj. Hair, makeup and bridal services.
             </p>
 
             <div className="hero-actions" data-hero-actions>
@@ -254,19 +246,11 @@ export default function Hero() {
             <div className="hero-trust-row" data-hero-trust aria-label="Salon trust indicators">
               <span className="hero-trust-item">
                 <CheckIcon />
-                Expert Stylists
+                Ladies Salon
               </span>
               <span className="hero-trust-item">
                 <CheckIcon />
-                Premium Products
-              </span>
-              <span className="hero-trust-item hero-rating">
-                <span className="hero-stars" aria-hidden="true">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <StarIcon key={index} />
-                  ))}
-                </span>
-                4.8 Rating
+                WhatsApp Booking
               </span>
               <a
                 href={GOOGLE_REVIEWS_LINK}
