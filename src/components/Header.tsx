@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
+import { business } from "@/content/business";
 
-const WHATSAPP_LINK =
-  "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
+const WHATSAPP_LINK = business.bookingLink;
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },

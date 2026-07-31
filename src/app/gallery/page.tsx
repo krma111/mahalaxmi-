@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 const GALLERY_ITEMS = [
   { title: "Hair Styling", image: "/images/hair-styling.jpg", desc: "Professional hair styling for parties, weddings and everyday looks." },
-  { title: "Bridal Makeup", image: "/images/bridal-makeup.jpg", desc: "Complete bridal makeup with HD finish for your special day." },
+  { title: "Bridal Makeup", image: "/images/bridal-makeup.jpg", desc: "Complete bridal makeup planned through consultation, with a trial before the wedding day." },
   { title: "Makeup Service", image: "/images/makeup-service.jpg", desc: "Professional makeup application for parties, engagements and events." },
-  { title: "Facial Treatment", image: "/images/facial-treatment.jpg", desc: "Rejuvenating facials for glowing and healthy skin." },
+  { title: "Facial Treatment", image: "/images/facial-treatment.jpg", desc: "Cosmetic facial care tailored to your skin type and concerns." },
   { title: "Beauty Care", image: "/images/beauty-care.jpg", desc: "Manicure, pedicure and complete beauty care services." },
   { title: "Salon Interior", image: "/images/salon-interior.jpg", desc: "Clean and comfortable ladies salon in Colonelganj, Prayagraj." },
 ];

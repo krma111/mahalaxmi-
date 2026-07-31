@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { business } from "@/content/business";
 import { servicePath } from "@/content/services";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-const WHATSAPP_LINK = "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
+const WHATSAPP_LINK = business.bookingLink;
 
 type HubItem = { name: string; desc: string; href?: string };
 
@@ -32,17 +33,17 @@ const SERVICES: { category: string; href?: string; items: HubItem[] }[] = [
   {
     category: "Skin & Facial",
     items: [
-      { name: "Facial", desc: "Rejuvenating facial treatments for glowing skin. Customized for different skin types.", href: servicePath("facial-prayagraj") },
-      { name: "Cleanup", desc: "Deep cleansing facial for daily skincare maintenance. Removes impurities and refreshes skin.", href: servicePath("cleanup-prayagraj") },
-      { name: "Skin Rejuvenation", desc: "Advanced skin care treatments to restore natural glow and reduce signs of aging." },
+      { name: "Facial", desc: "Cosmetic facial treatments customized for different skin types and concerns.", href: servicePath("facial-prayagraj") },
+      { name: "Cleanup", desc: "Routine skin care service for maintenance between facials.", href: servicePath("cleanup-prayagraj") },
+      { name: "Skin Rejuvenation", desc: "Cosmetic skin care treatments. Confirm the exact scope on enquiry." },
     ],
   },
   {
     category: "Makeup",
     items: [
-      { name: "Party Makeup", desc: "Glamorous party makeup for receptions, birthdays, and celebrations. Long-lasting and photo-ready.", href: servicePath("party-makeup-prayagraj") },
+      { name: "Party Makeup", desc: "Glamorous party makeup for receptions, birthdays, and celebrations. Look and inclusions confirmed at booking.", href: servicePath("party-makeup-prayagraj") },
       { name: "Engagement Makeup", desc: "Soft and elegant engagement makeup customized to complement your outfit and style.", href: servicePath("engagement-makeup-prayagraj") },
-      { name: "Bridal Makeup", desc: "Complete bridal makeup with HD finish. Personal consultation and trial available.", href: "/bridal-makeup-prayagraj" },
+      { name: "Bridal Makeup", desc: "Complete bridal makeup with personal consultation and trial.", href: "/bridal-makeup-prayagraj" },
       { name: "Pre-Bridal Package", desc: "A planned pre-wedding beauty regimen with the package sheet confirmed before scheduling.", href: servicePath("pre-bridal-package-prayagraj") },
     ],
   },

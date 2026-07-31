@@ -20,6 +20,10 @@ export const business = {
   telephone: "+919889594584",
   telephoneHref: "tel:+919889594584",
   whatsapp: "https://wa.me/919889594584",
+  // Standard booking message used by every "Book on WhatsApp" call-to-action.
+  bookingLink: `https://wa.me/919889594584?text=${encodeURIComponent(
+    "Hello Mahalaxmi Beauty Parlour, I would like to book an appointment.\nName:\nService:\nPreferred Date:\nPreferred Time:"
+  )}`,
   // OWNER-APPROVED: official brand profile chosen by the owner.
   instagram: "https://instagram.com/mahalaxmi.beauty",
   instagramHandle: "@mahalaxmi.beauty",

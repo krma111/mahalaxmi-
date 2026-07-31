@@ -32,7 +32,7 @@ export default function AboutPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-[8px] border border-line bg-cream/60 p-6">
               <h2 className="text-lg font-semibold text-foreground">Our Mission</h2>
-              <p className="mt-3 text-sm leading-6 text-muted">To provide high-quality, affordable beauty services in a clean and friendly environment. Every client receives personalized attention and professional care.</p>
+              <p className="mt-3 text-sm leading-6 text-muted">To provide professional beauty services in a clean and friendly environment. Every client receives personal attention and a price confirmed before booking.</p>
             </div>
             <div className="rounded-[8px] border border-line bg-cream/60 p-6">
               <h2 className="text-lg font-semibold text-foreground">Our Values</h2>

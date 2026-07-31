@@ -23,7 +23,7 @@ const FAQS = [
   { q: "How much does bridal makeup cost?", a: "Bridal makeup packages vary based on requirements. Please contact us on WhatsApp for detailed pricing and package options." },
   { q: "Can I book a trial session before the wedding?", a: "Yes, trial sessions can be scheduled through WhatsApp. We recommend booking at least 2 weeks before your wedding date." },
   { q: "Do you provide engagement makeup?", a: "Yes, we offer soft and polished engagement makeup customized to match your outfit and preferences." },
-  { q: "What is included in pre-bridal packages?", a: "Pre-bridal packages include skincare, facial, threading, waxing and hair care sessions leading up to the wedding day." },
+  { q: "What is included in pre-bridal packages?", a: "Pre-bridal packages include a planned series of beauty sessions before the wedding. Request the current package sheet for the exact inclusions." },
 ];
 
 const FAQ_SCHEMA = {
