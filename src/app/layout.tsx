@@ -143,7 +143,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <JsonLd data={coreGraph()} />
       </head>
       <body className={`${manrope.variable} ${cormorant.variable} min-h-screen flex flex-col`}>

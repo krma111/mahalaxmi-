@@ -6,14 +6,14 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { business } from "@/content/business";
 import type { SceneProgressRef, SceneQuality } from "./LipstickScene";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const WHATSAPP_LINK =
   "https://wa.me/919889594584?text=Hello%20Mahalaxmi%20Beauty%20Parlour%2C%20I%20would%20like%20to%20book%20an%20appointment.%0AName%3A%0AService%3A%0APreferred%20Date%3A%0APreferred%20Time%3A";
-const GOOGLE_REVIEWS_LINK =
-  "https://www.google.com/maps/search/?api=1&query=Mahalaxmi%20Beauty%20Parlour%20109%2F4%20Colonelganj%20Prayagraj";
+const GOOGLE_REVIEWS_LINK = business.mapsLink;
 
 const LipstickScene = dynamic(() => import("./LipstickScene"), {
   ssr: false,

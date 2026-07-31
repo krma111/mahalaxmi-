@@ -35,13 +35,14 @@ export default function GalleryPage() {
       <section className="pb-16 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {GALLERY_ITEMS.map((item) => (
+            {GALLERY_ITEMS.map((item, index) => (
               <article key={item.title} className="group overflow-hidden rounded-[8px] border border-line bg-white shadow-sm transition hover:shadow-md">
                 <div className="relative aspect-[4/5] overflow-hidden bg-cream">
                   <Image
                     src={item.image}
                     alt={item.title + " at Mahalaxmi Beauty Parlour Prayagraj"}
                     fill
+                    priority={index === 0}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-105"
                   />
