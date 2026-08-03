@@ -1,39 +1,11 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { areas, areaPath, getArea } from "@/content/areas";
+import type { Area } from "@/content/areas";
+import { areaPath } from "@/content/areas";
 import { business } from "@/content/business";
 import { publishedServices, servicePath, whatsappForService } from "@/content/services";
 
-type Props = {
-  params: Promise<{ slug: string }>;
-};
-
-export function generateStaticParams() {
-  return areas.map((area) => ({ slug: area.slug }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const area = getArea(slug);
-  if (!area) return {};
-  return {
-    title: area.metaTitle,
-    description: area.metaDescription,
-    alternates: { canonical: areaPath(slug) },
-    openGraph: {
-      title: area.metaTitle,
-      description: area.metaDescription,
-    },
-  };
-}
-
-export default async function AreaPage({ params }: Props) {
-  const { slug } = await params;
-  const area = getArea(slug);
-  if (!area) notFound();
-
+export function AreaPage({ area }: { area: Area }) {
   const whatsappLink = whatsappForService("");
 
   const faqSchema = {
@@ -49,7 +21,7 @@ export default async function AreaPage({ params }: Props) {
   return (
     <>
       <JsonLd data={faqSchema} />
-      <Breadcrumbs items={[{ name: "Areas We Serve", href: "/beauty-parlour-prayagraj" }, { name: area.name, href: areaPath(slug) }]} />
+      <Breadcrumbs items={[{ name: "Areas We Serve", href: "/beauty-parlour-prayagraj" }, { name: area.name, href: areaPath(area.slug) }]} />
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Beauty Parlour · Prayagraj</p>
