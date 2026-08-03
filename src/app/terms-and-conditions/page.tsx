@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -10,7 +11,7 @@ function TermsBreadcrumb() {
   return (
     <nav aria-label="Breadcrumb" className="mx-auto max-w-3xl px-4 pt-8 sm:px-6">
       <ol className="flex items-center gap-2 text-sm text-muted">
-        <li><a href="/" className="transition hover:text-deep-red">Home</a></li>
+        <li><Link href="/" className="transition hover:text-deep-red">Home</Link></li>
         <li aria-hidden="true">/</li>
         <li className="text-foreground font-medium" aria-current="page">Terms & Conditions</li>
       </ol>

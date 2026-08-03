@@ -16,6 +16,10 @@
   --header-height: 64px;
 }
 
+.font-hindi {
+  font-family: var(--font-noto-devanagari), var(--font-manrope), system-ui, sans-serif;
+}
+
 * {
   box-sizing: border-box;
 }

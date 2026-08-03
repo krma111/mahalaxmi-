@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Manrope, Noto_Sans_Devanagari } from "next/font/google";
 import Header from "@/components/Header";
+import { LanguageSetter } from "@/components/LanguageSetter";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { areas, areaPath } from "@/content/areas";
 import { business } from "@/content/business";
 import { coreGraph } from "@/lib/seo/schema";
 import { ORIGIN, siteUrl } from "@/lib/seo/urls";
@@ -19,6 +21,13 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
   variable: "--font-cormorant",
   weight: ["500", "600", "700"],
+});
+
+const notoDevanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  display: "swap",
+  variable: "--font-noto-devanagari",
+  weight: ["400", "500", "600", "700"],
 });
 
 const WHATSAPP_LINK = `${business.whatsapp}?text=${encodeURIComponent(
@@ -99,6 +108,10 @@ function Footer() {
           <p className="text-lg font-semibold text-foreground">{business.name}</p>
           <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-deep-red">Ladies Beauty Salon</p>
           <p className="mt-4 max-w-sm text-sm leading-6 text-muted">Professional Beauty Care for Every Occasion.</p>
+          <div className="mt-6 space-y-2 text-sm text-muted">
+            <p>{business.address.displayLine}</p>
+            <a href={business.telephoneHref} className="block transition hover:text-deep-red">{business.telephone}</a>
+          </div>
         </div>
         <nav className="lg:col-span-2" aria-label="Footer">
           <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground">Quick Links</h2>
@@ -106,20 +119,26 @@ function Footer() {
             {NAV_LINKS.map((l) => (
               <Link key={l.href} href={l.href} className="w-fit text-muted transition hover:text-deep-red">{l.label}</Link>
             ))}
+            <Link href="/blog" className="w-fit text-muted transition hover:text-deep-red">Blog</Link>
           </div>
         </nav>
-        <div className="md:col-span-2 lg:col-span-3">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground">Contact Details</h2>
-          <div className="mt-4 space-y-3 text-sm text-muted">
-            <p>{business.address.displayLine}</p>
-            <a href={business.telephoneHref} className="block transition hover:text-deep-red">{business.telephone}</a>
+        <nav className="md:col-span-2 lg:col-span-3" aria-label="Areas served">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground">Areas We Serve</h2>
+          <div className="mt-4 grid gap-2 text-sm">
+            {areas.map((a) => (
+              <Link key={a.slug} href={areaPath(a.slug)} className="w-fit text-muted transition hover:text-deep-red">Beauty Parlour near {a.name}</Link>
+            ))}
           </div>
-        </div>
+        </nav>
         <div className="lg:col-span-3">
           <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground">Working Hours</h2>
           <div className="mt-4 rounded-[8px] border border-line bg-cream/60 p-4 text-sm">
             <p className="font-semibold text-deep-red">{business.hours.label}</p>
             <p className="mt-2 text-lg font-semibold text-foreground">{business.hours.time}</p>
+          </div>
+          <div className="mt-4 flex gap-2">
+            <Link href="/hi" className="rounded-[8px] border border-line bg-white px-3 py-2 text-sm font-semibold text-foreground transition hover:text-deep-red">हिंदी में पढ़ें</Link>
+            <Link href="/beauty-parlour-prayagraj" className="rounded-[8px] border border-line bg-white px-3 py-2 text-sm font-semibold text-foreground transition hover:text-deep-red">Prayagraj</Link>
           </div>
         </div>
       </div>
@@ -145,7 +164,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <JsonLd data={coreGraph()} />
       </head>
-      <body className={`${manrope.variable} ${cormorant.variable} min-h-screen flex flex-col`}>
+      <body className={`${manrope.variable} ${cormorant.variable} ${notoDevanagari.variable} min-h-screen flex flex-col`}>
+        <LanguageSetter />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

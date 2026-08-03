@@ -1,4 +1,5 @@
 import { business } from "@/content/business";
+import { publishedServices, serviceUrl } from "@/content/services";
 import { ORIGIN, siteUrl } from "@/lib/seo/urls";
 
 export const entityIds = {
@@ -41,6 +42,16 @@ export function coreGraph() {
         telephone: business.telephone,
         priceRange: "$$",
         address: { "@id": entityIds.postalAddress },
+        areaServed: [
+          "Prayagraj",
+          "Colonelganj",
+          "Civil Lines",
+          "Georgetown",
+          "Katra",
+          "Allahpur",
+          "Mumfordganj",
+          "Dhoomanganj",
+        ],
         openingHoursSpecification: [
           {
             "@type": "OpeningHoursSpecification",
@@ -49,6 +60,18 @@ export function coreGraph() {
             closes: business.hours.closes,
           },
         ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Ladies beauty services in Prayagraj",
+          itemListElement: publishedServices().map((s) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: s.name,
+              url: serviceUrl(s.slug),
+            },
+          })),
+        },
         sameAs: [business.instagram],
       },
       {

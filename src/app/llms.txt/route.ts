@@ -1,3 +1,5 @@
+import { articles, articlePath } from "@/content/articles";
+import { areas, areaPath } from "@/content/areas";
 import { business } from "@/content/business";
 import { publishedServices, servicePath } from "@/content/services";
 import { siteUrl } from "@/lib/seo/urls";
@@ -13,6 +15,14 @@ export function GET() {
     link(s.name, servicePath(s.slug), s.answerBlock.split(" ").slice(0, 24).join(" "))
   );
 
+  const areaLines = areas.map((a) =>
+    link(`Beauty Parlour near ${a.name}, Prayagraj`, areaPath(a.slug), a.answerBlock.split(" ").slice(0, 24).join(" "))
+  );
+
+  const articleLines = articles.map((a) =>
+    link(a.title, articlePath(a.slug), a.excerpt)
+  );
+
   const lines = [
     `# ${business.name}`,
     "",
@@ -23,6 +33,8 @@ export function GET() {
     "## Business",
     link("Home", "/", "Ladies beauty salon in Prayagraj. Hair, makeup and bridal services."),
     link("Salon at Colonelganj, Prayagraj", "/salon-colonelganj-prayagraj", `${business.name} at ${business.address.displayLine}. Open ${business.hours.time} ${business.hours.label}.`),
+    link("Beauty Parlour in Prayagraj", "/beauty-parlour-prayagraj", "Overview of the parlour, services and areas served across Prayagraj."),
+    link("हिंदी में पढ़ें", "/hi", "प्रयागराज में ब्यूटी पार्लर — महिलाओं के लिए सैलून सेवाएँ और बुकिंग जानकारी हिंदी में."),
     link("Services", "/services", "Overview of all services with detail pages."),
     link("Bridal Makeup in Prayagraj", "/bridal-makeup-prayagraj", "Bridal makeup, engagement makeup and pre-bridal packages with consultation."),
     link("Beauty Classes in Prayagraj", "/beauty-classes-prayagraj", "Basic beauty parlour course, makeup learning and self-grooming classes."),
@@ -33,6 +45,13 @@ export function GET() {
     "",
     "## Services",
     ...serviceLines,
+    "",
+    "## Areas served in Prayagraj",
+    ...areaLines,
+    "",
+    "## Beauty guides",
+    link("All guides", "/blog", "Practical beauty guides for customers in Prayagraj."),
+    ...articleLines,
     "",
     "## Booking and contact",
     `WhatsApp: ${business.whatsapp}`,

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { areas, areaPath } from "@/content/areas";
 import { business } from "@/content/business";
 import { servicePath } from "@/content/services";
 
@@ -123,6 +124,27 @@ export default function Home() {
             <p className="mt-5 max-w-4xl text-base leading-7 text-muted">
               Mahalaxmi Beauty Parlour is a ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. Located in Colonelganj, the parlour focuses on friendly service, clean beauty care and easy appointment booking through WhatsApp.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Areas served */}
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Areas We Serve</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Beauty parlour near you in Prayagraj</h2>
+            <p className="mt-4 text-base leading-7 text-muted">
+              The salon is at Colonelganj, and customers visit from across Prayagraj. Find your area for booking details.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link href="/beauty-parlour-prayagraj" className="rounded-[8px] bg-deep-red px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#741722]">All of Prayagraj</Link>
+            {areas.map((a) => (
+              <Link key={a.slug} href={areaPath(a.slug)} className="rounded-[8px] border border-line bg-white px-4 py-3 text-sm font-semibold text-foreground transition hover:border-deep-red hover:text-deep-red">
+                {a.name}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
