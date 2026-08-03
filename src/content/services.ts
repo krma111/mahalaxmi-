@@ -485,6 +485,92 @@ export const services: Service[] = [
     lastReviewed: "2026-07-30",
   },
   {
+    slug: "manicure-pedicure-prayagraj",
+    name: "Manicure & Pedicure",
+    category: "Hands & Feet",
+    status: "published",
+    metaTitle: "Manicure and Pedicure in Prayagraj",
+    metaDescription:
+      "Manicure and pedicure services at Mahalaxmi Beauty Parlour in Prayagraj. Soak, cuticle care, massage and polish. Confirm option, duration and current price before booking.",
+    h1: "Manicure and Pedicure in Prayagraj",
+    serviceType: "Nail and hand-foot care service",
+    answerBlock:
+      "Mahalaxmi Beauty Parlour accepts enquiries for manicure and pedicure services at its Colonelganj, Prayagraj salon. The suitable option, duration and current price should be confirmed during consultation before booking.",
+    whoFor: [
+      "Women seeking regular hand and foot care",
+      "Brides and occasion guests preparing for events",
+      "Customers who want clean, polished nails for a finished look",
+    ],
+    process: [
+      { title: "Consultation", text: "Confirm the chosen option, what it includes and the current price." },
+      { title: "Soak and clean", text: "Hands or feet are soaked and cleaned gently before care begins." },
+      { title: "Cuticle and shaping", text: "Nails are shaped and cuticles are cared for with clean, sanitised tools." },
+      { title: "Massage and polish", text: "A relaxing massage and polish finish complete the service." },
+    ],
+    priceBasis: "Price depends on the chosen option and polish type. Confirm the current price and inclusions before service.",
+    preparation: [
+      "Remove old polish before the appointment if possible",
+      "Mention known sensitivities or allergies",
+      "Confirm whether gel or regular polish is preferred",
+    ],
+    aftercare: [
+      "Moisturise hands and feet regularly",
+      "Avoid soaking nails for long periods right after",
+      "Book touch-ups based on the polish type used",
+    ],
+    faqs: [
+      { q: "What is included in manicure and pedicure?", a: "Inclusions depend on the chosen option. Confirm exactly what is included before booking." },
+      { q: "How long does the service take?", a: "Duration depends on the option. Confirm when booking." },
+      { q: "Is gel polish available?", a: "Gel polish availability should be confirmed during consultation." },
+      { q: "How are tools cleaned?", a: "Tools are cleaned and sanitised between services. Ask about hygiene practices if you have concerns." },
+    ],
+    related: ["nail-services-prayagraj", "facial-prayagraj", "threading-prayagraj"],
+    lastReviewed: "2026-08-03",
+  },
+  {
+    slug: "nail-services-prayagraj",
+    name: "Nail Art & Nail Care",
+    category: "Nail Services",
+    status: "published",
+    metaTitle: "Nail Art and Nail Care in Prayagraj",
+    metaDescription:
+      "Nail art and nail care enquiries at Mahalaxmi Beauty Parlour in Prayagraj. Designs, polish options, duration and current price confirmed during consultation.",
+    h1: "Nail Art and Nail Care in Prayagraj",
+    serviceType: "Nail art and polish service",
+    answerBlock:
+      "Mahalaxmi Beauty Parlour accepts enquiries for nail art and nail care at its Colonelganj, Prayagraj salon. Designs, polish options, duration and current price should be confirmed during consultation before booking.",
+    whoFor: [
+      "Women preparing for parties, engagements and weddings",
+      "Customers who want a polished look with nail art designs",
+      "Brides coordinating nails with bridal makeup and styling",
+    ],
+    process: [
+      { title: "Design consultation", text: "Share occasion, outfit and reference photos for the nail design." },
+      { title: "Nail preparation", text: "Nails are cleaned, shaped and prepared before application." },
+      { title: "Application", text: "Colour, art or extensions are applied according to the agreed design." },
+      { title: "Finish", text: "A protective top coat and drying guidance complete the service." },
+    ],
+    priceBasis: "Price depends on the design, polish type and any extensions. Confirm the current price before service.",
+    preparation: [
+      "Share reference photos of the design you like",
+      "Remove old polish or confirm removal is included",
+      "Mention sensitivities to polish or nail products",
+    ],
+    aftercare: [
+      "Avoid harsh chemicals and long soaking",
+      "Use cuticle oil to keep nails healthy",
+      "Book removal professionally when the time comes",
+    ],
+    faqs: [
+      { q: "Which nail designs are available?", a: "The salon confirms the available designs during consultation. Share reference photos of what you want." },
+      { q: "How long does nail art last?", a: "Longevity depends on the polish type and daily use. Confirm during consultation." },
+      { q: "Are gel and extensions available?", a: "Availability should be confirmed during consultation before booking." },
+      { q: "How is removal handled?", a: "Removal is best done professionally. Confirm the removal process and price when booking." },
+    ],
+    related: ["manicure-pedicure-prayagraj", "party-makeup-prayagraj", "pre-bridal-package-prayagraj"],
+    lastReviewed: "2026-08-03",
+  },
+  {
     // Launch blocker per blueprint: page must not publish until the exact
     // non-medical scope of "skin rejuvenation" is owner-approved.
     slug: "skin-rejuvenation-prayagraj",

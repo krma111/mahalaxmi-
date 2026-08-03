@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Cormorant_Garamond, Manrope, Noto_Sans_Devanagari } from "next/font/google";
+import { AnnouncementBar } from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import { LanguageSetter } from "@/components/LanguageSetter";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -166,6 +167,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${manrope.variable} ${cormorant.variable} ${notoDevanagari.variable} min-h-screen flex flex-col`}>
         <LanguageSetter />
+        <AnnouncementBar />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

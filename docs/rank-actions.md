@@ -48,6 +48,35 @@ verify. Nothing below is fabricated — every item waits for real, verified data
   today's date for `datePublished`, add to blog hub automatically via `/blog`).
 - Update `lastReviewed` on changed services; bump sitemap dates.
 
+### 7. Collect real customer questions (content source)
+- Once a week, note the questions customers actually ask on WhatsApp, phone or
+  at the salon (e.g. "what do I need to bring?", "can you do last-minute?").
+- Each verified question becomes an FAQ entry on the relevant service page or a
+  new blog article. This keeps the site answering what real customers ask —
+  never invent questions.
+
+## Off-site explained in plain words
+
+"Off-site" = everything Google uses about the business that is NOT on this
+website. The site cannot do these things — only the owner can:
+
+1. **Google Business Profile (GBP)** — the free Google listing with address,
+   hours, phone and photos. It is the #1 thing Google reads for "beauty parlour
+   near me". Steps: claim it at business.google.com, fill every field, upload
+   photos, post updates, reply to reviews.
+2. **Google reviews** — reviews written on that listing. More genuine reviews =
+   higher local ranking. Send the review link after every happy customer.
+3. **Citations / directories** — the same Name, Address, Phone listed on other
+   sites (Justdial, Sulekha, Bing Places, maps apps). Matching NAP everywhere
+   builds trust.
+4. **Search Console** — a free Google tool to submit the sitemap and see how
+   Google views the site. Go to search.google.com/search-console, add the
+   domain `mahalaxmi.beauty`, and submit `https://mahalaxmi.beauty/sitemap.xml`.
+
+None of these require code — they are owner logins and listings. The site's job
+is to be ready (it now is: schema, sitemap, pages), Google's job is to rank
+based on these signals.
+
 ## Verify after this batch
 
 ```powershell

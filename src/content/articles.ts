@@ -283,6 +283,251 @@ export const articles: Article[] = [
       },
     ],
   },
+  {
+    slug: "how-to-book-beauty-appointment-on-whatsapp-prayagraj",
+    title: "How to Book a Beauty Appointment on WhatsApp in Prayagraj",
+    metaTitle: "How to Book a Beauty Appointment on WhatsApp in Prayagraj | Mahalaxmi Blog",
+    metaDescription:
+      "Book a beauty appointment on WhatsApp in Prayagraj: what to write in your message, what happens after, and tips for smooth booking at Mahalaxmi Beauty Parlour.",
+    excerpt:
+      "A simple guide to booking beauty appointments on WhatsApp in Prayagraj — what to write and what happens next.",
+    datePublished: "2026-08-03",
+    readingMinutes: 3,
+    sections: [
+      {
+        heading: "Why WhatsApp booking works well",
+        paragraphs: [
+          "For most parlours in Prayagraj, WhatsApp is the fastest way to book. You get a written confirmation you can check later, the parlour can ask clarifying questions, and you have a record of the agreed price and time.",
+        ],
+      },
+      {
+        heading: "What to write in your message",
+        paragraphs: [
+          "A complete booking message takes under a minute and saves a round of questions. Send:",
+        ],
+        list: [
+          "Your name",
+          "The service you need (for example: hair cut, party makeup, manicure)",
+          "Your preferred date",
+          "Your preferred time or ready-by time",
+          "Anything important — allergies, reference photos, event details",
+        ],
+      },
+      {
+        heading: "What happens after you send it",
+        paragraphs: [
+          "The parlour confirms availability, the exact service details and the current price before your visit. If something is unclear, they will ask. Do not assume the booking is confirmed until you receive a confirmation reply.",
+        ],
+      },
+      {
+        heading: "Tips for smooth booking",
+        paragraphs: [
+          "Book as early as possible in wedding season. Send reference photos for makeup, hair or nail designs. For bridal services, share your event date and ready-by time clearly. And if plans change, message early so your slot can be adjusted.",
+        ],
+      },
+    ],
+    related: ["hair-cut-prayagraj", "party-makeup-prayagraj", "bridal-makeup-prayagraj"],
+    faqs: [
+      {
+        q: "What number do I message on WhatsApp?",
+        a: "Mahalaxmi Beauty Parlour books on WhatsApp at +91 98895 94584. Use the Book on WhatsApp buttons on the site to open a pre-filled message.",
+      },
+      {
+        q: "Is a booking confirmed before I visit?",
+        a: "Yes. Availability, service details and the current price are confirmed on WhatsApp before your visit.",
+      },
+    ],
+  },
+  {
+    slug: "manicure-vs-pedicure-what-to-expect",
+    title: "Manicure vs Pedicure: What to Expect From Each",
+    metaTitle: "Manicure vs Pedicure: What to Expect | Mahalaxmi Blog",
+    metaDescription:
+      "Understand manicure and pedicure services: what each includes, how they differ, and what to confirm during consultation before booking.",
+    excerpt:
+      "What a manicure and a pedicure each involve, how they differ, and what to confirm before booking.",
+    datePublished: "2026-08-03",
+    readingMinutes: 3,
+    sections: [
+      {
+        heading: "What each service involves",
+        paragraphs: [
+          "A manicure focuses on the hands — soaking, cleaning, nail shaping, cuticle care, massage and polish. A pedicure does the same for the feet, with extra attention to the heels and soles where skin tends to harden.",
+          "The exact steps and products depend on the parlour's options, so confirm what your chosen option includes before booking.",
+        ],
+      },
+      {
+        heading: "Which one do you need?",
+        paragraphs: [
+          "If you are preparing for an occasion, many customers book both so hands and feet match. For regular maintenance, a manicure alone often suffices. Pedicures are especially useful if you spend long hours on your feet or wear open footwear often.",
+        ],
+      },
+      {
+        heading: "What to confirm before booking",
+        paragraphs: [
+          "Confirm what is included, whether gel or regular polish is used, how long it takes, the current price, and the salon's tool-cleaning practices. Mention any sensitivities or infections before the service.",
+        ],
+      },
+    ],
+    related: ["manicure-pedicure-prayagraj", "nail-services-prayagraj", "facial-prayagraj"],
+    faqs: [
+      {
+        q: "How long does a manicure or pedicure take?",
+        a: "Duration depends on the chosen option and whether gel polish is used. Confirm when booking.",
+      },
+      {
+        q: "Should I remove old polish before my appointment?",
+        a: "Removing old polish before the visit helps, but confirm whether removal is included in the service.",
+      },
+    ],
+  },
+  {
+    slug: "party-makeup-vs-bridal-makeup-difference",
+    title: "Party Makeup vs Bridal Makeup: What's the Difference?",
+    metaTitle: "Party Makeup vs Bridal Makeup | Mahalaxmi Blog",
+    metaDescription:
+      "Understand how party makeup differs from bridal makeup — planning, timing, trials and inclusions — before booking in Prayagraj.",
+    excerpt:
+      "How party makeup differs from bridal makeup: planning, timing, trials and what to confirm before booking.",
+    datePublished: "2026-08-03",
+    readingMinutes: 3,
+    sections: [
+      {
+        heading: "The practical differences",
+        paragraphs: [
+          "Party makeup is booked for a single event — a party, reception or function — and is planned around one evening. Bridal makeup is booked weeks ahead, involves a trial, longer application time and a coordination plan with hair styling, draping and the wedding timeline.",
+          "The look, products and staying power are usually different too: bridal makeup is designed to last through a long day, while party makeup can be matched closely to one outfit and setting.",
+        ],
+      },
+      {
+        heading: "What to confirm for each",
+        paragraphs: [
+          "For party makeup, confirm the event date, ready-by time, look, inclusions and price. For bridal makeup, additionally ask about the trial, travel, touch-up kit, accessories and what happens if the plan changes.",
+        ],
+      },
+      {
+        heading: "Booking timelines differ",
+        paragraphs: [
+          "Party makeup can often be booked days ahead, though wedding season fills dates early. Bridal makeup should be booked as early as possible — a few weeks to months ahead — so the date, trial and coordination plan are all settled unhurriedly.",
+        ],
+      },
+    ],
+    related: ["party-makeup-prayagraj", "bridal-makeup-prayagraj", "engagement-makeup-prayagraj"],
+    faqs: [
+      {
+        q: "Do I need a trial for party makeup?",
+        a: "Trials are generally not required for party makeup but can be discussed for high-consideration events. Bridal makeup usually includes or offers a trial.",
+      },
+      {
+        q: "Can party makeup be done on short notice?",
+        a: "Often yes, but availability depends on the season. Message on WhatsApp with your date to confirm.",
+      },
+    ],
+  },
+  {
+    slug: "wedding-season-beauty-checklist-for-families",
+    title: "Wedding Season Beauty Checklist for the Whole Family",
+    metaTitle: "Wedding Season Beauty Checklist | Mahalaxmi Blog",
+    metaDescription:
+      "A practical beauty checklist for families during wedding season in Prayagraj: booking early, coordinating appointments and avoiding last-week changes.",
+    excerpt:
+      "A practical checklist for families in wedding season: book early, coordinate appointments and keep the last week simple.",
+    datePublished: "2026-08-03",
+    readingMinutes: 4,
+    sections: [
+      {
+        heading: "Book the dates first",
+        paragraphs: [
+          "Wedding season in Prayagraj fills calendars fast. As soon as dates are fixed, message the parlour on WhatsApp with the events and ready-by times so every member's slot can be reserved early.",
+        ],
+      },
+      {
+        heading: "Coordinate the family's services",
+        paragraphs: [
+          "A typical family wedding needs several appointments: bridal makeup and hair for the bride, engagement and party makeup for close family, facials or cleanups in the weeks before, and threading or waxing in the final days. List every person's needs and preferred times, and confirm them together.",
+        ],
+      },
+      {
+        heading: "Plan the weeks, not just the day",
+        paragraphs: [
+          "Facials and cleanups are best spaced over the weeks before the event rather than packed into the last days. Major hair services should be completed with enough time to settle. In the final week, keep it simple — no new products or unfamiliar services.",
+        ],
+      },
+      {
+        heading: "Keep the final day simple",
+        paragraphs: [
+          "On the wedding day, trust the plan made at the trial and booking. Confirm the touch-up kit, travel time and photography schedule with the parlour a few days ahead so everyone knows the timing.",
+        ],
+      },
+    ],
+    related: ["pre-bridal-package-prayagraj", "bridal-makeup-prayagraj", "waxing-prayagraj", "threading-prayagraj"],
+    faqs: [
+      {
+        q: "How early should the family book during wedding season?",
+        a: "As soon as event dates are fixed. Wedding season fills dates early, so early booking secures the times you need.",
+      },
+      {
+        q: "What should be avoided in the last week?",
+        a: "Avoid new products, new facials and new chemical services in the final week so skin and hair stay stable for the event.",
+      },
+    ],
+  },
+  {
+    slug: "nail-art-ideas-and-aftercare",
+    title: "Nail Art Ideas and How to Care for Them",
+    metaTitle: "Nail Art Ideas and Aftercare | Mahalaxmi Blog",
+    metaDescription:
+      "Nail art ideas for events in Prayagraj and simple aftercare rules to make them last. What to confirm before booking nail services.",
+    excerpt:
+      "Nail art ideas for events and simple aftercare rules that make them last longer.",
+    datePublished: "2026-08-03",
+    readingMinutes: 3,
+    sections: [
+      {
+        heading: "Choosing a design for your event",
+        paragraphs: [
+          "The right nail design depends on your outfit and occasion. For bridal looks, soft, elegant designs work best with heavy jewellery. For parties, bolder colours and accents stand out. For daily wear, simple colour with a neat finish is easiest to maintain.",
+          "Share reference photos with the parlour on WhatsApp so the design is agreed before your visit.",
+        ],
+      },
+      {
+        heading: "Ideas to discuss with your artist",
+        paragraphs: [
+          "Popular directions to talk about:",
+        ],
+        list: [
+          "Solid colour with a glossy top coat — classic and low maintenance",
+          "French-tip or soft ombre for bridal and engagement looks",
+          "Accent nails — one or two decorated nails on each hand",
+          "Minimal line art or dots for a modern look",
+          "Matching the polish to your outfit or makeup palette",
+        ],
+      },
+      {
+        heading: "Aftercare that makes nail art last",
+        paragraphs: [
+          "Nail art lasts longer with a little care: wear gloves for cleaning, avoid soaking nails, use cuticle oil daily, and do not peel polish off. Book removal professionally rather than picking it off at home.",
+        ],
+      },
+      {
+        heading: "What to confirm before booking",
+        paragraphs: [
+          "Confirm the design and polish type (regular or gel), the current price, how long it takes, and how removal is handled. Mention any sensitivity to nail products.",
+        ],
+      },
+    ],
+    related: ["nail-services-prayagraj", "manicure-pedicure-prayagraj", "party-makeup-prayagraj"],
+    faqs: [
+      {
+        q: "How long does nail art last?",
+        a: "Longevity depends on the polish type and daily use. Confirm during consultation — gel usually lasts longer than regular polish.",
+      },
+      {
+        q: "Can I send a design photo before booking?",
+        a: "Yes. Share reference photos on WhatsApp so the design and feasibility can be confirmed before your visit.",
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug: string): Article | undefined {
