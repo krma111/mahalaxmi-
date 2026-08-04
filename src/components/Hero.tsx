@@ -2,14 +2,9 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import { business } from "@/content/business";
 import type { SceneProgressRef, SceneQuality } from "./LipstickScene";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const WHATSAPP_LINK = business.bookingLink;
 const GOOGLE_REVIEWS_LINK = business.mapsLink;
@@ -53,10 +48,16 @@ export default function Hero() {
   const stageRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef(0) as SceneProgressRef;
   const [quality, setQuality] = useState<SceneQuality>("desktop");
-  const [sceneActive, setSceneActive] = useState(true);
-  const prefersReducedMotion = useReducedMotion();
-  const reducedMotion = Boolean(prefersReducedMotion);
-  const isMobile = quality === "mobile";
+  const [sceneActive, setSceneActive] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateReduced = () => setReducedMotion(reducedQuery.matches);
+    updateReduced();
+    reducedQuery.addEventListener("change", updateReduced);
+    return () => reducedQuery.removeEventListener("change", updateReduced);
+  }, []);
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 767px)");
@@ -78,96 +79,40 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const section = sectionRef.current;
-    const stage = stageRef.current;
-    if (!section || !stage) return;
+    if (!section) return;
 
-    const revealElements = stage.querySelectorAll<HTMLElement>("[data-hero-reveal]");
-    const headlineLines = stage.querySelectorAll<HTMLElement>("[data-hero-line]");
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const headerOffset = 64;
+      const rect = section.getBoundingClientRect();
+      const travel = rect.height + headerOffset;
+      const raw = (headerOffset - rect.top) / travel;
+      const progress = Math.min(1, Math.max(0, raw));
+      progressRef.current = progress;
+      section.style.setProperty("--hero-progress", progress.toFixed(4));
+    };
+    const onViewportChange = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
 
     if (reducedMotion) {
       progressRef.current = 1;
       section.style.setProperty("--hero-progress", "1");
-      gsap.set(revealElements, {
-        autoAlpha: 1,
-        y: 0,
-        scale: 1,
-        rotateX: 0,
-        filter: "blur(0px)",
-      });
-      return;
+    } else {
+      update();
     }
 
-    progressRef.current = 0;
-    section.style.setProperty("--hero-progress", "0");
-
-    const context = gsap.context(() => {
-      const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-      intro.fromTo(
-        "[data-hero-eyebrow]",
-        { autoAlpha: 0, y: 14, filter: "blur(8px)" },
-        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.4 },
-        0,
-      );
-      intro.fromTo(
-        headlineLines,
-        { autoAlpha: 0, y: 76, scale: 0.985, rotateX: 8, filter: "blur(13px)" },
-        {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          rotateX: 0,
-          filter: "blur(0px)",
-          duration: 0.72,
-          stagger: 0.1,
-        },
-        0.08,
-      );
-      intro.fromTo(
-        "[data-hero-copy]",
-        { autoAlpha: 0, y: 26, filter: "blur(6px)" },
-        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.48 },
-        0.68,
-      );
-      intro.fromTo(
-        "[data-hero-actions] > *",
-        { autoAlpha: 0, y: 20 },
-        { autoAlpha: 1, y: 0, duration: 0.42, stagger: 0.08 },
-        0.88,
-      );
-      intro.fromTo(
-        "[data-hero-trust] > *",
-        { autoAlpha: 0, y: 14 },
-        { autoAlpha: 1, y: 0, duration: 0.34, stagger: 0.055 },
-        1.05,
-      );
-
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top+=64",
-        end: "+=160%",
-        pin: stage,
-        pinSpacing: true,
-        scrub: 1.1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: ({ progress }) => {
-          progressRef.current = progress;
-          section.style.setProperty("--hero-progress", progress.toFixed(4));
-        },
-      });
-    }, section);
-
+    window.addEventListener("scroll", onViewportChange, { passive: true });
+    window.addEventListener("resize", onViewportChange, { passive: true });
     return () => {
-      context.revert();
-      progressRef.current = 0;
+      window.removeEventListener("scroll", onViewportChange);
+      window.removeEventListener("resize", onViewportChange);
+      if (raf) cancelAnimationFrame(raf);
     };
-  }, [isMobile, reducedMotion]);
-
-  const hoverMotion = reducedMotion ? undefined : { y: -3 };
-  const tapMotion = reducedMotion ? undefined : { scale: 0.98 };
+  }, [reducedMotion]);
 
   return (
     <section
@@ -216,30 +161,24 @@ export default function Hero() {
             </p>
 
             <div className="hero-actions" data-hero-actions>
-              <motion.a
+              <a
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-primary-action"
-                whileHover={hoverMotion}
-                whileTap={tapMotion}
               >
                 <span className="hero-action-shimmer" aria-hidden="true" />
                 <span>Book Appointment</span>
                 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </motion.a>
+              </a>
 
-              <motion.div
-                className="hero-secondary-wrap"
-                whileHover={hoverMotion}
-                whileTap={tapMotion}
-              >
+              <div className="hero-secondary-wrap">
                 <Link href="/services" className="hero-secondary-action">
                   Explore Services
                 </Link>
-              </motion.div>
+              </div>
             </div>
 
             <div className="hero-trust-row" data-hero-trust aria-label="Salon trust indicators">
@@ -266,12 +205,16 @@ export default function Hero() {
           <div className="hero-product-column" aria-hidden="true">
             <div className="hero-product-aura" />
             <div className="hero-scene-shell">
-              <LipstickScene
-                progressRef={progressRef}
-                quality={quality}
-                reducedMotion={reducedMotion}
-                active={sceneActive}
-              />
+              {sceneActive ? (
+                <LipstickScene
+                  progressRef={progressRef}
+                  quality={quality}
+                  reducedMotion={reducedMotion}
+                  active={sceneActive}
+                />
+              ) : (
+                <LipstickFallback />
+              )}
             </div>
 
             <div className="hero-scroll-story">

@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { business } from "@/content/business";
 
@@ -15,34 +15,8 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-function BrandFlower() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="h-9 w-9 shrink-0 text-deep-red"
-      viewBox="0 0 48 48"
-      fill="none"
-    >
-      <g stroke="currentColor" strokeWidth="1.7">
-        <ellipse cx="24" cy="11.5" rx="4.2" ry="8" />
-        <ellipse cx="24" cy="36.5" rx="4.2" ry="8" />
-        <ellipse cx="11.5" cy="24" rx="8" ry="4.2" />
-        <ellipse cx="36.5" cy="24" rx="8" ry="4.2" />
-        <ellipse cx="15.2" cy="15.2" rx="4" ry="7.2" transform="rotate(-45 15.2 15.2)" />
-        <ellipse cx="32.8" cy="32.8" rx="4" ry="7.2" transform="rotate(-45 32.8 32.8)" />
-        <ellipse cx="32.8" cy="15.2" rx="7.2" ry="4" transform="rotate(-45 32.8 15.2)" />
-        <ellipse cx="15.2" cy="32.8" rx="7.2" ry="4" transform="rotate(-45 15.2 32.8)" />
-        <circle cx="24" cy="24" r="4.4" fill="currentColor" stroke="none" />
-      </g>
-    </svg>
-  );
-}
-
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const reducedMotion = useReducedMotion();
-  const hoverMotion = reducedMotion ? undefined : { y: -2 };
-  const tapMotion = reducedMotion ? undefined : { scale: 0.98 };
 
   return (
     <header className="site-header sticky top-0 z-50 border-b border-deep-red/10 bg-white/88 backdrop-blur-xl">
@@ -52,15 +26,14 @@ export default function Header() {
           className="group flex items-center gap-2.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-deep-red"
           aria-label="Mahalaxmi Beauty Parlour home"
         >
-          <BrandFlower />
-          <span className="flex flex-col leading-none">
-            <span className="font-serif text-xl font-semibold tracking-[-0.03em] text-foreground transition-colors group-hover:text-deep-red">
-              Mahalaxmi
-            </span>
-            <span className="mt-1 text-[8px] font-semibold uppercase tracking-[0.2em] text-muted">
-              Beauty Parlour
-            </span>
-          </span>
+          <Image
+            src="/images/logo.png"
+            alt=""
+            width={1536}
+            height={1024}
+            priority
+            className="h-9 w-auto shrink-0 object-contain sm:h-10"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
@@ -76,16 +49,14 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2.5">
-          <motion.a
+          <a
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden min-h-11 items-center justify-center rounded-md bg-deep-red px-5 text-xs font-semibold text-white shadow-[0_12px_30px_rgba(139,26,43,0.16)] transition-shadow hover:shadow-[0_16px_34px_rgba(139,26,43,0.24)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-deep-red sm:inline-flex"
-            whileHover={hoverMotion}
-            whileTap={tapMotion}
+            className="hidden min-h-11 items-center justify-center rounded-md bg-deep-red px-5 text-xs font-semibold text-white shadow-[0_12px_30px_rgba(139,26,43,0.16)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(139,26,43,0.24)] active:translate-y-0 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-deep-red sm:inline-flex"
           >
             Book Appointment
-          </motion.a>
+          </a>
 
           <button
             type="button"
@@ -111,40 +82,34 @@ export default function Header() {
         </div>
       </div>
 
-      <AnimatePresence initial={false}>
-        {open ? (
-          <motion.nav
-            id="mobile-navigation"
-            className="border-t border-deep-red/10 bg-white/96 px-6 pb-6 pt-3 shadow-xl lg:hidden"
-            aria-label="Mobile navigation"
-            initial={reducedMotion ? false : { opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="mx-auto grid max-w-[1700px]">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="border-b border-line/80 py-3 text-sm font-semibold text-foreground/75 transition-colors last:border-0 hover:text-deep-red focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-red"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex min-h-11 items-center justify-center rounded-md bg-deep-red px-5 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-deep-red sm:hidden"
+      {open ? (
+        <nav
+          id="mobile-navigation"
+          className="header-menu-open border-t border-deep-red/10 bg-white/96 px-6 pb-6 pt-3 shadow-xl lg:hidden"
+          aria-label="Mobile navigation"
+        >
+          <div className="mx-auto grid max-w-[1700px]">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-line/80 py-3 text-sm font-semibold text-foreground/75 transition-colors last:border-0 hover:text-deep-red focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-deep-red"
               >
-                Book Appointment
-              </a>
-            </div>
-          </motion.nav>
-        ) : null}
-      </AnimatePresence>
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex min-h-11 items-center justify-center rounded-md bg-deep-red px-5 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-deep-red sm:hidden"
+            >
+              Book Appointment
+            </a>
+          </div>
+        </nav>
+      ) : null}
     </header>
   );
 }

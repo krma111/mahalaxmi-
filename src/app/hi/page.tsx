@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
+import { Noto_Sans_Devanagari } from "next/font/google";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { areas, areaPath } from "@/content/areas";
 import { business } from "@/content/business";
 import { servicePath } from "@/content/services";
+
+const notoDevanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  display: "swap",
+  variable: "--font-noto-devanagari",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "प्रयागराज में ब्यूटी पार्लर | महालक्ष्मी ब्यूटी पार्लर, कर्नलगंज",
@@ -74,7 +82,7 @@ const FAQ_SCHEMA = {
 
 export default function HindiPage() {
   return (
-    <div className="font-hindi">
+    <div className={`${notoDevanagari.variable} font-hindi`}>
       <JsonLd data={FAQ_SCHEMA} />
       <Breadcrumbs items={[{ name: "हिंदी में ब्यूटी पार्लर, प्रयागराज", href: "/hi" }]} />
       <section className="py-12 sm:py-16">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Cormorant_Garamond, Manrope, Noto_Sans_Devanagari } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import { LanguageSetter } from "@/components/LanguageSetter";
@@ -22,13 +22,6 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
   variable: "--font-cormorant",
   weight: ["500", "600", "700"],
-});
-
-const notoDevanagari = Noto_Sans_Devanagari({
-  subsets: ["devanagari"],
-  display: "swap",
-  variable: "--font-noto-devanagari",
-  weight: ["400", "500", "600", "700"],
 });
 
 const WHATSAPP_LINK = `${business.whatsapp}?text=${encodeURIComponent(
@@ -165,7 +158,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <JsonLd data={coreGraph()} />
       </head>
-      <body className={`${manrope.variable} ${cormorant.variable} ${notoDevanagari.variable} min-h-screen flex flex-col`}>
+      <body className={`${manrope.variable} ${cormorant.variable} min-h-screen flex flex-col`}>
         <LanguageSetter />
         <AnnouncementBar />
         <Header />
