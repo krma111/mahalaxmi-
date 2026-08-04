@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { business } from "@/content/business";
@@ -16,9 +15,7 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-
-  return (
+  const [open, setOpen] = useState(false);  return (
     <header className="site-header sticky top-0 z-50 border-b border-deep-red/10 bg-white/88 backdrop-blur-xl">
       <div className="mx-auto flex min-h-16 w-full max-w-[1700px] items-center justify-between gap-4 px-6 md:px-[72px] xl:px-[120px]">
         <Link
@@ -26,14 +23,32 @@ export default function Header() {
           className="group flex items-center gap-2.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-deep-red"
           aria-label="Mahalaxmi Beauty Parlour home"
         >
-          <Image
-            src="/images/logo.png"
-            alt=""
-            width={1536}
-            height={1024}
-            priority
-            className="h-9 w-auto shrink-0 object-contain sm:h-10"
-          />
+          <svg
+            aria-hidden="true"
+            className="h-9 w-9 shrink-0 text-deep-red"
+            viewBox="0 0 48 48"
+            fill="none"
+          >
+            <g stroke="currentColor" strokeWidth="1.7">
+              <ellipse cx="24" cy="11.5" rx="4.2" ry="8" />
+              <ellipse cx="24" cy="36.5" rx="4.2" ry="8" />
+              <ellipse cx="11.5" cy="24" rx="8" ry="4.2" />
+              <ellipse cx="36.5" cy="24" rx="8" ry="4.2" />
+              <ellipse cx="15.2" cy="15.2" rx="4" ry="7.2" transform="rotate(-45 15.2 15.2)" />
+              <ellipse cx="32.8" cy="32.8" rx="4" ry="7.2" transform="rotate(-45 32.8 32.8)" />
+              <ellipse cx="32.8" cy="15.2" rx="7.2" ry="4" transform="rotate(-45 32.8 15.2)" />
+              <ellipse cx="15.2" cy="32.8" rx="7.2" ry="4" transform="rotate(-45 15.2 32.8)" />
+              <circle cx="24" cy="24" r="4.4" fill="currentColor" stroke="none" />
+            </g>
+          </svg>
+          <span className="flex flex-col leading-none">
+            <span className="font-serif text-xl font-semibold tracking-[-0.03em] text-foreground transition-colors group-hover:text-deep-red">
+              Mahalaxmi
+            </span>
+            <span className="mt-1 text-[8px] font-semibold uppercase tracking-[0.2em] text-muted">
+              Beauty Parlour
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
