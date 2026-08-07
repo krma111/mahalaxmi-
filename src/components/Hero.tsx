@@ -131,15 +131,6 @@ export default function Hero() {
 
         <div className="hero-campaign-grid">
           <div className="hero-copy-column">
-            <p
-              className="hero-service-badge"
-              data-hero-reveal
-              data-hero-eyebrow
-            >
-              <span aria-hidden="true" />
-              Website under service - bookings open on WhatsApp
-            </p>
-
             <p className="hero-kicker" data-hero-reveal data-hero-eyebrow>
               Ladies Beauty Salon - Prayagraj
             </p>
