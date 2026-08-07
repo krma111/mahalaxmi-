@@ -21,15 +21,15 @@ const AEO_DATA = {
 
 const SERVICES = [
   { name: "Hair Cut", category: "Hair Services", popular: true, href: servicePath("hair-cut-prayagraj") },
-  { name: "Hair Styling", category: "Hair Services", popular: true, href: servicePath("hair-styling-prayagraj") },
+  { name: "Hair Styling", category: "Hair Services", popular: false, href: servicePath("hair-styling-prayagraj") },
   { name: "Facial", category: "Skin & Facial", popular: true, href: servicePath("facial-prayagraj") },
-  { name: "Cleanup", category: "Skin & Facial", popular: true, href: servicePath("cleanup-prayagraj") },
+  { name: "Cleanup", category: "Skin & Facial", popular: false, href: servicePath("cleanup-prayagraj") },
   { name: "Party Makeup", category: "Makeup", popular: true, href: servicePath("party-makeup-prayagraj") },
-  { name: "Engagement Makeup", category: "Makeup", popular: true, href: servicePath("engagement-makeup-prayagraj") },
+  { name: "Engagement Makeup", category: "Makeup", popular: false, href: servicePath("engagement-makeup-prayagraj") },
   { name: "Threading", category: "Regular Beauty Services", popular: true, href: servicePath("threading-prayagraj") },
-  { name: "Waxing", category: "Regular Beauty Services", popular: true, href: servicePath("waxing-prayagraj") },
+  { name: "Waxing", category: "Regular Beauty Services", popular: false, href: servicePath("waxing-prayagraj") },
   { name: "Manicure & Pedicure", category: "Hands & Feet", popular: true, href: servicePath("manicure-pedicure-prayagraj") },
-  { name: "Nail Art & Nail Care", category: "Nail Services", popular: true, href: servicePath("nail-services-prayagraj") },
+  { name: "Nail Art & Nail Care", category: "Nail Services", popular: false, href: servicePath("nail-services-prayagraj") },
   { name: "Basic Beauty Parlour Course", category: "Beauty Classes", popular: true, href: "/beauty-classes-prayagraj" },
 ];
 
