@@ -206,23 +206,6 @@ export default function Home() {
           </a>
         </div>
       </section>
-
-      <footer className="border-t border-line bg-cream/45">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 py-5 text-center text-xs text-muted sm:px-6">
-          <p>
-            Instagram:{" "}
-            <a
-              href="https://instagram.com/__karma111_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-foreground transition hover:text-deep-red"
-            >
-              @__karma111_
-            </a>
-          </p>
-          <p>Managed by __karma111__</p>
-        </div>
-      </footer>
     </>
   );
 }
