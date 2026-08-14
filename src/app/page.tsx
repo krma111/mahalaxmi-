@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { areas, areaPath } from "@/content/areas";
 import { business } from "@/content/business";
+// diagnostic-rebuild-marker
 import { servicePath } from "@/content/services";
 
 const WHATSAPP_LINK = business.bookingLink;
