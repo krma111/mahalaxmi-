@@ -4,7 +4,6 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import { LanguageSetter } from "@/components/LanguageSetter";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { areas, areaPath } from "@/content/areas";
 import { business } from "@/content/business";
@@ -141,6 +140,7 @@ function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-xs text-muted sm:px-6 md:flex-row md:items-center md:justify-between">
           <p>&copy; {new Date().getFullYear()} {business.name}. All Rights Reserved.</p>
           <div className="flex flex-col items-end gap-1">
+            <a href={business.instagram} target="_blank" rel="noopener noreferrer" className="text-xs text-muted transition hover:text-deep-red">Instagram: {business.instagramHandle}</a>
           </div>
           <div className="flex gap-2">
             <Link href="/privacy-policy" className="rounded-[8px] border border-line bg-white px-3 py-2 font-semibold text-foreground transition hover:text-deep-red">Privacy Policy</Link>
@@ -164,7 +164,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <WhatsAppFloat />
       </body>
     </html>
   );
