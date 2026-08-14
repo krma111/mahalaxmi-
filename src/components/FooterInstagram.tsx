@@ -17,7 +17,6 @@ export function FooterInstagram() {
         >
           Instagram: @__karma111_
         </a>
-        <span className="text-xs text-muted">Managed by __karma111__</span>
       </div>
     );
   }
