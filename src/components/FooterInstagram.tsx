@@ -9,7 +9,7 @@ export function FooterInstagram() {
   if (isHome) {
     return (
       <div className="flex flex-col items-end gap-1">
-        <span className="text-xs text-muted">Managed by __karma111__</span>
+        <span className="text-xs text-muted">Managed by @__karma111__</span>
       </div>
     );
   }
