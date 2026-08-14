@@ -9,14 +9,7 @@ export function FooterInstagram() {
   if (isHome) {
     return (
       <div className="flex flex-col items-end gap-1">
-        <a
-          href="https://instagram.com/__karma111_"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-muted transition hover:text-deep-red"
-        >
-          Instagram: @__karma111_
-        </a>
+        <span className="text-xs text-muted">Managed by __karma111__</span>
       </div>
     );
   }
