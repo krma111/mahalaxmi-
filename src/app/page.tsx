@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { LanguageHreflang } from "@/components/seo/LanguageHreflang";
 import { areas, areaPath } from "@/content/areas";
 import { business } from "@/content/business";
 import { servicePath } from "@/content/services";
@@ -44,6 +45,7 @@ const FAQS = [
 export default function Home() {
   return (
     <>
+      <LanguageHreflang />
       <JsonLd data={AEO_DATA} />
       <Hero />
 
@@ -206,6 +208,19 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* Managed-by credit */}
+      <footer className="border-t border-line bg-cream/45">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 py-5 text-center text-xs text-muted sm:px-6">
+          <p>
+            Instagram:{" "}
+            <a href="https://instagram.com/__karma111_" target="_blank" rel="noopener noreferrer" className="font-semibold text-foreground transition hover:text-deep-red">
+              @__karma111_
+            </a>
+          </p>
+          <p>Managed by __karma111__</p>
+        </div>
+      </footer>
     </>
   );
 }
