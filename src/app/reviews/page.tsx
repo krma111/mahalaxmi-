@@ -16,7 +16,7 @@ export default function ReviewsPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Reviews", href: "/reviews" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Reviews</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Customer Reviews</h1>
@@ -31,7 +31,7 @@ export default function ReviewsPage() {
       </section>
       <section className="pb-16 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 shadow-sm sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">How reviews work here</h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-2">
               <div>
@@ -58,7 +58,7 @@ export default function ReviewsPage() {
       <section className="pb-16 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm">
+            <div className="rounded-[8px] glass-red p-6 shadow-sm">
               <h2 className="text-xl font-semibold tracking-tight text-foreground">Ask happy customers for a review</h2>
               <p className="mt-2 text-sm leading-6 text-muted">
                 Send a ready-made WhatsApp message asking a customer to review the salon on Google. Replace the name before sending.
@@ -72,7 +72,7 @@ export default function ReviewsPage() {
                 Open Review Request Message
               </a>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm">
+            <div className="rounded-[8px] glass-red p-6 shadow-sm">
               <h2 className="text-xl font-semibold tracking-tight text-foreground">Print a QR review card</h2>
               <p className="mt-2 text-sm leading-6 text-muted">
                 Print an A4 card with a QR code that leads customers straight to the salon on Google. Keep a few at the reception.

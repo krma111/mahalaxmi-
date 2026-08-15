@@ -63,7 +63,7 @@ export default function CityPage() {
     <>
       <JsonLd data={FAQ_SCHEMA} />
       <Breadcrumbs items={[{ name: "Beauty Parlour in Prayagraj", href: "/beauty-parlour-prayagraj" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Beauty Parlour in Prayagraj</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Ladies Beauty Parlour in Prayagraj</h1>
@@ -83,19 +83,19 @@ export default function CityPage() {
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Location</h2>
               <p className="mt-3 text-sm leading-6 text-muted">{business.address.displayLine}</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Hours</h2>
               <p className="mt-3 text-sm leading-6 text-muted">{business.hours.label} · {business.hours.time}</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Phone / WhatsApp</h2>
               <a href={business.telephoneHref} className="mt-3 block text-sm font-medium leading-6 text-deep-red transition hover:underline">{business.telephone}</a>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Booking</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Appointments are confirmed on WhatsApp before your visit.</p>
             </div>
@@ -107,7 +107,7 @@ export default function CityPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">Services at our Prayagraj parlour</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
-              <a key={s.slug} href={servicePath(s.slug)} className="group rounded-[8px] border border-line bg-white/88 p-5 shadow-sm transition hover:border-deep-red">
+              <a key={s.slug} href={servicePath(s.slug)} className="group rounded-[8px] glass-red p-5 shadow-sm transition hover:border-deep-red">
                 <h3 className="text-base font-semibold tracking-tight text-foreground group-hover:text-deep-red">{s.name}</h3>
                 <p className="mt-1 text-xs text-muted">{s.category}</p>
               </a>
@@ -117,7 +117,7 @@ export default function CityPage() {
       </section>
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-cream/80 p-6 sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">Areas we serve in Prayagraj</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
               The salon is at Colonelganj, and customers visit from across Prayagraj. Find your area below for booking details.
@@ -137,7 +137,7 @@ export default function CityPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">Frequently Asked Questions</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {FAQS.map((f) => (
-              <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+              <article key={f.q} className="rounded-[8px] glass-red p-5">
                 <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
               </article>

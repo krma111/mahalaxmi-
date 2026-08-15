@@ -60,7 +60,7 @@ export default function BridalPage() {
     <>
       <JsonLd data={FAQ_SCHEMA} />
       <Breadcrumbs items={[{ name: "Bridal Makeup", href: "/bridal-makeup-prayagraj" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Bridal Makeup</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Bridal Makeup in Prayagraj</h1>
@@ -80,19 +80,19 @@ export default function BridalPage() {
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Booking</h2>
               <p className="mt-3 text-sm leading-6 text-muted">WhatsApp consultation, then a confirmed booking.</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Trial</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Scheduled at least 2 weeks before the wedding.</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Pricing</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Exact inclusions and price confirmed before booking.</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Location</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Colonelganj, Prayagraj · {business.hours.label} {business.hours.time}</p>
             </div>
@@ -102,17 +102,17 @@ export default function BridalPage() {
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <a href={servicePath("engagement-makeup-prayagraj")} className="group rounded-[8px] border border-line bg-white/88 p-6 shadow-sm transition hover:border-deep-red">
+            <a href={servicePath("engagement-makeup-prayagraj")} className="group rounded-[8px] glass-red p-6 shadow-sm transition hover:border-deep-red">
               <h2 className="text-xl font-semibold text-foreground group-hover:text-deep-red">Engagement Makeup</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Soft, polished engagement makeup customized to match your outfit and preferences.</p>
               <p className="mt-3 text-sm font-medium text-deep-red">View engagement makeup page →</p>
             </a>
-            <a href={servicePath("pre-bridal-package-prayagraj")} className="group rounded-[8px] border border-line bg-white/88 p-6 shadow-sm transition hover:border-deep-red">
+            <a href={servicePath("pre-bridal-package-prayagraj")} className="group rounded-[8px] glass-red p-6 shadow-sm transition hover:border-deep-red">
               <h2 className="text-xl font-semibold text-foreground group-hover:text-deep-red">Pre-Bridal Package</h2>
               <p className="mt-3 text-sm leading-6 text-muted">A planned pre-wedding beauty regimen. The exact package sheet is confirmed before scheduling.</p>
               <p className="mt-3 text-sm font-medium text-deep-red">View pre-bridal package page →</p>
             </a>
-            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
+            <article className="rounded-[8px] glass-red p-6 shadow-sm">
               <h2 className="text-xl font-semibold text-foreground">Bridal Makeup</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Complete bridal makeup planned through consultation, with a trial before the wedding day.</p>
               <p className="mt-3 text-sm font-medium text-deep-red">Part of the consultation on this page</p>
@@ -125,7 +125,7 @@ export default function BridalPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">How bridal makeup is planned</h2>
           <ol className="mt-6 grid gap-4 md:grid-cols-2">
             {PROCESS.map((step, index) => (
-              <li key={step.title} className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+              <li key={step.title} className="rounded-[8px] glass-red p-5 shadow-sm">
                 <p className="text-sm font-semibold text-deep-red">Step {index + 1}</p>
                 <h3 className="mt-1 text-base font-semibold tracking-tight text-foreground">{step.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{step.text}</p>
@@ -136,7 +136,7 @@ export default function BridalPage() {
       </section>
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-cream/80 p-6 sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">Why book bridal services with us?</h2>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {["Consultation-first planning", "Trial sessions available", "Ladies-only salon", "Price and inclusions confirmed before booking", "Hygienic and clean setup", "Easy WhatsApp booking"].map((item) => (
@@ -154,7 +154,7 @@ export default function BridalPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">Frequently Asked Questions</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {FAQS.map((f) => (
-              <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+              <article key={f.q} className="rounded-[8px] glass-red p-5">
                 <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
               </article>

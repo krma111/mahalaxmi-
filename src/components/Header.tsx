@@ -16,7 +16,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);  return (
-    <header className="site-header sticky top-0 z-50 border-b border-deep-red/10 bg-white/88 backdrop-blur-xl">
+    <header className="site-header sticky top-0 z-50 glass-red border-b border-deep-red/20">
       <div className="mx-auto flex min-h-16 w-full max-w-[1700px] items-center justify-between gap-4 px-6 md:px-[72px] xl:px-[120px]">
         <Link
           href="/"
@@ -75,7 +75,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-deep-red/15 bg-white/80 text-deep-red transition-colors hover:bg-cream focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-deep-red lg:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md glass-red text-deep-red transition-colors hover:bg-cream focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-deep-red lg:hidden"
             onClick={() => setOpen((current) => !current)}
             aria-expanded={open}
             aria-controls="mobile-navigation"
@@ -100,7 +100,7 @@ export default function Header() {
       {open ? (
         <nav
           id="mobile-navigation"
-          className="header-menu-open border-t border-deep-red/10 bg-white/96 px-6 pb-6 pt-3 shadow-xl lg:hidden"
+          className="header-menu-open glass-red border-t border-deep-red/20 px-6 pb-6 pt-3 lg:hidden"
           aria-label="Mobile navigation"
         >
           <div className="mx-auto grid max-w-[1700px]">

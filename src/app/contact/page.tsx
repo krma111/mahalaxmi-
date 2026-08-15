@@ -20,7 +20,7 @@ export default function ContactPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Contact", href: "/contact" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Contact</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Get In Touch</h1>
@@ -39,7 +39,7 @@ export default function ContactPage() {
                 <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-line bg-white px-5 text-sm font-semibold text-foreground transition hover:bg-cream">Get Directions</a>
               </div>
             </div>
-            <div className="rounded-[8px] border border-line bg-cream/80 p-6">
+            <div className="rounded-[8px] glass-red p-6">
               <h3 className="text-xl font-semibold text-foreground">Front of Jain Hostel, Colonelganj</h3>
               <p className="mt-3 text-sm leading-6 text-muted">Use directions for the latest route to the salon location in Prayagraj.</p>
               <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Open Google Maps</a>

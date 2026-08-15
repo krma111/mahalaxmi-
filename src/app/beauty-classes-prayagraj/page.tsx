@@ -64,7 +64,7 @@ export default function BeautyClassesPage() {
     <>
       <JsonLd data={FAQ_SCHEMA} />
       <Breadcrumbs items={[{ name: "Beauty Classes", href: "/beauty-classes-prayagraj" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Beauty Classes</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Beauty Classes in Prayagraj</h1>
@@ -84,17 +84,17 @@ export default function BeautyClassesPage() {
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
+            <article className="rounded-[8px] glass-red p-6 shadow-sm">
               <h2 className="text-xl font-semibold text-foreground">Basic Beauty Parlour Course</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Learn fundamental beauty parlour skills including threading, waxing, facial treatments, and basic makeup application. Ideal for beginners who want to start in beauty services.</p>
               <p className="mt-3 text-sm font-medium text-deep-red">Beginner friendly</p>
             </article>
-            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
+            <article className="rounded-[8px] glass-red p-6 shadow-sm">
               <h2 className="text-xl font-semibold text-foreground">Makeup & Hair Styling Basics</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Learn everyday makeup looks, party makeup techniques, and basic hair styling. Covers foundation, eye makeup, lip makeup and basic hairstyles.</p>
               <p className="mt-3 text-sm font-medium text-deep-red">Practical training</p>
             </article>
-            <article className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm">
+            <article className="rounded-[8px] glass-red p-6 shadow-sm">
               <h2 className="text-xl font-semibold text-foreground">Self-Grooming & Skin Care</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Learn daily skincare routines, basic facial treatments, and personal grooming techniques. Understand different skin types and how to care for your skin.</p>
               <p className="mt-3 text-sm font-medium text-deep-red">Personal care focus</p>
@@ -104,7 +104,7 @@ export default function BeautyClassesPage() {
       </section>
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-cream/80 p-6 sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">What you will learn</h2>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {CURRICULUM.map((item) => (
@@ -122,7 +122,7 @@ export default function BeautyClassesPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">How the classes work</h2>
           <ol className="mt-6 grid gap-4 md:grid-cols-3">
             {FORMAT.map((step, index) => (
-              <li key={step.title} className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+              <li key={step.title} className="rounded-[8px] glass-red p-5 shadow-sm">
                 <p className="text-sm font-semibold text-deep-red">Step {index + 1}</p>
                 <h3 className="mt-1 text-base font-semibold tracking-tight text-foreground">{step.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{step.text}</p>
@@ -136,7 +136,7 @@ export default function BeautyClassesPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">Frequently Asked Questions</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {FAQS.map((f) => (
-              <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+              <article key={f.q} className="rounded-[8px] glass-red p-5">
                 <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
               </article>

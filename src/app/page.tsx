@@ -48,9 +48,9 @@ export default function Home() {
       <Hero />
 
       {/* AEO Answer Block */}
-      <section aria-label="Quick answer" className="bg-cream/70 py-6 sm:py-8">
+      <section aria-label="Quick answer" className="section-tint py-6 sm:py-8">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-white/90 p-5 text-center shadow-sm">
+          <div className="rounded-[8px] glass-red p-5 text-center shadow-sm">
             <p className="text-sm leading-7 text-muted">
               <strong className="text-foreground">Mahalaxmi Beauty Parlour</strong> is a ladies beauty salon in Prayagraj offering hair care, facial, makeup, bridal makeup, waxing, threading and beauty classes. Located at 109/4 Maharshi Dayanand Marg, Front of Jain Hostel, Colonelganj, Prayagraj. Book via WhatsApp at +91 98895 94584.
             </p>
@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       {/* Popular Services */}
-      <section className="py-16 sm:py-20">
+      <section className="section-tint py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Popular Services</p>
@@ -67,7 +67,7 @@ export default function Home() {
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
-              <a key={s.name} href={s.href} className="group rounded-[8px] border border-line bg-white/88 p-5 shadow-sm transition hover:border-deep-red">
+              <a key={s.name} href={s.href} className="group rounded-[8px] glass-red p-5 shadow-sm transition hover:border-deep-red">
                 <div className="flex items-start justify-between gap-3">
                   <span className="flex items-center gap-2 font-medium text-foreground group-hover:text-deep-red">
                     <svg className="h-4 w-4 shrink-0 text-deep-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
@@ -88,9 +88,9 @@ export default function Home() {
       </section>
 
       {/* Beauty Classes */}
-      <section className="bg-cream/70 py-16 sm:py-20">
+      <section className="section-tint py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 shadow-sm sm:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Beauty Classes</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Learn basic beauty parlour skills and self-grooming</h2>
             <p className="mt-3 text-sm leading-6 text-muted sm:text-base">
@@ -101,9 +101,9 @@ export default function Home() {
       </section>
 
       {/* Reviews */}
-      <section className="relative overflow-hidden py-16 sm:py-20">
+      <section className="relative overflow-hidden section-tint-alt py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 shadow-sm sm:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Customer Reviews</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Read customer experiences on Google</h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-muted">
@@ -118,9 +118,9 @@ export default function Home() {
       </section>
 
       {/* Local SEO */}
-      <section className="bg-cream/70 py-16 sm:py-20">
+      <section className="section-tint py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-white/90 p-6 shadow-sm sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 shadow-sm sm:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Local Ladies Salon</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Ladies beauty salon in Prayagraj near Colonelganj and Katra</h2>
             <p className="mt-5 max-w-4xl text-base leading-7 text-muted">
@@ -131,7 +131,7 @@ export default function Home() {
       </section>
 
       {/* Areas served */}
-      <section className="py-16 sm:py-20">
+      <section className="section-tint py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Areas We Serve</p>
@@ -152,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* FAQs */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="section-tint-alt py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Local SEO FAQs</p>
@@ -160,7 +160,7 @@ export default function Home() {
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {FAQS.map((f) => (
-              <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+              <article key={f.q} className="rounded-[8px] glass-red p-5">
                 <h3 className="text-lg font-semibold tracking-tight text-foreground">{f.q}</h3>
                 <p className="mt-3 text-sm leading-6 text-muted">{f.a}</p>
               </article>
@@ -170,7 +170,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section className="py-16 sm:py-20">
+      <section className="section-tint-alt py-16 sm:py-20">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Contact</p>
@@ -186,7 +186,7 @@ export default function Home() {
               <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[8px] border border-line bg-white px-5 text-sm font-semibold text-foreground transition hover:bg-cream">Get Directions</a>
             </div>
           </div>
-          <div className="rounded-[8px] border border-line bg-cream/80 p-6">
+          <div className="rounded-[8px] glass-red p-6">
             <h3 className="mt-4 text-xl font-semibold text-foreground">Front of Jain Hostel, Colonelganj</h3>
             <p className="mt-3 text-sm leading-6 text-muted">Use directions for the latest route to the salon location in Prayagraj.</p>
             <a href={business.mapsLink} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-deep-red px-5 text-sm font-semibold text-white transition hover:bg-[#741722]">Open Google Maps</a>

@@ -84,7 +84,7 @@ export const metadata: Metadata = {
 
 function Footer() {
   return (
-    <footer className="border-t border-deep-red/10 bg-white">
+    <footer className="border-t border-deep-red/20 glass-red">
       <div className="bg-deep-red px-4 py-4 text-white sm:px-6">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm font-medium text-white/85">Professional Beauty Care for Every Occasion.</p>
@@ -127,7 +127,7 @@ function Footer() {
         </nav>
         <div className="lg:col-span-3">
           <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground">Working Hours</h2>
-          <div className="mt-4 rounded-[8px] border border-line bg-cream/60 p-4 text-sm">
+          <div className="mt-4 rounded-[8px] glass-red p-4 text-sm">
             <p className="font-semibold text-deep-red">{business.hours.label}</p>
             <p className="mt-2 text-lg font-semibold text-foreground">{business.hours.time}</p>
           </div>
@@ -137,7 +137,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-line bg-cream/45">
+      <div className="border-t border-deep-red/15 section-tint">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-xs text-muted sm:px-6 md:flex-row md:items-center md:justify-between">
           <p>&copy; {new Date().getFullYear()} {business.name}. All Rights Reserved.</p>
           <FooterInstagram />

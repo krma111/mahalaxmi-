@@ -71,7 +71,7 @@ export default async function ArticlePage({ params }: Props) {
     <>
       <JsonLd data={schemas} />
       <Breadcrumbs items={[{ name: "Blog", href: "/blog" }, { name: article.title, href: articlePath(slug) }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">{article.datePublished} · {article.readingMinutes} min read</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">{article.title}</h1>
@@ -104,7 +104,7 @@ export default async function ArticlePage({ params }: Props) {
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">Frequently Asked Questions</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {article.faqs.map((f) => (
-                <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+                <article key={f.q} className="rounded-[8px] glass-red p-5">
                   <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
                 </article>
@@ -119,7 +119,7 @@ export default async function ArticlePage({ params }: Props) {
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">Related Services</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((item) => (
-                <a key={item.slug} href={servicePath(item.slug)} className="group rounded-[8px] border border-line bg-white/88 p-5 shadow-sm transition hover:border-deep-red">
+                <a key={item.slug} href={servicePath(item.slug)} className="group rounded-[8px] glass-red p-5 shadow-sm transition hover:border-deep-red">
                   <h3 className="text-base font-semibold tracking-tight text-foreground group-hover:text-deep-red">{item.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted">{item.answerBlock}</p>
                 </a>

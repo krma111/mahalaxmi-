@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <PrivacyBreadcrumb />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h1 className="text-3xl font-semibold tracking-tight text-foreground">Privacy Policy</h1>
         <div className="mt-8 space-y-5 text-base leading-7 text-muted">

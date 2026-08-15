@@ -22,7 +22,7 @@ export function AreaPage({ area }: { area: Area }) {
     <>
       <JsonLd data={faqSchema} />
       <Breadcrumbs items={[{ name: "Areas We Serve", href: "/beauty-parlour-prayagraj" }, { name: area.name, href: areaPath(area.slug) }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Beauty Parlour · Prayagraj</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">{area.h1}</h1>
@@ -37,29 +37,29 @@ export function AreaPage({ area }: { area: Area }) {
           </a>
         </div>
       </section>
-      <section className="pb-12 sm:pb-16">
+      <section className="section-tint pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Salon address</h2>
               <p className="mt-3 text-sm leading-6 text-muted">{business.address.displayLine}</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Hours</h2>
               <p className="mt-3 text-sm leading-6 text-muted">{business.hours.label} · {business.hours.time}</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Phone / WhatsApp</h2>
               <a href={business.telephoneHref} className="mt-3 block text-sm font-medium leading-6 text-deep-red transition hover:underline">{business.telephone}</a>
             </div>
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Booking</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Appointments are confirmed on WhatsApp before your visit.</p>
             </div>
           </div>
         </div>
       </section>
-      <section className="pb-12 sm:pb-16">
+      <section className="section-tint pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">Who is this for?</h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -72,12 +72,12 @@ export function AreaPage({ area }: { area: Area }) {
           </ul>
         </div>
       </section>
-      <section className="pb-12 sm:pb-16">
+      <section className="section-tint pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">Services for customers from {area.name}</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {publishedServices().map((s) => (
-              <a key={s.slug} href={servicePath(s.slug)} className="group rounded-[8px] border border-line bg-white/88 p-5 shadow-sm transition hover:border-deep-red">
+              <a key={s.slug} href={servicePath(s.slug)} className="group rounded-[8px] glass-red p-5 shadow-sm transition hover:border-deep-red">
                 <h3 className="text-base font-semibold tracking-tight text-foreground group-hover:text-deep-red">{s.name}</h3>
                 <p className="mt-1 text-xs text-muted">{s.category}</p>
               </a>
@@ -85,12 +85,12 @@ export function AreaPage({ area }: { area: Area }) {
           </div>
         </div>
       </section>
-      <section className="pb-12 sm:pb-16">
+      <section className="section-tint pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">Frequently Asked Questions</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {area.faqs.map((f) => (
-              <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+              <article key={f.q} className="rounded-[8px] glass-red p-5">
                 <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
               </article>
@@ -98,7 +98,7 @@ export function AreaPage({ area }: { area: Area }) {
           </div>
         </div>
       </section>
-      <section className="pb-16 sm:pb-20">
+      <section className="section-tint pb-16 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-[8px] border border-line bg-deep-red p-6 text-white sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight">Book your visit from {area.name}</h2>

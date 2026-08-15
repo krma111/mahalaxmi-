@@ -91,7 +91,7 @@ function ServiceCard({ title, href, items }: { title: string; href?: string; ite
     <h2 className="text-lg font-semibold text-foreground transition hover:text-deep-red">{title}</h2>
   );
   return (
-    <article className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+    <article className="rounded-[8px] glass-red p-5 shadow-sm">
       {href ? (
         <a href={href} className="inline-block">{heading}</a>
       ) : (
@@ -124,7 +124,7 @@ export default function ServicesPage() {
     <>
       <JsonLd data={FAQ_SCHEMA} />
       <Breadcrumbs items={[{ name: "Services", href: "/services" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Our Services</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Professional Beauty Services in Prayagraj</h1>
@@ -150,7 +150,7 @@ export default function ServicesPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">Frequently Asked Questions</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {FAQS.map((f) => (
-              <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+              <article key={f.q} className="rounded-[8px] glass-red p-5">
                 <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
               </article>

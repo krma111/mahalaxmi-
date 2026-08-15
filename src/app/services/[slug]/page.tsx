@@ -77,7 +77,7 @@ export default async function ServicePage({ params }: Props) {
     <>
       <JsonLd data={schemas} />
       <Breadcrumbs items={[{ name: "Services", href: "/services" }, { name: service.name, href: servicePath(slug) }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">{service.category}</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">{service.h1}</h1>
@@ -95,7 +95,7 @@ export default async function ServicePage({ params }: Props) {
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+            <div className="rounded-[8px] glass-red p-5 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-deep-red">Key facts</h2>
               <dl className="mt-3 space-y-2 text-sm leading-6 text-muted">
                 <div><dt className="font-medium text-foreground">Category</dt><dd>{service.category}</dd></div>
@@ -128,7 +128,7 @@ export default async function ServicePage({ params }: Props) {
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">How the service works</h2>
             <ol className="mt-6 grid gap-4 md:grid-cols-2">
               {service.process.map((step, index) => (
-                <li key={step.title} className="rounded-[8px] border border-line bg-white/88 p-5 shadow-sm">
+                <li key={step.title} className="rounded-[8px] glass-red p-5 shadow-sm">
                   <p className="text-sm font-semibold text-deep-red">Step {index + 1}</p>
                   <h3 className="mt-1 text-base font-semibold tracking-tight text-foreground">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted">{step.text}</p>
@@ -140,7 +140,7 @@ export default async function ServicePage({ params }: Props) {
       )}
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-cream/80 p-6 sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">Pricing</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">{service.priceBasis}</p>
             <a
@@ -194,7 +194,7 @@ export default async function ServicePage({ params }: Props) {
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">Frequently Asked Questions</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {service.faqs.map((f) => (
-                <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+                <article key={f.q} className="rounded-[8px] glass-red p-5">
                   <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
                 </article>
@@ -212,7 +212,7 @@ export default async function ServicePage({ params }: Props) {
                 <a
                   key={item.slug}
                   href={servicePath(item.slug)}
-                  className="group rounded-[8px] border border-line bg-white/88 p-5 shadow-sm transition hover:border-deep-red"
+                  className="group rounded-[8px] glass-red p-5 shadow-sm transition hover:border-deep-red"
                 >
                   <h3 className="text-base font-semibold tracking-tight text-foreground group-hover:text-deep-red">{item.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted">{item.answerBlock}</p>

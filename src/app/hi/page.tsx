@@ -85,7 +85,7 @@ export default function HindiPage() {
     <div className={`${notoDevanagari.variable} font-hindi`}>
       <JsonLd data={FAQ_SCHEMA} />
       <Breadcrumbs items={[{ name: "हिंदी में ब्यूटी पार्लर, प्रयागराज", href: "/hi" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">प्रयागराज में ब्यूटी पार्लर</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">प्रयागराज में महिलाओं का ब्यूटी पार्लर – महालक्ष्मी ब्यूटी पार्लर</h1>
@@ -107,7 +107,7 @@ export default function HindiPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">पार्लर में उपलब्ध सेवाएँ</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
-              <a key={s.href} href={s.href} className="group rounded-[8px] border border-line bg-white/88 p-5 shadow-sm transition hover:border-deep-red">
+              <a key={s.href} href={s.href} className="group rounded-[8px] glass-red p-5 shadow-sm transition hover:border-deep-red">
                 <h3 className="text-base font-semibold tracking-tight text-foreground group-hover:text-deep-red">{s.name}</h3>
               </a>
             ))}
@@ -116,7 +116,7 @@ export default function HindiPage() {
       </section>
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-cream/80 p-6 sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">पार्लर तक कैसे पहुँचें</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
               महालक्ष्मी ब्यूटी पार्लर महर्षि दयानंद मार्ग, जैन हॉस्टल के सामने, कर्नलगंज, प्रयागराज में स्थित है। पार्लर प्रयागराज के इन इलाकों से ग्राहकों का स्वागत करता है:
@@ -144,7 +144,7 @@ export default function HindiPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground">अक्सर पूछे जाने वाले प्रश्न</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {FAQS.map((f) => (
-              <article key={f.q} className="rounded-[8px] border border-line bg-background/75 p-5">
+              <article key={f.q} className="rounded-[8px] glass-red p-5">
                 <h3 className="text-base font-semibold tracking-tight text-foreground">{f.q}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{f.a}</p>
               </article>
@@ -154,7 +154,7 @@ export default function HindiPage() {
       </section>
       <section className="pb-12 sm:pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="rounded-[8px] border border-line bg-white/88 p-6 shadow-sm sm:p-8">
+          <div className="rounded-[8px] glass-red p-6 shadow-sm sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">संपर्क करें</h2>
             <div className="mt-5 space-y-3 text-sm leading-6 text-muted">
               <p className="font-semibold text-foreground">महालक्ष्मी ब्यूटी पार्लर</p>

@@ -15,7 +15,7 @@ export default function AboutPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "About", href: "/about" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">About Us</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">About Mahalaxmi Beauty Parlour</h1>
@@ -30,15 +30,15 @@ export default function AboutPage() {
       <section className="pb-16 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-[8px] border border-line bg-cream/60 p-6">
+            <div className="rounded-[8px] glass-red p-6">
               <h2 className="text-lg font-semibold text-foreground">Our Mission</h2>
               <p className="mt-3 text-sm leading-6 text-muted">To provide professional beauty services in a clean and friendly environment. Every client receives personal attention and a price confirmed before booking.</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-cream/60 p-6">
+            <div className="rounded-[8px] glass-red p-6">
               <h2 className="text-lg font-semibold text-foreground">Our Values</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Cleanliness, professionalism, customer satisfaction and continuous learning. We stay updated with the latest beauty trends and techniques.</p>
             </div>
-            <div className="rounded-[8px] border border-line bg-cream/60 p-6">
+            <div className="rounded-[8px] glass-red p-6">
               <h2 className="text-lg font-semibold text-foreground">Our Expertise</h2>
               <p className="mt-3 text-sm leading-6 text-muted">Bridal makeup, hair styling, skincare treatments and beauty training for clients from Colonelganj, Katra, Civil Lines and across Prayagraj.</p>
             </div>

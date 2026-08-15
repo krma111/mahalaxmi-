@@ -12,6 +12,37 @@
   --font-serif: var(--font-cormorant);
 }
 
+/* ===== Glassmorphism: subtle deep-red tinted frosted surfaces ===== */
+.glass-red {
+  background: rgba(139, 26, 43, 0.08);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+  backdrop-filter: blur(14px) saturate(115%);
+  border: 1px solid rgba(139, 26, 43, 0.16);
+  box-shadow: 0 10px 30px rgba(139, 26, 43, 0.07);
+}
+
+.glass-soft {
+  background: rgba(139, 26, 43, 0.05);
+  -webkit-backdrop-filter: blur(12px) saturate(110%);
+  backdrop-filter: blur(12px) saturate(110%);
+  border: 1px solid rgba(139, 26, 43, 0.12);
+  box-shadow: 0 8px 24px rgba(139, 26, 43, 0.05);
+}
+
+.section-tint {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(139, 26, 43, 0.07), transparent 42%),
+    radial-gradient(circle at 88% 100%, rgba(245, 225, 218, 0.75), transparent 46%),
+    linear-gradient(180deg, #fdf6f0 0%, #fafaf8 100%);
+}
+
+.section-tint-alt {
+  background:
+    radial-gradient(circle at 85% 8%, rgba(139, 26, 43, 0.06), transparent 40%),
+    radial-gradient(circle at 10% 95%, rgba(245, 225, 218, 0.7), transparent 44%),
+    linear-gradient(180deg, #fafaf8 0%, #fdf6f0 100%);
+}
+
 :root {
   --header-height: 64px;
 }
@@ -29,7 +60,9 @@ html {
 }
 
 body {
-  background: var(--color-background);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(139, 26, 43, 0.04), transparent 42%),
+    var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
   overflow-x: clip;

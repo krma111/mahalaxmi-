@@ -25,7 +25,7 @@ export default function GalleryPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Gallery", href: "/gallery" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Gallery</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Beauty Gallery</h1>
@@ -36,7 +36,7 @@ export default function GalleryPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {GALLERY_ITEMS.map((item, index) => (
-              <article key={item.title} className="group overflow-hidden rounded-[8px] border border-line bg-white shadow-sm transition hover:shadow-md">
+              <article key={item.title} className="group overflow-hidden rounded-[8px] glass-red transition hover:shadow-md">
                 <div className="relative aspect-[4/5] overflow-hidden bg-cream">
                   <Image
                     src={item.image}

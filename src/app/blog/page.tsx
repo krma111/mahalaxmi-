@@ -18,7 +18,7 @@ export default function BlogHubPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Blog", href: "/blog" }]} />
-      <section className="py-12 sm:py-16">
+      <section className="section-tint py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-deep-red">Beauty Tips and Guides</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Practical beauty guides for Prayagraj</h1>
@@ -31,7 +31,7 @@ export default function BlogHubPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((a) => (
-              <a key={a.slug} href={articlePath(a.slug)} className="group flex flex-col rounded-[8px] border border-line bg-white/88 p-5 shadow-sm transition hover:border-deep-red">
+              <a key={a.slug} href={articlePath(a.slug)} className="group flex flex-col rounded-[8px] glass-red p-5 shadow-sm transition hover:border-deep-red">
                 <p className="text-xs text-muted">{a.datePublished} · {a.readingMinutes} min read</p>
                 <h2 className="mt-2 text-lg font-semibold tracking-tight text-foreground group-hover:text-deep-red">{a.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-muted">{a.excerpt}</p>

@@ -19,7 +19,7 @@ export default function ReviewCardPage() {
           <PrintButton />
         </div>
 
-        <article className="review-card-sheet overflow-hidden rounded-[12px] border border-line bg-white shadow-sm">
+        <article className="review-card-sheet overflow-hidden rounded-[12px] glass-red">
           <div className="bg-deep-red px-8 py-6 text-white sm:px-10">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">Mahalaxmi Beauty Parlour</p>
             <h1 className="mt-1 text-3xl font-semibold tracking-tight">Ladies Beauty Salon · Prayagraj</h1>
@@ -46,7 +46,7 @@ export default function ReviewCardPage() {
                 We hope you enjoyed your service at {business.name}, {business.address.addressLocality}.
                 If you had a good experience, a short Google review helps other women find a reliable ladies salon.
               </p>
-              <div className="rounded-[8px] border border-line bg-cream/70 p-4">
+              <div className="rounded-[8px] glass-red p-4">
                 <p className="font-semibold text-foreground">{business.name}</p>
                 <p className="mt-1">{business.address.displayLine}</p>
                 <p className="mt-1">Phone / WhatsApp: {business.telephone}</p>
