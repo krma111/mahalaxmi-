@@ -6,6 +6,7 @@ import { FloatingBeautyBackground } from "@/components/FloatingBeautyBackground"
 import { FooterInstagram } from "@/components/FooterInstagram";
 import Header from "@/components/Header";
 import { LanguageSetter } from "@/components/LanguageSetter";
+import { PwaInstaller } from "@/components/PwaInstaller";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { areas, areaPath } from "@/content/areas";
 import { business } from "@/content/business";
@@ -75,6 +76,11 @@ export const metadata: Metadata = {
     },
   },
   alternates: { canonical: siteUrl("/") },
+  appleWebApp: {
+    capable: true,
+    title: "Mahalaxmi Beauty",
+    statusBarStyle: "default",
+  },
   other: {
     "theme-color": "#8B1A2B",
     "application-name": business.name,
@@ -160,6 +166,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${manrope.variable} ${cormorant.variable} min-h-screen flex flex-col`}>
         <FloatingBeautyBackground />
+        <PwaInstaller />
         <LanguageSetter />
         <AnnouncementBar />
         <Header />
