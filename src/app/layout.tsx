@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
+import { FloatingBeautyBackground } from "@/components/FloatingBeautyBackground";
 import { FooterInstagram } from "@/components/FooterInstagram";
 import Header from "@/components/Header";
 import { LanguageSetter } from "@/components/LanguageSetter";
@@ -158,6 +159,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={coreGraph()} />
       </head>
       <body className={`${manrope.variable} ${cormorant.variable} min-h-screen flex flex-col`}>
+        <FloatingBeautyBackground />
         <LanguageSetter />
         <AnnouncementBar />
         <Header />
