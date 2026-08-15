@@ -98,7 +98,6 @@ export default function Hero() {
       if (reducedMotion) {
         progressRef.current = 1;
         section.style.setProperty("--hero-progress", "1");
-        section.style.transform = "";
         return;
       }
       const y = Math.max(0, window.scrollY);
@@ -106,7 +105,6 @@ export default function Hero() {
       const progress = Math.min(1, Math.max(0, y / pin));
       progressRef.current = progress;
       section.style.setProperty("--hero-progress", progress.toFixed(4));
-      section.style.transform = `translate3d(0, ${Math.min(y, pinLength)}px, 0)`;
     };
     const onViewportChange = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -127,7 +125,7 @@ export default function Hero() {
     <div className="relative">
       <section
         ref={sectionRef}
-        className="cinematic-hero"
+        className={`cinematic-hero${reducedMotion ? "" : " hero-pinned"}`}
         aria-labelledby="cinematic-hero-title"
       >
       <div ref={stageRef} className="cinematic-hero-stage">

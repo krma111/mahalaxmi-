@@ -134,6 +134,12 @@ a {
     linear-gradient(118deg, #fffdfb 0%, #fffaf7 47%, #f7e8e6 100%);
 }
 
+.hero-pinned {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 1;
+}
+
 .cinematic-hero-stage {
   position: relative;
   display: flex;
