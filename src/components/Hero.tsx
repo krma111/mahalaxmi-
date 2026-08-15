@@ -50,6 +50,7 @@ export default function Hero() {
   const [quality, setQuality] = useState<SceneQuality>("desktop");
   const [sceneActive, setSceneActive] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [pinLength, setPinLength] = useState(0);
 
   useEffect(() => {
     const reducedQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -83,28 +84,36 @@ export default function Hero() {
     const section = sectionRef.current;
     if (!section) return;
 
+    const measure = () => {
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      setPinLength((prev) => {
+        const next = Math.round(window.innerHeight * (isMobile ? 1 : 1.2));
+        return prev === next ? prev : next;
+      });
+    };
+
     let raf = 0;
     const update = () => {
       raf = 0;
-      const headerOffset = 64;
-      const rect = section.getBoundingClientRect();
-      const travel = rect.height + headerOffset;
-      const raw = (headerOffset - rect.top) / travel;
-      const progress = Math.min(1, Math.max(0, raw));
+      if (reducedMotion) {
+        progressRef.current = 1;
+        section.style.setProperty("--hero-progress", "1");
+        section.style.transform = "";
+        return;
+      }
+      const y = Math.max(0, window.scrollY);
+      const pin = pinLength || 1;
+      const progress = Math.min(1, Math.max(0, y / pin));
       progressRef.current = progress;
       section.style.setProperty("--hero-progress", progress.toFixed(4));
+      section.style.transform = `translate3d(0, ${Math.min(y, pinLength)}px, 0)`;
     };
     const onViewportChange = () => {
       if (!raf) raf = requestAnimationFrame(update);
     };
 
-    if (reducedMotion) {
-      progressRef.current = 1;
-      section.style.setProperty("--hero-progress", "1");
-    } else {
-      update();
-    }
-
+    measure();
+    update();
     window.addEventListener("scroll", onViewportChange, { passive: true });
     window.addEventListener("resize", onViewportChange, { passive: true });
     return () => {
@@ -112,14 +121,15 @@ export default function Hero() {
       window.removeEventListener("resize", onViewportChange);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [reducedMotion]);
+  }, [reducedMotion, pinLength]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="cinematic-hero"
-      aria-labelledby="cinematic-hero-title"
-    >
+    <div className="relative">
+      <section
+        ref={sectionRef}
+        className="cinematic-hero"
+        aria-labelledby="cinematic-hero-title"
+      >
       <div ref={stageRef} className="cinematic-hero-stage">
         <div className="hero-depth hero-depth-one" aria-hidden="true" />
         <div className="hero-depth hero-depth-two" aria-hidden="true" />
@@ -224,5 +234,7 @@ export default function Hero() {
         </div>
       </div>
     </section>
+      <div aria-hidden="true" className="no-print" style={{ height: reducedMotion ? 0 : pinLength }} />
+    </div>
   );
 }
